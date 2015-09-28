@@ -1,0 +1,45 @@
+<md-sidenav class="md-sidenav-right md-whiteframe-z2 md-closed" md-component-id="right" role="menu">
+    <md-button tabindex="0" class="md-toolbar-tools md-primary" flex="20" layout-align="end" ng-click="closeMenu()" aria-label="Close side menu" >
+        <svg tabindex="-1" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 36 36"><path style="fill: #fff;" d="M28.5 9.62L26.38 7.5 18 15.88 9.62 7.5 7.5 9.62 15.88 18 7.5 26.38l2.12 2.12L18 20.12l8.38 8.38 2.12-2.12L20.12 18z"/></svg>
+    </md-button>
+    <md-content role="navigation">
+        <nav>
+            <md-list-item ng-repeat="module in modules" ng-class="{'menuItemActive' : currentModule == $index+1}" role="menuitem">
+                <img ng-src="views/icons/{{$index+1}}-1.svg" class="md-avatar" alt="{{module}}" aria-hidden="true">
+                <a href="#/{{$index+1}}/{{currentLanguage}}"><span class="screenReadersOnly" ng-if="currentModule == $index+1">{{ 'SIDEMENUITEM_SELECTED' | translate }}</span> {{'M'+($index+1)+'TITLE' | translate}}</a>
+                <md-divider></md-divider>
+            </md-list-item>
+        </nav><br>
+        <nav ng-if="loggedin && (quizEditors.indexOf(uid) > -1 || associationEditors.indexOf(uid) > -1 || enrolmentEditors.indexOf(uid) > -1)">
+            <md-list-item role="menuitem">
+                <img ng-src="views/icons/7-1.svg" class="md-avatar" alt="{{module}}" aria-hidden="true">
+                <a  href="#/7/{{currentLanguage}}">{{'M7TITLE' | translate}}</a>
+                <md-divider></md-divider>
+            </md-list-item>
+        </nav><br>
+
+
+        <!-- Enable this section for the search form -->
+
+        <!--form ng-submit="submit()" role="search">
+            <div layout>
+                <md-input-container id="searchContainer" layout-padding>
+                    <label for="searchInput" aria-hidden="true">{{'SEARCH' | translate}} </label>
+                    <input type="text" id="searchInput" ng-model="searchWord" required aria-required="true" aria-label="Type search text. Activate to search.">
+                </md-input-container>
+                <md-input-container flex layout-align="center center" ng-click="submit()" ng-disabled="searchWord.length == 0" aria-hidden="true">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 48 48"><path ng-style="{ fill: searchWord.length > 0 ? '#fff' : '#777'}" d="M31 28h-1.59l-.55-.55C30.82 25.18 32 22.23 32 19c0-7.18-5.82-13-13-13S6 11.82 6 19s5.82 13 13 13c3.23 0 6.18-1.18 8.45-3.13l.55.55V31l10 9.98L40.98 38 31 28zm-12 0c-4.97 0-9-4.03-9-9s4.03-9 9-9 9 4.03 9 9-4.03 9-9 9z"/></svg>
+                </md-input-container>
+            </div>
+        </form>
+        <div id="searchResultsContainer">
+            <md-content flex md-scroll-y class="searchResults">
+                <section ng-repeat="res in searchResults">
+                    <p>{{res.extract}}</p>
+                    <a ng-click="seek(res.code)"><p>Section {{res.code[0]}}, Module {{res.code[1]}}, {{ res.code[2] | translate}}</p></a>
+                    <br>
+                </section>
+            </md-content>
+        </div-->
+    </md-content>
+</md-sidenav>

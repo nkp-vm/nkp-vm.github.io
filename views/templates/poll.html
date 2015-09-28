@@ -1,0 +1,32 @@
+<div class="hmsquiz border" id="poll-{{hId}}" tabindex="-1" layout-padding>
+    <span class="screenReadersOnly">{{ 'HMSPOLL_ALERT_DESCRIPTION' | translate }}</span>
+    <div layout="row" layout-align="start center">
+        <img ng-src="views/icons/widgets/poll/poll.svg" class="widget-icon">
+        <h4 style="margin: 0 0 0.1em;">{{currentQuestion.text}}</h4><br>
+    </div>
+
+    <div ng-if="state=='question'" style="margin-left: 8px;">
+        <img style="width:300px; height: auto; margin: 10px 0 10px;" ng-show="image_url != ''" ng-src="{{image_url}}"/><br>
+        <md-radio-group ng-if="currentQuestion.type == 'radio'" ng-model="radioTempData.state" class="md-primary">
+            <md-radio-button ng-repeat="a in currentQuestion.answers" ng-click="check($index)" ng-value="$index">{{ a.text }}</md-radio-button>
+        </md-radio-group>
+        <md-checkbox class="md-primary" ng-if="currentQuestion.type == 'checkbox'" ng-repeat="a in currentQuestion.answers" ng-checked="answers[$index].checked" aria-checked="{{answers[$index].checked}}" ng-click="check($index)">{{ a.text }}</md-checkbox>
+
+        <md-button class="md-raised md-primary md-cornered hmsbtn" ng-click="next()">{{ 'RESULT' | translate}}</md-button>
+    </div>
+
+    <div ng-if="state=='result'">
+        <!--bars data="{{chartData}}"></bars-->
+        <!--div ng-repeat="a in currentQuestion.answers" layout="row" layout-align="start start" style="margin: 8px;">
+            <span></span>
+            <ngpiechart progression="pieData[$index]" total="100" size="20" line-width="10" scale-color="false" bar-color="rgb(63,81,181)"></ngpiechart>
+            <span>{{a.text}}</span><br><div ng-if="hFeedback"><span ng-show="a.correct == answers[$index].checked">{{a.correct_feedback}}</span><span ng-hide="a.correct != answers[$index].checked">{{a.incorrect_feedback}}</span></div>
+        </div-->
+        <span class="screenReadersOnly">{{ 'HMSPOLL_RESULT_DESCRIPTION' | translate }}</span>
+        <div ng-repeat="a in currentQuestion.answers" style="margin: 2px 0 1px 48px;">
+            <p>{{a.text}}</p>
+            <bars data="{{pieData[$index]}}" total="100" index="{{$index}}"></bars>
+        </div>
+
+    </div>
+</div>

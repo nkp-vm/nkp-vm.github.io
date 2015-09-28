@@ -1,0 +1,7 @@
+<br>
+    <div class="quotebox" layout="column" layout-align="start start">
+        <img ng-if="type === 'quote'" src="views/icons/body/greybox/quotation.svg" ng-class="{'widget-icon-small': type === 'quote', 'widget-icon-very-small' : type === 'story'}">
+        <div class="hmsquotebox-quote" ng-if="type === 'quote'"><ng-transclude></ng-transclude></div>
+        <div class="hmsquotebox-story" ng-if="type === 'story'"><ng-transclude></ng-transclude></div>
+    </div>
+<br>

@@ -1,0 +1,827 @@
+/*
+This CSS resource incorporates links to font software which is the valuable copyrighted
+property of Monotype and/or its suppliers. You may not attempt to copy, install,
+redistribute, convert, modify or reverse engineer this font software. Please contact Monotype
+with any questions regarding Web Fonts:  http://www.linotype.com
+*/
+
+@import url("https://fast.fonts.net/lt/1.css?apiType=css&c=8010e9df-a2fb-426b-85a4-d4dfe84d4c1e&fontids=673365,673377,692680,692692,692716");
+@font-face{
+    font-family:"HelveticaNeueW01-UltLt";
+    src:url("Fonts/673365/41774233-b9da-44be-b252-6a7b612fb1c7.eot?#iefix");
+    src:url("Fonts/673365/41774233-b9da-44be-b252-6a7b612fb1c7.eot?#iefix") format("eot"),url("Fonts/673365/9baef9a5-e2af-4838-a3bc-da9d36c0bde8.woff2") format("woff2"),url("Fonts/673365/4bff1fbb-b4bf-4d95-9c47-efcb14384e36.woff") format("woff"),url("Fonts/673365/7f1f2a7d-3837-4c93-b373-f03c5da3f9a1.ttf") format("truetype"),url("Fonts/673365/d9f2752a-8d82-4cf1-b82f-109c1105be7f.svg#d9f2752a-8d82-4cf1-b82f-109c1105be7f") format("svg");
+}
+@font-face{
+    font-family:"HelveticaNeueW01-Thin";
+    src:url("Fonts/673377/56be84de-9d60-4089-8df0-0ea6ec786b84.eot?#iefix");
+    src:url("Fonts/673377/56be84de-9d60-4089-8df0-0ea6ec786b84.eot?#iefix") format("eot"),url("Fonts/673377/aff68211-86bb-476d-882e-f7a3face144c.woff2") format("woff2"),url("Fonts/673377/50d35bbc-dfd4-48f1-af16-cf058f69421d.woff") format("woff"),url("Fonts/673377/278bef59-6be1-4800-b5ac-1f769ab47430.ttf") format("truetype"),url("Fonts/673377/2e309b1b-08b8-477f-bc9e-7067cf0af0b3.svg#2e309b1b-08b8-477f-bc9e-7067cf0af0b3") format("svg");
+}
+@font-face{
+    font-family:"HelveticaNeueW01-45Ligh";
+    src:url("Fonts/692680/ae1656aa-5f8f-4905-aed0-93e667bd6e4a.eot?#iefix");
+    src:url("Fonts/692680/ae1656aa-5f8f-4905-aed0-93e667bd6e4a.eot?#iefix") format("eot"),url("Fonts/692680/5a13f7d1-b615-418e-bc3a-525001b9a671.woff2") format("woff2"),url("Fonts/692680/530dee22-e3c1-4e9f-bf62-c31d510d9656.woff") format("woff"),url("Fonts/692680/688ab72b-4deb-4e15-a088-89166978d469.ttf") format("truetype"),url("Fonts/692680/7816f72f-f47e-4715-8cd7-960e3723846a.svg#7816f72f-f47e-4715-8cd7-960e3723846a") format("svg");
+}
+@font-face{
+    font-family:"HelveticaNeueW01-55Roma";
+    src:url("Fonts/692692/b7693a83-b861-4aa6-85e0-9ecf676bc4d6.eot?#iefix");
+    src:url("Fonts/692692/b7693a83-b861-4aa6-85e0-9ecf676bc4d6.eot?#iefix") format("eot"),url("Fonts/692692/b0868b4c-234e-47d3-bc59-41ab9de3c0db.woff2") format("woff2"),url("Fonts/692692/bcf54343-d033-41ee-bbd7-2b77df3fe7ba.woff") format("woff"),url("Fonts/692692/b0ffdcf0-26da-47fd-8485-20e4a40d4b7d.ttf") format("truetype"),url("Fonts/692692/da09f1f1-062a-45af-86e1-2bbdb3dd94f9.svg#da09f1f1-062a-45af-86e1-2bbdb3dd94f9") format("svg");
+}
+@font-face{
+    font-family:"HelveticaNeueW01-75Bold";
+    src:url("Fonts/692716/c07fef9e-a934-42d7-92ad-69205f2b8a00.eot?#iefix");
+    src:url("Fonts/692716/c07fef9e-a934-42d7-92ad-69205f2b8a00.eot?#iefix") format("eot"),url("Fonts/692716/3b303641-706e-4221-94c4-4fb491f4f8ef.woff2") format("woff2"),url("Fonts/692716/14ff6081-326d-4dae-b778-d7afa66166fc.woff") format("woff"),url("Fonts/692716/8fda1e47-19be-46c7-8d83-8d4fb35572f0.ttf") format("truetype"),url("Fonts/692716/f751c8ae-1057-46d9-8d74-62592e002568.svg#f751c8ae-1057-46d9-8d74-62592e002568") format("svg");
+}
+
+html {
+    color: white;
+}
+
+html * {
+    /*padding: 0;*/
+}
+section, aside { display: block; }
+
+body {
+    font-family:"HelveticaNeueW01-55Roma", Arial, sans-serif;
+    color: black;
+    background: white;
+    font-size: 1em;
+    margin: 0;
+}
+header,
+footer {
+    /*    padding-left: 1em;
+        padding-right: 1em; */
+}
+
+footer {
+    background-color: black;
+}
+/*
+p {
+    font-size: 1.25em;
+}
+ul {
+    padding-left: 2em;
+}
+*/
+div.clear {
+    clear: both;
+}
+nav {
+    display: block;
+}
+a { text-decoration: none; }
+a:focus { outline: thin dotted; }
+/*
+div.mainContainer {
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+}
+*/
+
+.screenReadersOnly {
+    border: 0;
+    clip: rect(0 0 0 0);
+    height: 1px;
+    width: 1px;
+    margin: -1px;
+    padding: 0;
+    overflow: hidden;
+    position: absolute !important;
+}
+
+.shrinkable {
+    width: 100%;
+    display:block;
+    /*max-height: 250px;*/
+    overflow: hidden;
+}
+.shrinkablecontent {
+    width: 100%;
+}
+p.text {
+    padding: 10px;
+}
+
+.reference {
+    font-style: Italic;
+    color: #999999;
+}
+
+.floating-menu span {
+    font-family:"HelveticaNeueW01-45Ligh", "Arial Narrow", sans-serif;
+    text-transform: capitalize;
+}
+
+/* --------  'li' tag ------- */
+
+li {
+    line-height: 1.35;
+    padding-left: 5px;
+}
+
+/* --------- Table style ------------------ */
+table, th, td {
+/*    border: 1px solid grey; */
+    border-collapse: collapse;
+}
+
+td {
+    text-align: center;
+    vertical-align: middle;
+}
+
+
+/* ---------  NEW ADDITIONS! --------- */
+.landing {
+    margin: 10% 40% 10% 5%;
+}
+/*
+.md-button span {
+    font-family: "HelveticaNeueW01-UltLt", "Arial Narrow", sans-serif;
+    text-transform: capitalize;
+    font-weight: bold;
+    letter-spacing: 1px;
+}
+*/
+md-checkbox.md-m5-theme:not([disabled]).md-primary.md-checked .md-icon:after {
+    border-color: rgb(47, 44, 44);
+}
+md-radio-button, md-checkbox {
+    margin: 10px 0;
+}
+md-checkbox .md-label, md-radio-button .md-label {
+    margin-left: 10px;
+    font-size: 1.1em;
+    line-height: 1.55em;
+}
+md-checkbox .md-icon {
+    border-radius: 0;
+    border-color: black !important;
+}
+.widget-icon {
+    padding-right: 10px;
+    width: 36px;
+    min-width: 36px;
+}
+.widget-icon-small {
+    padding-right: 10px;
+    width: 18px;
+    min-width: 18px;
+}
+.widget-icon-very-small {
+    padding-right: 10px;
+    width: 12px;
+    min-width: 12px;
+}
+/* ----- Quiz ---- */
+.quiz {
+    padding: 10px 0 10px;
+    background-color: white;
+    margin: 15px 0 15px 0;
+    cursor: pointer;
+}
+.quizFeedback {
+    font-family:"HelveticaNeueW01-75Bold", "Arial", sans-serif;
+}
+.sectionDetail .quiz p {
+    margin: 0;
+}
+.border {
+    border-style: solid none;
+    border-top: thin solid lightgrey;
+    border-bottom: thin solid lightgrey;
+}
+.upperborder {
+    border-top: thin solid lightgrey;
+}
+.lowerborder {
+    border-bottom: thin solid lightgrey;
+}
+.readmoreSVG {
+
+}
+
+/*
+.quiz h1 {
+    text-transform: none !important;
+}
+*/
+.quiz md-radio-button:focus {
+    outline: none;
+}
+.readmore {
+    padding: 10px 0 10px;
+/*    border-bottom: thin solid lightgrey;*/
+}
+
+/* Feedback colours for Quiz controls */
+
+quiz md-checkbox.md-main-theme[disabled].md-checked.colourCorrect .md-icon {
+    background-color: green;
+}
+quiz md-checkbox.md-main-theme[disabled].md-checked.colourIncorrect .md-icon {
+    background-color: red;
+}
+quiz md-checkbox.md-main-theme[disabled].colourCorrect .md-icon {
+    border-color: green;
+}
+quiz md-checkbox.md-main-theme[disabled].colourIncorrect .md-icon {
+    border-color: red;
+}
+quiz md-checkbox.colourCorrect .md-container:before {
+    background-color: green;
+    border-radius: 0;
+}
+quiz md-checkbox.colourIncorrect .md-container:before {
+    background-color: red;
+    border-radius: 0;
+}
+quiz md-radio-button.colourCorrect .md-off {
+    border-color: green !important;
+}
+quiz md-radio-button.colourCorrect .md-on {
+    background-color: green !important;
+}
+quiz md-radio-button.colourIncorrect .md-off {
+    border-color: red !important;
+}
+quiz md-radio-button.colourIncorrect .md-on {
+    background-color: red !important;
+}
+md-radio-group.md-main-theme[disabled], md-radio-button.md-main-theme[disabled] {
+    color: black;
+}
+md-radio-group[disabled], md-radio-button[disabled] {
+    color: black;
+}
+/*---------------------------- */
+
+
+
+/* ------ Top Quotation Section -------- */
+.topQuoteMarks {
+    display: none;
+    vertical-align: top;
+    padding-top: 30px;
+    padding-left: 40px;
+    font-family:"HelveticaNeueW01-75Bold", "Arial", sans-serif;
+    font-size: 200pt;
+    line-height: 65pt;
+    color: #24baa3;
+}
+.topQuoteText {
+    display: inline-block;
+    width: 80%;
+    margin-left: 5%;
+}
+.topQuote {
+    text-transform: uppercase;
+    font-family:"HelveticaNeueW01-75Bold", "Arial", sans-serif;
+    font-size: 14vmin;
+    line-height: 14vmin;
+}
+.topSubtitle {
+    margin: 2vw 0 6vw 0;
+    font-family:"HelveticaNeueW01-Thin", "Arial Narrow", sans-serif;
+    font-size: 6vmin;
+    letter-spacing: 1px;
+}
+
+/* ---- Side Nav & Search ---- */
+.hideMe {
+    display: none;
+}
+.md-button {
+   /* min-width: 60px; */
+}
+#toggleMenu.md-button {
+    /*line-height: 0;*/
+}
+md-sidenav {
+    width: 300px;
+    min-width: 220px;
+    max-height: 800px;
+}
+md-sidenav, md-sidenav md-content.md-main-theme, md-sidenav md-content md-list-item {
+    background-color: #525454;
+}
+.md-sidenav-right {
+    height: 700px;
+    z-index: 200;
+}
+.menuItemActive, .menuItemActive a {
+    background-color: white;
+    color: #525454;
+}
+.md-avatar {
+    background-color: #525454;
+}
+md-sidenav md-content md-list-item a {
+    color: white;
+    font-family:"HelveticaNeueW01-45Ligh", "Arial Narrow", sans-serif;
+    font-size: 1em;
+    letter-spacing: 1px;
+    text-decoration: none;
+}
+md-sidenav md-input-container.md-main-theme label {
+    color: white;
+}
+.md-autocomplete-suggestions.md-main-theme {
+    z-index: 250;
+}
+
+md-sidenav md-input-container.md-main-theme .md-input {
+    color: white;
+}
+#searchContainer {
+    width:75%;
+    font-family:"HelveticaNeueW01-UltLt", "Arial Narrow", sans-serif;
+}
+#searchResultsContainer {
+    position: relative;
+    height: 200px;
+    overflow: auto;
+}
+.searchResults {
+    margin: 20px;
+}
+.searchResults a, .searchResults p {
+    color: white;
+}
+.searchResults a {
+    text-decoration: underline;
+}
+
+.mainDiv {
+    height: 200px;
+    width: 100%;
+    font-size: 10pt;
+    text-align: center;
+}
+
+/* --------- Footer ---------- */
+
+.gfooter div {
+    display: inline-block;
+    margin-left: 5%;
+}
+.gfooter div div {
+    max-width: 250px;
+    padding: 1em;
+}
+.gfooter p {
+    color: white;
+    font-size: 0.8em;
+}
+.gfooter p span {
+    font-family:"HelveticaNeueW01-75Bold", "Arial", sans-serif;
+}
+.gfooter a {
+    color: white;
+}
+.gfooter img {
+    padding: 0.5em;
+    width: 90%;
+    height: auto;
+}
+
+
+/* --------------- */
+
+.backgroundImage {
+    width: 100%;
+    height: 40vw;       /* REMOVE if desiring to letterbox initial poster image */
+    /*height: 350px;*/   /* Set below 533px here to letterbox initial poster image */
+    overflow: hidden;
+    background-repeat:no-repeat;
+    background-size: 100% auto;
+    background-position: bottom;
+}
+.css-height-533-add, .css-height-533-remove {
+    -webkit-transition: max-height 1s linear;
+    -moz-transition: max-height 1s linear;
+    -o-transition: max-height 1s linear;
+    transition: max-height 1s linear;
+}
+.css-height-533, .css-height-533-add.css-height-533-add-active {
+    max-height: 53.3vw;
+}
+.css-height-533-remove.css-height-533-remove-active {
+    height: 26.7vw;
+}
+
+/* ---- Section Detail ---- */
+.sectionDetail {
+    /*margin-top:-10px;*/
+    font-family:"HelveticaNeueW01-45Ligh", "Arial", sans-serif;
+    color: black;
+}
+.sectionDetail html {
+    margin: auto;
+}
+.sectionDetail strong, .gfooter strong {
+    font-family:"HelveticaNeueW01-75Bold", "Arial", sans-serif;
+    font-weight: normal !important;
+}
+.sectionDetail ul, .sectionDetail ol {
+    margin: -0.5em 0 0.5em;
+    /*padding-left: 20px;*/
+}
+.sectionDetail li {
+    line-height: 1.55em;
+    font-size: 1.1em;
+}
+
+.sectionDetail table {
+    width:100%;
+}
+.sectionDetail table, .sectionDetail th, .sectionDetail td {
+    border-collapse: collapse;
+}
+.sectionDetail th, .sectionDetail td {
+    padding: 5px;
+    text-align: left;
+    border-bottom: 1px solid black;
+    border-left: none;
+}
+.sectionDetail td {
+    border-right: 1px solid black;
+}
+.sectionDetail th	{
+   /* font-family:"HelveticaNeueW01-75Bold", "Arial", sans-serif; */
+}
+.sectionDetail td:first-child {
+ /*   font-family:"HelveticaNeueW01-75Bold", "Arial", sans-serif; */
+}
+.sectionDetail td:last-child {
+    border-right: none;
+}
+
+/* ------- Custom icons at front of lists ------------ */
+ul.ticklist, ol.ticklist {
+    list-style-image: url('views/icons/widgets/checklist/checkmark-thick.svg');
+}
+ul.dashlist, ol.dashlist {
+    list-style: none;
+    margin-left: 0;
+    padding-left: 0;
+}
+ul.dashlist li, ol.dashlist li {
+    padding-left: 5px;
+    /*text-indent: -1em;*/
+}
+ul.dashlist li:before, ol.dashlist li:before {
+    /*content: "—"; *//* Long dash char */
+    content: "-";       /* short dash char */
+    padding-right: 10px;
+}
+
+/* -------------- Section detail is formatting for all content text ----------- */
+.sectionDetail h2 {
+    font-family:"HelveticaNeueW01-45Ligh", "Arial", sans-serif;
+    font-size: 1.65em;
+    font-weight: normal !important;
+    margin: 0.33em 0 0.66em;
+    line-height: 1.25em;
+}
+.sectionDetail h3 {
+    font-family:"HelveticaNeueW01-45Ligh", "Arial", sans-serif;
+    font-size: 1.65em;
+    font-weight: normal !important;
+    margin: 1.2em 0 0.66em;
+    line-height: 1.25em;
+}
+.sectionDetail h4 {
+    font-weight: normal !important;
+    font-size: 1.4em;
+    margin: 0.9em 0 0.3em;
+}
+.sectionDetail h5 {
+    text-transform: none;
+    margin: 1em 0 0;
+    line-height: 1.35em;
+    font-size: 1.1em;
+    font-family:"HelveticaNeueW01-75Bold", "Arial", sans-serif;
+    font-weight: normal !important;
+}
+.sectionDetail p {
+    line-height: 1.55em;
+    font-size: 1.1em;
+    margin: 0 0 1em;
+}
+.sectionDetail a:link {
+    color: black;
+    text-decoration: none;
+}
+.sectionDetail .quiz a:link {
+    text-decoration: underline;
+}
+.sectionDetail a.md-button {
+    border-radius: 0;
+}
+.sectionDetail a:visited {
+    color: black;
+    text-decoration: none;
+}
+.sectionDetail a:hover {
+    color: rgb(63,81,181);
+    text-decoration: none;
+}
+.slideable_content > img {
+    max-width: 100%;
+    margin: 0 0 1em;
+}
+.sectionDetail h2+ul, .sectionDetail h3+ul, .sectionDetail h4+ul, .sectionDetail h5+ul, .sectionDetail h6+ul {
+    line-height: 1.55em;
+    font-size: 1.1em;
+    margin: 0 0 1em;
+}
+.sectionDetail_open {
+    padding: 50px 30% 50px 7%;
+}
+.sectionDetail_closed {
+    padding: 0;
+}
+
+/* --------- Directives ------*/
+.gvideo {
+    color: white;
+    position: relative;
+    /*    margin-bottom: -110px;*/
+    cursor: pointer;
+    height: auto;
+    /*max-height: 350px;*/  /* Required for smooth transition effect */
+    /*max-height:250px;*/    /* CHANGE HERE FOR VIDEO WIDTH / HEIGHT */
+}
+.gvideo .overlayimage {
+    position: absolute;
+    /*bottom: 18%;
+    left: 3%;*/
+    width: 10%;
+}
+.gvideo .overlaytext {
+    position: absolute;
+    /*bottom: 10%;
+    left: 7%;*/
+    font-size: 7.5vmin;
+    font-family:"HelveticaNeueW01-Thin", "Arial Narrow", sans-serif;
+    text-shadow: 1px 1px #000000;
+}
+.readmore {
+    cursor: pointer;
+    margin: 0;
+    padding: 10px 0 10px;
+}
+.glink {
+    line-height: 1.55em;
+    margin: 0 0 1em;
+    text-decoration: none;
+}
+.glink span {
+    text-decoration: underline;
+}
+
+.quizpolledit {
+    margin: 0 100px;
+}
+.greybox {
+    background-color: #f5f5f5;
+    padding: 15px;
+    font-family: "HelveticaNeueW01-55Roma", Arial, sans-serif;
+}
+.quotebox {
+    background-color: #FFFFFF;
+    padding: 15px;
+    margin: 0 25% 0 15%;
+}
+.quotebox-quote {
+    font-family:"HelveticaNeueW01-75Bold", "Arial", sans-serif;
+    font-size: 1.5em;
+    max-width: 100%;
+}
+.quotebox-story {
+    font-size: 0.9em;
+    max-width: 100%;
+}
+.quotebox-story p {
+    line-height: 1.35em;
+}
+.quickquestion {
+    padding: 10px 0 10px;
+    cursor: pointer;
+}
+
+/*
+#menuContent {
+    display: none;
+}
+#menuContent.menuActive {
+    display: block;
+    width:150px;
+}
+#menuContent p {
+    padding: 2px;
+    width: 150px;
+    height: 25px;
+    background: yellow;
+    text-align: center;
+    cursor: pointer;
+    border-top: 1px solid red;
+    line-height: 25px;
+}
+*/
+
+
+/* ------- Poll ------- */
+.poll {
+    padding: 10px;
+    background-color: lightgrey;
+}
+.poll md-radio-button:focus {
+    outline: none;
+}
+
+
+/*---------------- Chart ---------------- */
+
+
+.chart div {
+    width: 0;
+    transition: all 1s ease-out;
+    -moz-transition: all 1s ease-out;
+    -webkit-transition: all 1s ease-out;
+}
+
+.chart div {
+    font-family: "HelveticaNeueW01-55Roma", Arial, sans-serif;
+    font-size: 0.5em;
+    background-color: rgb(63,81,181);
+    text-align: right;
+    padding: 1px;
+    color: white;
+/*    box-shadow: 2px 2px 2px #666; */
+}
+
+.ngPieChart {
+    margin: 0 5px;
+}
+/* Media Queries ------------------------------------------------------------------------------------ */
+
+/* iPhone, etc portrait ---- */
+@media only screen and (min-width: 320px) {
+    /*
+        body { background: pink; }
+        body:before { content: "Between 320 and 480"; }
+    */
+    .landing {
+        margin: 10% 10% 10% 5%;
+    }
+    .topQuote {
+        font-size: 12vmin;
+        line-height: 12vmin;
+    }
+
+    .sectionDetail_open {
+        padding: 50px 7% 50px 7%;
+    }
+
+    .gvideo .overlayimage {
+        bottom: 22%;
+    }
+    .gvideo .overlaytext {
+        bottom: 14%;
+        left: 7%;
+        font-size: 5vmin;
+        font-family:"HelveticaNeueW01-45Ligh", "Arial Narrow", sans-serif;
+    }
+    .hide-sm {
+        display: none;
+    }
+    .hide-gt-sm {
+        display: block;
+    }
+    .gfooter {
+        padding: 0.75em;
+    }
+    .gfooter img {
+        padding: 0;
+        width: 100%;
+        height: auto;
+    }
+    .gfooter div {
+        margin-left: 10%;
+    }
+    .quotebox {
+        margin: 0 0 0 7%;
+    }
+}
+
+/* iPhone, etc landscape ---- */
+@media only screen and (min-width: 480px) {
+    /*
+        body { background: yellow; }
+        body:before { content: "Between 480 and 768"; }
+    */
+
+    .sectionDetail_open {
+        padding: 50px 5% 50px 5%;
+    }
+    .gvideo .overlayimage {
+        bottom: 18%;
+    }
+    .gvideo .overlaytext {
+        font-family:"HelveticaNeueW01-Thin", "Arial Narrow", sans-serif;
+    }
+    .hide-sm {
+        display: none;
+    }
+    .hide-gt-sm {
+        display: block;
+    }
+}
+
+/* iPad, tablets etc portrait ---- */
+@media only screen and (min-width: 768px) {
+
+    .gvideo .overlayimage {
+        left: 7%;
+        bottom: 27%;
+        width: 50px;
+    }
+    .sectionDetail_open {
+        padding: 50px 15% 50px 7%;
+    }
+    .hide-sm {
+        display: block;
+    }
+    .hide-gt-sm {
+        display: none;
+    }
+    .quotebox {
+        padding: 0 25% 0 15%;
+        margin: 0;
+        width: 100%;
+    }
+    .gfooter {
+        padding: 1.4em 8em;
+    }
+
+}
+/* Laptops, Desktops, etc ---- */
+@media only screen and (min-width: 1024px) {
+
+    .gvideo .overlaytext {
+    }
+    .landing {
+        margin: 10% 40% 10% 5%;
+    }
+    .topQuote {
+        font-size: 14vmin;
+        line-height: 14vmin;
+    }
+    .sectionDetail_open {
+        padding: 50px 30% 50px 7%;
+    }
+    .hide-sm {
+        display: block;
+    }
+    .hide-gt-sm {
+        display: none;
+    }
+    .gfooter {
+        padding: 1.4em 8em;
+    }
+    .gfooter div {
+        margin-left: 5%;
+    }
+    .gfooter img {
+        width: 50%;
+        height: auto;
+    }
+
+}
+
+@media only screen and (min-width: 1281px) {
+
+    .sectionDetail_open {
+        padding: 50px 43% 50px 7%;
+    }
+    .backgroundImage {
+        width: 100%;
+        /*height: 40vw;*/       /* REMOVE if desiring to letterbox initial poster image */
+        height: 25vw;   /* Set below 533px here to letterbox initial poster image */
+        overflow: hidden;
+        background-repeat:no-repeat;
+        background-size: 100% auto;
+        background-position: center;
+    }
+    .gvideo {
+        max-height: 25vw;
+    }
+    .css-height-533 {
+        max-height: 53.3vw;
+    }
+}

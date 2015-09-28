@@ -1,0 +1,22 @@
+{
+  "name": "HMS",
+  "version": "1.0.0",
+  "dependencies": {
+    "angular": "1.4.x",
+    "angular-route": "",
+    "angular-sanitize": "",
+    "angular-animate": "",
+    "angular-aria": "1.4.x",
+    "angular-material": "0.10.x",
+    "angular-translate": "2.7.2",
+    "angular-translate-loader-static-files": "~2.7.0",
+    "angular-translate-storage-local": "",
+    "ngSmoothScroll": "1.7.x",
+    "angular-piechart": "*",
+    "d3": "*",
+    "ng-device-detector": "~1.1.8"
+  },
+  "resolutions": {
+    "angular-translate": "~2.8.0"
+  }
+}
