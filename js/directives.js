@@ -147,7 +147,7 @@ GDirectives.directive('ngEnter', ['$timeout', function ($timeout) {
  *      </pre>
  */
 GDirectives.directive("sectionBox", ['$window', '$document', '$route', '$sce', '$timeout', 'smoothScroll', 'CONSTANTS', function($window, $document, $route, $sce, $timeout, smoothScroll, CONSTANTS){
-    var linker = function(scope, element, attr) {
+    var linker = function(scope, element) {
         var video;
         var notPlayed = true;
         var playing = false;

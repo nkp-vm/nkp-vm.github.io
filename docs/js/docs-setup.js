@@ -86,15 +86,6 @@ NG_DOCS={
     },
     {
       "section": "api",
-      "id": "hmssection",
-      "shortName": "hmssection",
-      "type": "directive",
-      "moduleName": "hmssection",
-      "shortDescription": "Add this attribute to define sublevel content. The content will be loaded from corresponding &#39;sx.html&#39; file",
-      "keywords": "add api attribute content corresponding define directive file hmssection html loaded matching sublevel sx"
-    },
-    {
-      "section": "api",
       "id": "link",
       "shortName": "link",
       "type": "directive",
@@ -110,15 +101,6 @@ NG_DOCS={
       "moduleName": "moduletitle",
       "shortDescription": "Add this attribute to define the module quote and subtitle in each language.",
       "keywords": "acid add api attribute better blir dangerous define directive lab lab-sikkerhet language module module-en module-no moduletitle quote quote-en quote-no safety subtitle syre uhyre vann water"
-    },
-    {
-      "section": "api",
-      "id": "poll",
-      "shortName": "poll",
-      "type": "directive",
-      "moduleName": "poll",
-      "shortDescription": "Poll questions taken from poll.json located at root level",
-      "keywords": "api data directive h-feedback h-id json level located match pid poll pollid1 questions quiz root true"
     },
     {
       "section": "api",
@@ -140,12 +122,12 @@ NG_DOCS={
     },
     {
       "section": "api",
-      "id": "video",
-      "shortName": "video",
+      "id": "sectionBox",
+      "shortName": "sectionBox",
       "type": "directive",
-      "moduleName": "video",
-      "shortDescription": "Add this element anywhere to create a Video / GIF player. Source material is taken from the current module route&#39;s corresponding &#39;img&#39; subfolder",
-      "keywords": "activates add api click connected corresponding create current directive displayed element false felt file folding force force-iphone-video gif gifsrc h264 hart icon image img iphone jpg match material module mp4 overlay panel play player png poster route s1 screen set sid small source static subfolder text ute video videosrc"
+      "moduleName": "sectionBox",
+      "shortDescription": "Add this element anywhere to create a Video / GIF player box. Source material is taken from the current module route&#39;s corresponding &#39;img&#39; subfolder",
+      "keywords": "activates add api box click closed connected corresponding create current directive displayed element false file folding force force-iphone-video gif gif-src h264 image img iphone jpg match material module mp4 overlay panel play player png poster-src route screen section-id sectionbox set small source static subfolder text text-xx- video video-src"
     }
   ],
   "apis": {

@@ -1,6 +1,6 @@
 {
-  "name": "HMS",
-  "version": "1.0.0",
+  "name": "NKP-VM",
+  "version": "0.0.1",
   "dependencies": {
     "angular": "1.4.x",
     "angular-route": "",
@@ -12,8 +12,6 @@
     "angular-translate-loader-static-files": "~2.7.0",
     "angular-translate-storage-local": "",
     "ngSmoothScroll": "1.7.x",
-    "angular-piechart": "*",
-    "d3": "*",
     "ng-device-detector": "~1.1.8"
   },
   "resolutions": {
