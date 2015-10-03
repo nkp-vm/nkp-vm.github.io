@@ -178,8 +178,8 @@ GDirectives.directive("sectionBox", ['$window', '$document', '$route', '$sce', '
                     target.style.height = '0';
                     if(scope.videoSrc !== "") {
                         scope.showVideo = false;
+                        video.style.height = '0';   // Video height interferes with slide closed - must set it's height also..
                     }
-                    video.style.height = '0';   // Video height interferes with slide closed - must set it's height also..
                 }, 0);
             }
             else {
