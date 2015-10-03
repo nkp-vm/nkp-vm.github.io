@@ -10,13 +10,6 @@
                 <md-divider></md-divider>
             </md-list-item>
         </nav><br>
-        <nav ng-if="loggedin && (quizEditors.indexOf(uid) > -1 || associationEditors.indexOf(uid) > -1 || enrolmentEditors.indexOf(uid) > -1)">
-            <md-list-item role="menuitem">
-                <img ng-src="views/icons/7-1.svg" class="md-avatar" alt="{{module}}" aria-hidden="true">
-                <a  href="#/7/{{currentLanguage}}">{{'M7TITLE' | translate}}</a>
-                <md-divider></md-divider>
-            </md-list-item>
-        </nav><br>
 
 
         <!-- Enable this section for the search form -->

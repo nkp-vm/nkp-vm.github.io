@@ -1,9 +1,0 @@
-<div class="gvideo shrinkable" slider-toggle="#{{sid}}" prevent-close="true" section-detail-area="true" click-to-activate="false" ng-class="{'css-height-533': backgroundImageHeightSwitch}">
-    <div class="screenReadersOnly"><h1>{{overlayText}}</h1></div>
-    <div aria-hidden="true" tabindex="-1" ng-click="play()">
-        <span tabindex="-1" aria-hidden="true" class="overlaytext">{{overlayText}}</span>
-        <div tabindex="-1" aria-hidden="true" class="backgroundImage hide-sm" ng-hide="showVideo" ng-style="{'background-image': backgroundImageSrc}" ></div>
-        <img tabindex="-1" aria-hidden="true" class="shrinkablecontent hide-gt-sm" ng-hide="showVideo" ng-src="{{noPreloadGifSrc}}">
-        <video tabindex="-1" aria-hidden="true" type='video/mp4' ng-show="showVideo" class="shrinkablecontent" ng-src="{{trustResource(videoSrc)}}" ng-attr-crossorigin="anonymous" ng-attr-preload="auto"></video>
-    </div>
-</div>

@@ -16,7 +16,7 @@ Array.prototype.repeat= function(what, L){
  * @description
  * Main app module.
  */
-var HMS = angular.module("HMS", [
+var GApp = angular.module("GApp", [
     'ngRoute',
     'ngAnimate',
     'ngAria',
@@ -31,15 +31,7 @@ var HMS = angular.module("HMS", [
 
 /* --------------  CONSTANTS ---------------- */
 
-HMS.constant("HMS_CONSTANTS", {
-    moduleColours : {
-        1 : '#f26767',
-        2 : '#ffd94f',
-        3 : '#ffb040',
-        4 : '#29a9c3',
-        5 : '#24baa3',
-        6 : '#95a5a5'
-    },
+GApp.constant("CONSTANTS", {
 
     // Paths
     TOP_LEVEL_MODULE_PATH : "views/m",
@@ -47,18 +39,17 @@ HMS.constant("HMS_CONSTANTS", {
 
     // Variables
     USE_ALT_VIDEO_SERVER : false,
+    ALT_VIDEO_PATH : "",
     CROP_MIN_WIDTH : 1281,
     GIF_MAX_WIDTH : 768,
     MODULE_NAME_ARRAY : ['Module 1', 'Module 2', 'Module 3', 'Module 4', 'Module 5', 'Module 6'],
-    DICTIONARY_NAME : 'json/freetext_dictionary.json',
-    QUIZ_PASS_PERCENT : 80,
-
+    DICTIONARY_NAME : 'json/freetext_dictionary.json'
 });
 
 /* --------------  CONFIGURATION ---------------- */
 
 // Routes are calculated from the module number and current language
-HMS.config(['$routeProvider', function($routeProvider) {
+GApp.config(['$routeProvider', function($routeProvider) {
     //module: module number e.g. '2'   lingo: language code e.g. 'en'    anchor:  optional id number of section e.g. '3'
     $routeProvider.when('/:module/:lingo/:anchor?', {
         templateUrl: function($routeParams) {
@@ -69,7 +60,7 @@ HMS.config(['$routeProvider', function($routeProvider) {
     $routeProvider.otherwise({redirectTo: '/1/no'});
 }]);
 
-HMS.config(['$mdGestureProvider', function( $mdGestureProvider ) {
+GApp.config(['$mdGestureProvider', function( $mdGestureProvider ) {
     $mdGestureProvider.skipClickHijack();
 }]);
 
@@ -81,23 +72,23 @@ HMS.config(['$mdGestureProvider', function( $mdGestureProvider ) {
  * In HTML, translation is obtained by using {{'KEY' | translate}}, where 'KEY' corresponds to a language key defined in the JSON files.
  *
  **/
-HMS.config(['$translateProvider', function($translateProvider) {
+GApp.config(['$translateProvider', function($translateProvider) {
     $translateProvider.useSanitizeValueStrategy('sanitizeParameters');
     $translateProvider.useLocalStorage();
     $translateProvider.useStaticFilesLoader({
-        prefix: 'languages/',
+        prefix: 'json/languages/',
         suffix: '.json'
     });
     $translateProvider.preferredLanguage('no');
 }]);
 
 // Angular Material themes can be configured with custom Palettes
-HMS.config(['$mdThemingProvider', function($mdThemingProvider) {
+GApp.config(['$mdThemingProvider', function($mdThemingProvider) {
     $mdThemingProvider.theme('main').primaryPalette('indigo');
     $mdThemingProvider.setDefaultTheme('main');
 }]);
 
-HMS.config(['$httpProvider', function($httpProvider) {
+GApp.config(['$httpProvider', function($httpProvider) {
     //$httpProvider.defaults.useXDomain = true;
     $httpProvider.defaults.withCredentials = false;
     $httpProvider.defaults.headers.common.Accept = "application/json";
@@ -113,8 +104,8 @@ HMS.config(['$httpProvider', function($httpProvider) {
  * @description
  * Controller for basic site functionality. Takes care of common functions such as menu and language switching.
  */
-HMS.controller('IndexCtrl', ['$scope', '$translate', '$mdSidenav', '$location', '$routeParams', '$timeout', '$window', 'DataService', 'smoothScroll', 'HMS_CONSTANTS', function($scope, $translate, $mdSidenav, $location, $routeParams, $timeout, $window, DataService, smoothScroll, HMS_CONSTANTS) {
-    $scope.modules = HMS_CONSTANTS.MODULE_NAME_ARRAY;
+GApp.controller('IndexCtrl', ['$scope', '$translate', '$mdSidenav', '$location', '$routeParams', '$timeout', '$window', 'DataService', 'smoothScroll', 'CONSTANTS', function($scope, $translate, $mdSidenav, $location, $routeParams, $timeout, $window, DataService, smoothScroll, CONSTANTS) {
+    $scope.modules = CONSTANTS.MODULE_NAME_ARRAY;
     $scope.currentLanguage = DataService.applicationVariable.currentLanguage;
     $scope.dymanicTheme = 'default';
     $scope.currentModule = "";
@@ -141,7 +132,7 @@ HMS.controller('IndexCtrl', ['$scope', '$translate', '$mdSidenav', '$location', 
             anchorToSeek = DataService.applicationVariable.anchorToSeek = 's' + current.params.anchor;
         }
         if(current.params.lingo !== $scope.currentLanguage) {
-            $scope.changeLanguage();
+            $scope.changeLanguage(current.params.lingo);
         }
 
     });
@@ -161,9 +152,11 @@ HMS.controller('IndexCtrl', ['$scope', '$translate', '$mdSidenav', '$location', 
             topDiv[0].focus();
         }
     };
-    $scope.changeLanguage = function () {
-        if($scope.currentLanguage === "en") { $scope.displayLanguage = "en";} else { $scope.displayLanguage = "no";}
-        if($scope.currentLanguage === "en") { $scope.currentLanguage = DataService.applicationVariable.currentLanguage = "no"; } else { $scope.currentLanguage = DataService.applicationVariable.currentLanguage = "en"; }
+    $scope.changeLanguage = function (lang) {
+        if(typeof lang === 'undefined') {
+            lang = 'en';
+        }
+        $scope.displayLanguage = $scope.currentLanguage = DataService.applicationVariable.currentLanguage = lang;
         $translate.use($scope.currentLanguage);
         $location.path($location.path().slice(0,-2)+$scope.currentLanguage);
     };
@@ -220,7 +213,7 @@ HMS.controller('IndexCtrl', ['$scope', '$translate', '$mdSidenav', '$location', 
  * @description
  * Provide access to queries for Quiz and Poll. Provide dictionary file for site searching. Shuffle arrays.
  */
-HMS.service('DataService', ['$http', 'HMS_CONSTANTS', function($http, HMS_CONSTANTS) {
+GApp.service('DataService', ['$http', 'CONSTANTS', function($http, CONSTANTS) {
     var dictionary;
 
     var applicationVariable = {
@@ -261,7 +254,7 @@ HMS.service('DataService', ['$http', 'HMS_CONSTANTS', function($http, HMS_CONSTA
     };
 
     // Request the search dictionary object
-    $http.get(HMS_CONSTANTS.DICTIONARY_NAME)
+    $http.get(CONSTANTS.DICTIONARY_NAME)
         .then(function(res){
             dictionary = res.data;
         });

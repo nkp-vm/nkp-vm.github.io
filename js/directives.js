@@ -132,132 +132,182 @@ GDirectives.directive('ngEnter', ['$timeout', function ($timeout) {
 
 /**
  * @ngdoc directive
- * @name video
+ * @name sectionBox
  * @restrict E
  * @description
- * Add this element anywhere to create a Video / GIF player. Source material is taken from the current module route's corresponding 'img' subfolder
- *     * sid:       Must match the ID of the connected folding information panel
- *     * text:     Overlay text
- *     * icon:     Overlay icon
- *     * poster:   Static image displayed before click activates the video / GIF
- *     * videosrc: Name of the MP4 file (encapsulating H264) to play
- *     * gifsrc:   Name of the GIF file to play (mobile / small screen only)
+ * Add this element anywhere to create a Video / GIF player box. Source material is taken from the current module route's corresponding 'img' subfolder
+ *     * section-id:       Must match the ID of the connected folding information panel
+ *     * text-xx-{open | closed}: Overlay text
+ *     * poster-src:   Static JPG or PNG image displayed before click activates the video / GIF
+ *     * video-src: Name of the MP4 file (encapsulating H264) to play
+ *     * gif-src:   Name of the GIF file to play (mobile / small screen only)
  *     * force-iphone-video:  Set to force video play (rather than GIF) on iPhone's small screen   (true, false)
  *      <pre>
- *          <hmsvideo sid="s1" text="1. Ute i felt" icon="hart.png" poster="4.3.jpg"
- *          videosrc="4.3.mp4" gifsrc=""></hmsvideo>
+ *          <section-box></section-box>
  *      </pre>
  */
-GDirectives.directive("gVideo", ['$window', '$document', '$route', '$sce', '$timeout', 'smoothScroll', 'HMS_CONSTANTS', function($window, $document, $route, $sce, $timeout, smoothScroll, HMS_CONSTANTS){
-    var linker = function(scope, element) {
-        var moduleNumber = $route.current.params.module;
-        scope.moduleColour = HMS_CONSTANTS.moduleColours[moduleNumber];
-        //scope.forceVideo = scope.hVideosrc;
-        scope.showVideo = false;
-        var filePath = "";
-        scope.noPreloadGifSrc = filePath + scope.poster;
-        scope.backgroundImageSrc = "url("+(filePath + scope.poster)+")";
-        scope.backgroundImageHeightSwitch = false;
-        scope.overlayIconSrc = HMS_CONSTANTS.ICON_PATH + scope.icon;
-        scope.videoSrc = "";
-        scope.overlayText = "";
+GDirectives.directive("sectionBox", ['$window', '$document', '$route', '$sce', '$timeout', 'smoothScroll', 'CONSTANTS', function($window, $document, $route, $sce, $timeout, smoothScroll, CONSTANTS){
+    var linker = function(scope, element, attr) {
         var video;
         var notPlayed = true;
         var playing = false;
+        var moduleNumber = $route.current.params.module;
+        var filePath = (CONSTANTS.USE_ALT_VIDEO_SERVER ? CONSTANTS.ALT_VIDEO_PATH : CONSTANTS.TOP_LEVEL_MODULE_PATH) + moduleNumber + '/img/';
 
         if (typeof scope.videosrc === "undefined") { scope.videosrc = ""; }
+        if (typeof scope.posterSrc === "undefined") { scope.posterSrc = ""; }
+        if (typeof scope.gifSrc === "undefined") { scope.gifSrc = ""; }
 
-        filePath = (HMS_CONSTANTS.USE_ALT_VIDEO_SERVER ? HMS_CONSTANTS.ALT_VIDEO_PATH : HMS_CONSTANTS.TOP_LEVEL_MODULE_PATH) + moduleNumber + '/img/';
-        scope.videoSrc = filePath + scope.videosrc;
-        scope.noPreloadGifSrc = filePath + scope.poster;
-        scope.backgroundImageSrc = "url("+(filePath + scope.poster)+")";
+        scope.showVideo = false;
+        scope.noPreloadGifSrcPath = filePath + scope.posterSrc;
+        scope.videoSrcPath = filePath + scope.videoSrc;
+        scope.backgroundImageSrcPath = "url("+(filePath + scope.posterSrc)+")";
+        scope.backgroundImageHeightSwitch = false;
+        scope.overlayText = "";
+        scope.detailActive = false;
+        scope.templateLocation = CONSTANTS.TOP_LEVEL_MODULE_PATH + $route.current.params.module +'/sub/'+scope.sectionId+'_'+$route.current.params.lingo+'.html';
 
+        // Controls open and close of the sliding section in this directive
+        scope.slideToggle = function() {
+            var target = document.getElementById(scope.sectionId);
+            var content = target.querySelector('.content-selector');
+            var contentHeight = content.offsetHeight+'px';
+            if(scope.detailActive) {
+                target.style.height = contentHeight;  // Set height from 'auto' back to 'px' before reducing to '0px'
+                $timeout(function () {
+                    target.style.height = '0';
+                    if(scope.videoSrc !== "") {
+                        scope.showVideo = false;
+                    }
+                    video.style.height = '0';   // Video height interferes with slide closed - must set it's height also..
+                }, 0);
+            }
+            else {
+                if(scope.videoSrc !== "") {
+                    video.style.height = 'auto';
+                }
+                target.style.height = contentHeight;
+                $timeout(function () {
+                    target.style.height = 'auto';  // If a fixed height property is retained, any internal slidables will not expand within this slidable's section
+                }, 1000);
+            }
+            scope.detailActive = !scope.detailActive;
+            pickLanguage();
+        };
+
+        // Run setup again if the route or language has changed
         scope.$on('$routeChangeSuccess', function() {
-            scope.videoPath = HMS_CONSTANTS.TOP_LEVEL_MODULE_PATH + moduleNumber + '/img/';
-            scope.noPreloadGifSrc = filePath + scope.poster;
-            scope.backgroundImageSrc = "url("+(filePath + scope.poster)+")";
+            scope.videoPath = CONSTANTS.TOP_LEVEL_MODULE_PATH + moduleNumber + '/img/';
+            scope.noPreloadGifSrc = filePath + scope.posterSrc;
+            scope.backgroundImageSrc = "url("+(filePath + scope.posterSrc)+")";
             pickLanguage();
         });
 
+        // Choose language for overlay text - called automatically when language switches
         var pickLanguage = function() {
-            if($route.current.params.lingo === "no") {
-                scope.overlayText = scope.textNo;
+
+            if(scope.detailActive) {
+                switch($route.current.params.lingo) {
+                    case 'no' :
+                        scope.overlayText = scope.textNoOpen;
+                        break;
+                    case 'en' :
+                        scope.overlayText = scope.textEnOpen;
+                        break;
+                    case 'cs' :
+                        scope.overlayText = scope.textCsOpen;
+                        break;
+                }
             }
             else {
-                scope.overlayText = scope.textEn;
+                switch($route.current.params.lingo) {
+                    case 'no' :
+                        scope.overlayText = scope.textNoClosed;
+                        break;
+                    case 'en' :
+                        scope.overlayText = scope.textEnClosed;
+                        break;
+                    case 'cs' :
+                        scope.overlayText = scope.textCsClosed;
+                        break;
+                }
             }
         };
 
+        /*
         var endListener = function() {
             playing = false;
             notPlayed = true;
-            video.pause();
+            //video.pause();
             video.removeEventListener('ended', endListener);
-            //$document.exitFullscreen();
         };
+        */
 
         scope.trustResource = function trustResource(resourceUrl) {
             return $sce.trustAsResourceUrl(resourceUrl);
         };
 
         // Play the video on click
-        scope.play = function() {
-            if($window.innerWidth >= HMS_CONSTANTS.CROP_MIN_WIDTH) {
+        scope.activate = function() {
+            scope.slideToggle();
+            // Letterbox if screen is very wide
+            if($window.innerWidth >= CONSTANTS.CROP_MIN_WIDTH) {
                 scope.backgroundImageHeightSwitch = true;
             }
+            // If this is the first play, scroll to me and open the sliding section
             if(notPlayed) {
                 $timeout(function () {
                     smoothScroll(element[0], {duration: 500});
-                    scope.$broadcast('slideToggle', scope.sid);
                 }, 100);
             }
-            if(scope.gifsrc !== "" && scope.forceIphoneVideo === "false" && $window.innerWidth < HMS_CONSTANTS.GIF_MAX_WIDTH) {
-                scope.noPreloadGifSrc = filePath + scope.gifsrc;
+            // Play the GIF if we are on mobile phone
+            if(scope.gifSrc !== "" && scope.forceIphoneVideo === "false" && $window.innerWidth < CONSTANTS.GIF_MAX_WIDTH) {
+                scope.noPreloadGifSrcPath = filePath + scope.gifSrc;
             }
-            else if(scope.videosrc !== "") {
+            // Otherwise play the video
+            else if(scope.videoSrc !== "") {
                 scope.showVideo = true;
                 if(playing) {
                     video.pause();
+                    video.currentTime = 0;
                     playing = false;
                 }
                 else {
-                    if (notPlayed) {
-                        video.addEventListener('ended', endListener);
-                        video.currentTime = 0;
-                    }
                     video.play();
-
-                    notPlayed = false;
                     playing = true;
                 }
             }
         };
 
+        // Setup on initial creation
         $timeout(function timeout() {
             pickLanguage();
             video = element.find('video')[0];
         });
+
     };
     return {
         restrict: 'E',
         replace: true,
         scope:{
-            poster: '@',
-            videosrc: '@',
-            altVideosrc: '@',
-            gifsrc: '@',
-            sid: '@',
-            module: '@',
-            textNo: '@',
-            textEn: '@',
+            posterSrc: '@',
+            videoSrc: '@',
+            gifSrc: '@',
+            sectionId: '@',
+            textNoClosed: '@',
+            textEnClosed: '@',
+            textCsClosed: '@',
+            textNoOpen: '@',
+            textEnOpen: '@',
+            textCsOpen: '@',
             icon: '@',
-            forceIphoneVideo: '@',
-            broadcast: '&'
+            forceIphoneVideo: '@'
         },
         link: linker,
-        templateUrl: 'views/templates/gvideo.html'
+        templateUrl: 'views/templates/sectionbox.html'
     };
 }]);
+
 
 /**
  * @ngdoc directive
@@ -458,166 +508,6 @@ GDirectives.directive("moduletitle", ['$route', function($route) {
         }
     };
 }]);
-
-/**
- * @ngdoc directive
- * @name hmssection
- * @restrict A
- * @description
- * Add this attribute to define sublevel content. The content will be loaded from corresponding 'sx.html' file
- * id: sX matching the sX.html file
- * <pre><section hmssection id='sX'></section></pre>
- */
-GDirectives.directive("hmssection", ['$route', 'HMS_CONSTANTS', function($route, HMS_CONSTANTS) {
-    return {
-        templateUrl: function(element, attrs) {
-            var loc = HMS_CONSTANTS.TOP_LEVEL_MODULE_PATH + $route.current.params.module +'/sub/'+attrs.id+'_'+$route.current.params.lingo+'.html' || '/defaultContent.html';
-            return loc;
-        },
-        restrict: 'A',
-        scope : {
-            id : '@'
-        }
-    };
-}]);
-
-/**
- * @ngdoc directive
- * @name poll
- * @restrict E
- * @description
- * Poll questions taken from poll.json located at root level
- *  * pid:       Must match the ID in the quiz data      ("id")
- * <pre><poll h-id="pollID1" h-feedback="true"></poll></pre>
- */
-GDirectives.directive("poll", ['$http', '$route', 'DataService', 'HMS_CONSTANTS', function($http, $route, DataService, HMS_CONSTANTS) {
-    var linker = function (scope) {
-        var poll;
-        var filePath;
-        var moduleNumber;
-        scope.chartData = "";
-        scope.radioTempData = { state : -1};
-        var requestData = {
-            quizpoll_id: scope.hId,
-            ids: []
-        };
-
-        scope.reload = function(startQuiz) {
-            requestData.quizpoll_id = scope.hId;
-            requestData.ids = [];
-            DataService.serverRequest('getQuizPoll', requestData, HMS_CONSTANTS.QUIZPOLL_SS_PG_ABSOLUTE)
-                .success(function(data) {
-                    poll = data.data;
-                    moduleNumber = $route.current.params.module;
-                    scope.radioTempData = { state : -1};                // Holds the index of the selected radio button
-                    scope.title = poll.title || "(placeholder title)";
-                    scope.intro = poll.intro;
-                    scope.summarypass = poll.summarypass;
-                    scope.summaryfail = poll.summaryfail;
-                    scope.image_url = poll.image_url;
-                    scope.answers = [];
-                    scope.currentQuestion = poll.questions[0];
-                    scope.currentQuestion.answers.forEach(function(a) {
-                        var newanswer = { aid: a.id, checked: false };
-                        scope.answers.push(newanswer);
-                    });
-                    filePath = HMS_CONSTANTS.QUIZ_IMAGE_PATH;
-                    scope.image_url = (scope.currentQuestion.image_url !== "") ? filePath + scope.currentQuestion.image_url : "";
-                    if(startQuiz) {
-                        scope.start();
-                    }
-                });
-
-        };
-
-        scope.check = function(index) {                                       // Update UI after selection
-            scope.radioTempData.state = index;
-            if(scope.currentQuestion.type === 'checkbox') {
-                scope.answers[index].checked = !scope.answers[index].checked;
-            }
-            else if(scope.currentQuestion.type === 'radio') {
-                for(var i=0; i<scope.currentQuestion.answers.length; i++ ) {
-                    scope.answers[i].checked = false;
-                }
-                scope.answers[index].checked = true;
-            }
-        };
-
-        scope.next = function() {
-            scope.pieData = [];
-            var totalTally = 0;
-            scope.currentQuestion.answers.forEach(function(a, i){
-                totalTally += a.tally + (scope.answers[i].checked ? 1 : 0);
-            });
-            scope.currentQuestion.answers.forEach(function(a, i) {
-                var newValue = (scope.answers[i].checked ? 1 : 0) + a.tally;
-                scope.chartData += newValue + ',';
-                scope.pieData.push((newValue * 100 / totalTally).toFixed(2));
-                if(scope.answers[i].checked) {
-                    requestData.ids.push(a.id);
-                }
-            });
-            scope.chartData = scope.chartData.substring(0, scope.chartData.length-1);  // otherwise the last item is empty string when array is split again
-
-            DataService.serverRequest('incrementTally', requestData, HMS_CONSTANTS.QUIZPOLL_SS_PG_ABSOLUTE)
-                .success(function() {
-                    scope.state = "result";
-                });
-            scope.state = "result";
-
-            var topDiv = angular.element( document.querySelector( '#poll-'+scope.hId ) );
-            topDiv[0].focus();
-        };
-
-        scope.start = function() {
-            scope.state = "question";
-        };
-        scope.reload(true);
-
-    };
-    return {
-        restrict: 'E',
-        scope: {
-            hId: '=',
-            hFeedback : '@'
-        },
-        link: linker,
-        templateUrl: 'views/templates/poll.html'
-    };
-}])
-
-    .directive('bars', function () {
-        /*global d3:false */
-        return {
-            restrict: 'E',
-            replace: true,
-            link: function (scope, element, attrs) {
-                scope.index = attrs.index;
-                function dataTotal(data) {
-                    var total = 0;
-                    data.forEach(function(d) {
-                        total += parseInt(d);
-                    });
-                    return total;
-                }
-                var data = attrs.data.split(','),
-                    total = attrs.total || dataTotal(data);
-                    d3.select(element[0])
-                        .append("div").attr("class", "chart")
-                        .selectAll('div')
-                        .data(data).enter()
-                        .append("div")
-                        .transition().ease("elastic")
-                        .style("width", function(d) {
-                            return d*100/total + "%";
-                        })
-                        .text(function(d) {
-                            if(d !== '0') { return d +'%'; }
-                            else { return ''; }
-                        });
-            }
-        };
-    });
 
 
 /**

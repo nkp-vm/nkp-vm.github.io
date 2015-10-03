@@ -10,5 +10,6 @@
     <orderEntry type="library" scope="PROVIDED" name="rake (v10.2.2, rbenv: 2.1.0) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="rdoc (v4.1.0, rbenv: 2.1.0) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="uglifier (v2.5.3, rbenv: 2.1.0) [gem]" level="application" />
+    <orderEntry type="library" name="ELearning_shell node_modules" level="project" />
   </component>
 </module>
