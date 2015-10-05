@@ -147,29 +147,28 @@ GDirectives.directive('ngEnter', ['$timeout', function ($timeout) {
  *      </pre>
  */
 GDirectives.directive("sectionBox", ['$window', '$document', '$route', '$sce', '$timeout', 'smoothScroll', 'CONSTANTS', function($window, $document, $route, $sce, $timeout, smoothScroll, CONSTANTS){
-    var linker = function(scope, element) {
+    var linker = function(scope, element, attrs) {
         var video;
         var notPlayed = true;
         var playing = false;
         var moduleNumber = $route.current.params.module;
-        var filePath = (CONSTANTS.USE_ALT_VIDEO_SERVER ? CONSTANTS.ALT_VIDEO_PATH : CONSTANTS.TOP_LEVEL_MODULE_PATH) + moduleNumber + '/img/';
+        var imagePath = CONSTANTS.TOP_LEVEL_MODULE_PATH + 'img/';
 
         if (typeof scope.videosrc === "undefined") { scope.videosrc = ""; }
         if (typeof scope.posterSrc === "undefined") { scope.posterSrc = ""; }
         if (typeof scope.gifSrc === "undefined") { scope.gifSrc = ""; }
 
+        scope.slideId = attrs.id+'_slide';
         scope.showVideo = false;
-        scope.noPreloadGifSrcPath = filePath + scope.posterSrc;
-        scope.videoSrcPath = filePath + scope.videoSrc;
-        scope.backgroundImageSrcPath = "url("+(filePath + scope.posterSrc)+")";
-        scope.backgroundImageHeightSwitch = false;
-        scope.overlayText = "";
+        scope.noPreloadGifSrcPath = imagePath + scope.posterSrc;
+        scope.videoSrcPath = imagePath + scope.videoSrc;
+        scope.imageSrcPath = imagePath + scope.posterSrc;
         scope.detailActive = false;
-        scope.templateLocation = CONSTANTS.TOP_LEVEL_MODULE_PATH + $route.current.params.module +'/sub/'+scope.sectionId+'_'+$route.current.params.lingo+'.html';
+        scope.includeSrcPath = CONSTANTS.TOP_LEVEL_MODULE_PATH + $route.current.params.lingo + '/' + attrs.id + '.html';
 
         // Controls open and close of the sliding section in this directive
         scope.slideToggle = function() {
-            var target = document.getElementById(scope.sectionId);
+            var target = document.getElementById(scope.slideId);
             var content = target.querySelector('.content-selector');
             var contentHeight = content.offsetHeight+'px';
             if(scope.detailActive) {
@@ -199,38 +198,17 @@ GDirectives.directive("sectionBox", ['$window', '$document', '$route', '$sce', '
         scope.$on('$routeChangeSuccess', function() {
             scope.videoPath = CONSTANTS.TOP_LEVEL_MODULE_PATH + moduleNumber + '/img/';
             scope.noPreloadGifSrc = filePath + scope.posterSrc;
-            scope.backgroundImageSrc = "url("+(filePath + scope.posterSrc)+")";
+            scope.imageSrc = "url("+(filePath + scope.posterSrc)+")";
             pickLanguage();
         });
 
         // Choose language for overlay text - called automatically when language switches
         var pickLanguage = function() {
-
             if(scope.detailActive) {
-                switch($route.current.params.lingo) {
-                    case 'no' :
-                        scope.overlayText = scope.textNoOpen;
-                        break;
-                    case 'en' :
-                        scope.overlayText = scope.textEnOpen;
-                        break;
-                    case 'cs' :
-                        scope.overlayText = scope.textCsOpen;
-                        break;
-                }
+                scope.overlayText = scope.textOpen;
             }
             else {
-                switch($route.current.params.lingo) {
-                    case 'no' :
-                        scope.overlayText = scope.textNoClosed;
-                        break;
-                    case 'en' :
-                        scope.overlayText = scope.textEnClosed;
-                        break;
-                    case 'cs' :
-                        scope.overlayText = scope.textCsClosed;
-                        break;
-                }
+                scope.overlayText = scope.textClosed;
             }
         };
 
@@ -250,10 +228,6 @@ GDirectives.directive("sectionBox", ['$window', '$document', '$route', '$sce', '
         // Play the video on click
         scope.activate = function() {
             scope.slideToggle();
-            // Letterbox if screen is very wide
-            if($window.innerWidth >= CONSTANTS.CROP_MIN_WIDTH) {
-                scope.backgroundImageHeightSwitch = true;
-            }
             // If this is the first play, scroll to me and open the sliding section
             if(notPlayed) {
                 $timeout(function () {
@@ -293,13 +267,8 @@ GDirectives.directive("sectionBox", ['$window', '$document', '$route', '$sce', '
             posterSrc: '@',
             videoSrc: '@',
             gifSrc: '@',
-            sectionId: '@',
-            textNoClosed: '@',
-            textEnClosed: '@',
-            textCsClosed: '@',
-            textNoOpen: '@',
-            textEnOpen: '@',
-            textCsOpen: '@',
+            textClosed: '@',
+            textOpen: '@',
             icon: '@',
             forceIphoneVideo: '@'
         },
@@ -470,41 +439,6 @@ GDirectives.directive("glink", [function() {
         link : linker,
         scope : {
             href : '@'
-        }
-    };
-}]);
-
-/**
- * @ngdoc directive
- * @name moduletitle
- * @restrict E
- * @description
- * Add this attribute to define the module quote and subtitle in each language.
- * <pre>
- *      <moduletitle module-no="// 3. Lab-sikkerhet" module-en="// 3. Lab safety"
- *      quote-no="Vann i syre blir uhyre, syre i vann går an" quote-en="Water in acid
- *      is dangerous, acid in water is better"></moduletitle>
- * </pre>
- */
-GDirectives.directive("moduletitle", ['$route', function($route) {
-    var linker = function (scope) {
-        if($route.current.params.lingo === "en") {
-            scope.module = scope.hModuleEn;
-            scope.quote = scope.hQuoteEn;
-        }
-        else {
-            scope.module = scope.hModuleNo;
-            scope.quote = scope.hQuoteNo;            }
-    };
-    return {
-        template: '<div><div class="topQuoteMarks" aria-hidden="true"><span>“</span></div><div class="topQuoteText"><span class="topQuote">{{quote}}</span><p class="topSubtitle">{{module}}</p></div></div>',
-        restrict: 'E',
-        link: linker,
-        scope : {
-            hModuleNo: '@',
-            hQuoteNo: '@',
-            hModuleEn: '@',
-            hQuoteEn: '@'
         }
     };
 }]);

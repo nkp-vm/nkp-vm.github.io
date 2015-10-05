@@ -1,13 +1,12 @@
-<div class="sectionBox shrinkable" ng-class="{'css-height-533': backgroundImageHeightSwitch}">
-    <div class="screenReadersOnly"></div>
-    <div aria-hidden="true" tabindex="-1" ng-click="activate()">
+<div class="sectionBox">
+    <div aria-hidden="true" tabindex="-1" class="presenter" ng-click="activate()">
+        <img tabindex="-1" aria-hidden="true" ng-hide="showVideo" class="visuals hide-sm" ng-src="{{imageSrcPath}}">
+        <img tabindex="-1" aria-hidden="true" ng-hide="showVideo" class="visuals hide-gt-sm" ng-src="{{noPreloadGifSrcPath}}">
+        <video tabindex="-1" aria-hidden="true" type='video/mp4' class="visuals" ng-show="showVideo" ng-src="{{trustResource(videoSrcPath)}}" ng-attr-crossorigin="anonymous" ng-attr-preload="auto"></video>
         <span tabindex="-1" aria-hidden="true" class="overlaytext">{{overlayText}}</span>
-        <div tabindex="-1" aria-hidden="true" class="backgroundImage hide-sm" ng-hide="showVideo" ng-style="{'background-image': backgroundImageSrcPath}" ></div>
-        <img tabindex="-1" aria-hidden="true" class="shrinkablecontent hide-gt-sm" ng-hide="showVideo" ng-src="{{noPreloadGifSrcPath}}">
-        <video tabindex="-1" aria-hidden="true" type='video/mp4' ng-show="showVideo" class="shrinkablecontent" ng-src="{{trustResource(videoSrcPath)}}" ng-attr-crossorigin="anonymous" ng-attr-preload="auto"></video>
     </div>
     <!-- This div will slide open: -->
-    <div id="{{sectionId}}" class="slidingBox">
-        <div class="content-selector" ng-include="templateLocation"></div>
+    <div id="{{slideId}}" class="slidingBox">
+        <div class="content-selector" ng-include="includeSrcPath"></div>
     </div>
 </div>

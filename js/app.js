@@ -34,7 +34,7 @@ var GApp = angular.module("GApp", [
 GApp.constant("CONSTANTS", {
 
     // Paths
-    TOP_LEVEL_MODULE_PATH : "views/m",
+    TOP_LEVEL_MODULE_PATH : "views/content/",
     ICON_PATH : "views/icons/",
 
     // Variables
@@ -42,7 +42,7 @@ GApp.constant("CONSTANTS", {
     ALT_VIDEO_PATH : "",
     CROP_MIN_WIDTH : 1281,
     GIF_MAX_WIDTH : 768,
-    MODULE_NAME_ARRAY : ['Module 1', 'Module 2', 'Module 3', 'Module 4', 'Module 5', 'Module 6'],
+    MODULE_NAME_ARRAY : ['intro', 'Context', 'Timeline', 'Collection', 'Provenance', 'Archival Process', 'About'],
     DICTIONARY_NAME : 'json/freetext_dictionary.json'
 });
 
@@ -50,14 +50,14 @@ GApp.constant("CONSTANTS", {
 
 // Routes are calculated from the module number and current language
 GApp.config(['$routeProvider', function($routeProvider) {
-    //module: module number e.g. '2'   lingo: language code e.g. 'en'    anchor:  optional id number of section e.g. '3'
-    $routeProvider.when('/:module/:lingo/:anchor?', {
+    //section: section name e.g. 'about'   lingo: language code e.g. 'en'    anchor:  optional id of section e.g. 'archival_process'
+    $routeProvider.when('/:lingo/:anchor?', {
         templateUrl: function($routeParams) {
-            return 'views/m'+$routeParams.module+'/m'+$routeParams.module+'.html';
+            return 'views/content/'+$routeParams.lingo+'/overview.html';
         },
         controller: 'IndexCtrl'
     });
-    $routeProvider.otherwise({redirectTo: '/1/no'});
+    $routeProvider.otherwise({redirectTo: '/en'});
 }]);
 
 GApp.config(['$mdGestureProvider', function( $mdGestureProvider ) {
@@ -127,9 +127,8 @@ GApp.controller('IndexCtrl', ['$scope', '$translate', '$mdSidenav', '$location',
     $scope.$on('$routeChangeSuccess', function(e, current) {
         $scope.closeMenu();
         $window.scrollTo(0,0);
-        DataService.applicationVariable.currentModule = $scope.currentModule = current.params.module;
         if(current.params.anchor) {
-            anchorToSeek = DataService.applicationVariable.anchorToSeek = 's' + current.params.anchor;
+            anchorToSeek = DataService.applicationVariable.anchorToSeek = current.params.anchor;
         }
         if(current.params.lingo !== $scope.currentLanguage) {
             $scope.changeLanguage(current.params.lingo);
@@ -158,7 +157,7 @@ GApp.controller('IndexCtrl', ['$scope', '$translate', '$mdSidenav', '$location',
         }
         $scope.displayLanguage = $scope.currentLanguage = DataService.applicationVariable.currentLanguage = lang;
         $translate.use($scope.currentLanguage);
-        $location.path($location.path().slice(0,-2)+$scope.currentLanguage);
+        $location.path(lang);
     };
     $scope.playVideo = function (id) {
         var theVideo = angular.element('video')[id];

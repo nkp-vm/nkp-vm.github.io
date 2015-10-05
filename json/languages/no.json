@@ -6,22 +6,10 @@
   "en": "english",
   "no": "norwegian",
   "cs": "czech",
-  "M1TITLE": "1. Seksjon 1",
-  "M2TITLE": "2. Seksjon 2",
-  "M3TITLE": "3. Seksjon 3",
-  "M4TITLE": "4. Seksjon 4",
-  "M5TITLE": "5. Seksjon 5",
-  "M6TITLE": "6. Seksjon 6",
   "LOGOUT": "Logg ut",
   "LOGIN": "Logg inn",
   "NAV": "Open slideable menu",
   "ARIA_LANGUAGE": "språkvekslings",
   "ARIA_MENU": "åpent eller lukk meny",
-  "SIDEMENUITEM_SELECTED": "This menuitem is currently selected",
-  "TITLE_MODULE01": "",
-  "TITLE_MODULE02": "",
-  "TITLE_MODULE03": "",
-  "TITLE_MODULE04": "",
-  "TITLE_MODULE05": "",
-  "TITLE_MODULE06": ""
+  "SIDEMENUITEM_SELECTED": "This menuitem is currently selected"
 }

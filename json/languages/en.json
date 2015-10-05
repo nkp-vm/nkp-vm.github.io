@@ -6,22 +6,10 @@
   "no": "norsk",
   "en": "engelsk",
   "cs": "czech",
-  "M1TITLE": "1. Section 1",
-  "M2TITLE": "2. Section 2",
-  "M3TITLE": "3. Section 3",
-  "M4TITLE": "4. Section 4",
-  "M5TITLE": "5. Section 5",
-  "M6TITLE": "6. Section 6",
   "LOGOUT": "Logout",
   "LOGIN": "Login",
   "NAV": "Open slideable menu",
   "ARIA_LANGUAGE": "language toggle",
   "ARIA_MENU": "open or close menu",
-  "SIDEMENUITEM_SELECTED": "This menuitem is currently selected",
-  "TITLE_MODULE01": "",
-  "TITLE_MODULE02": "",
-  "TITLE_MODULE03": "",
-  "TITLE_MODULE04": "",
-  "TITLE_MODULE05": "",
-  "TITLE_MODULE06": ""
+  "SIDEMENUITEM_SELECTED": "This menuitem is currently selected"
 }

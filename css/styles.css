@@ -92,15 +92,6 @@ div.mainContainer {
     position: absolute !important;
 }
 
-.shrinkable {
-    width: 100%;
-    display:block;
-    /*max-height: 250px;*/
-    overflow: hidden;
-}
-.shrinkablecontent {
-    width: 100%;
-}
 p.text {
     padding: 10px;
 }
@@ -135,17 +126,8 @@ td {
 
 
 /* ---------  NEW ADDITIONS! --------- */
-.landing {
-    margin: 10% 40% 10% 5%;
-}
-/*
-.md-button span {
-    font-family: "HelveticaNeueW01-UltLt", "Arial Narrow", sans-serif;
-    text-transform: capitalize;
-    font-weight: bold;
-    letter-spacing: 1px;
-}
-*/
+
+
 md-checkbox.md-m5-theme:not([disabled]).md-primary.md-checked .md-icon:after {
     border-color: rgb(47, 44, 44);
 }
@@ -393,24 +375,10 @@ md-sidenav md-input-container.md-main-theme .md-input {
 
 .backgroundImage {
     width: 100%;
-    height: 40vw;       /* REMOVE if desiring to letterbox initial poster image */
-    /*height: 350px;*/   /* Set below 533px here to letterbox initial poster image */
+    min-height: 533px;
     overflow: hidden;
     background-repeat:no-repeat;
     background-size: 100% auto;
-    background-position: bottom;
-}
-.css-height-533-add, .css-height-533-remove {
-    -webkit-transition: max-height 1s linear;
-    -moz-transition: max-height 1s linear;
-    -o-transition: max-height 1s linear;
-    transition: max-height 1s linear;
-}
-.css-height-533, .css-height-533-add.css-height-533-add-active {
-    max-height: 53.3vw;
-}
-.css-height-533-remove.css-height-533-remove-active {
-    height: 26.7vw;
 }
 
 /* ---- Section Detail ---- */
@@ -552,24 +520,22 @@ ul.dashlist li:before, ol.dashlist li:before {
 .sectionBox {
     color: white;
     position: relative;
-    /*    margin-bottom: -110px;*/
     cursor: pointer;
     /*max-height: 350px;*/  /* Required for smooth transition effect */
     /*max-height:250px;*/    /* CHANGE HERE FOR VIDEO WIDTH / HEIGHT */
 }
-.sectionBox .overlayimage {
-    position: absolute;
-    /*bottom: 18%;
-    left: 3%;*/
-    width: 10%;
-}
+
 .sectionBox .overlaytext {
     position: absolute;
-    top: 420px;
-    left: 7%;
-    font-size: 7.5vmin;
     font-family:"HelveticaNeueW01-Thin", "Arial Narrow", sans-serif;
     text-shadow: 1px 1px #000000;
+}
+.sectionBox .presenter {
+    position: relative;
+    max-width: 1280px;
+}
+.sectionBox .presenter .visuals {
+    max-width: 100%;
 }
 .readmore {
     cursor: pointer;
@@ -673,13 +639,7 @@ ul.dashlist li:before, ol.dashlist li:before {
 
 /* iPhone, etc portrait ---- */
 @media only screen and (min-width: 320px) {
-    /*
-        body { background: pink; }
-        body:before { content: "Between 320 and 480"; }
-    */
-    .landing {
-        margin: 10% 10% 10% 5%;
-    }
+
     .topQuote {
         font-size: 12vmin;
         line-height: 12vmin;
@@ -688,13 +648,9 @@ ul.dashlist li:before, ol.dashlist li:before {
     .sectionDetail {
         padding: 50px 7% 50px 7%;
     }
-
-    .sectionBox .overlayimage {
-        bottom: 22%;
-    }
     .sectionBox .overlaytext {
-        top: 420px;
-        left: 7%;
+        bottom: 20px;
+        left: 40px;
         font-size: 5vmin;
         font-family:"HelveticaNeueW01-45Ligh", "Arial Narrow", sans-serif;
     }
@@ -720,38 +676,10 @@ ul.dashlist li:before, ol.dashlist li:before {
     }
 }
 
-/* iPhone, etc landscape ---- */
-@media only screen and (min-width: 480px) {
-    /*
-        body { background: yellow; }
-        body:before { content: "Between 480 and 768"; }
-    */
-
-    .sectionDetail {
-        padding: 50px 5% 50px 5%;
-    }
-    .sectionBox .overlayimage {
-        bottom: 18%;
-    }
-    .sectionBox .overlaytext {
-        font-family:"HelveticaNeueW01-Thin", "Arial Narrow", sans-serif;
-    }
-    .hide-sm {
-        display: none;
-    }
-    .hide-gt-sm {
-        display: block;
-    }
-}
 
 /* iPad, tablets etc portrait ---- */
-@media only screen and (min-width: 768px) {
+@media only screen and (min-width: 769px) {
 
-    .sectionBox .overlayimage {
-        left: 7%;
-        bottom: 27%;
-        width: 50px;
-    }
     .sectionDetail {
         padding: 50px 15% 50px 7%;
     }
@@ -772,13 +700,8 @@ ul.dashlist li:before, ol.dashlist li:before {
 
 }
 /* Laptops, Desktops, etc ---- */
-@media only screen and (min-width: 1024px) {
+@media only screen and (min-width: 1281px) {
 
-    .sectionBox .overlaytext {
-    }
-    .landing {
-        margin: 10% 40% 10% 5%;
-    }
     .topQuote {
         font-size: 14vmin;
         line-height: 14vmin;
@@ -803,26 +726,4 @@ ul.dashlist li:before, ol.dashlist li:before {
         height: auto;
     }
 
-}
-
-@media only screen and (min-width: 1281px) {
-
-    .sectionDetail {
-        padding: 50px 43% 50px 7%;
-    }
-    .backgroundImage {
-        width: 100%;
-        /*height: 40vw;*/       /* REMOVE if desiring to letterbox initial poster image */
-        height: 25vw;   /* Set below 533px here to letterbox initial poster image */
-        overflow: hidden;
-        background-repeat:no-repeat;
-        background-size: 100% auto;
-        background-position: center;
-    }
-    .sectionBox {
-        max-height: 25vw;
-    }
-    .css-height-533 {
-        max-height: 53.3vw;
-    }
 }
