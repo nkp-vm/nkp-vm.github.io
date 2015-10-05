@@ -197,8 +197,8 @@ GDirectives.directive("sectionBox", ['$window', '$document', '$route', '$sce', '
         // Run setup again if the route or language has changed
         scope.$on('$routeChangeSuccess', function() {
             scope.videoPath = CONSTANTS.TOP_LEVEL_MODULE_PATH + moduleNumber + '/img/';
-            scope.noPreloadGifSrc = filePath + scope.posterSrc;
-            scope.imageSrc = "url("+(filePath + scope.posterSrc)+")";
+            scope.noPreloadGifSrc = imagePath + scope.posterSrc;
+            scope.imageSrc = "url("+(imagePath + scope.posterSrc)+")";
             pickLanguage();
         });
 
@@ -236,7 +236,7 @@ GDirectives.directive("sectionBox", ['$window', '$document', '$route', '$sce', '
             }
             // Play the GIF if we are on mobile phone
             if(scope.gifSrc !== "" && scope.forceIphoneVideo === "false" && $window.innerWidth < CONSTANTS.GIF_MAX_WIDTH) {
-                scope.noPreloadGifSrcPath = filePath + scope.gifSrc;
+                scope.noPreloadGifSrcPath = imagePath + scope.gifSrc;
             }
             // Otherwise play the video
             else if(scope.videoSrc !== "") {

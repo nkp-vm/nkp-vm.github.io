@@ -95,15 +95,6 @@ NG_DOCS={
     },
     {
       "section": "api",
-      "id": "moduletitle",
-      "shortName": "moduletitle",
-      "type": "directive",
-      "moduleName": "moduletitle",
-      "shortDescription": "Add this attribute to define the module quote and subtitle in each language.",
-      "keywords": "acid add api attribute better blir dangerous define directive lab lab-sikkerhet language module module-en module-no moduletitle quote quote-en quote-no safety subtitle syre uhyre vann water"
-    },
-    {
-      "section": "api",
       "id": "quiz",
       "shortName": "quiz",
       "type": "directive",
