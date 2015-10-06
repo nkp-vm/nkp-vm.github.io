@@ -261,6 +261,9 @@ md-radio-group[disabled], md-radio-button[disabled] {
     float: left;
 }
 
+.content-selector {
+    background-color: white;
+}
 
 /* ------ Top Quotation Section -------- */
 .topQuoteMarks {

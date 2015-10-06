@@ -13,6 +13,17 @@
     -ms-transition: 2s linear all;
     transition: 2s linear all;
     height: 0;
+    overflow: hidden;
+}
+
+.sliding-readmore {
+    -webkit-transition: 1s linear all;
+    -moz-transition: 1s linear all;
+    -o-transition: 1s linear all;
+    -ms-transition: 1s linear all;
+    transition: 1s linear all;
+    height: 0;
+    overflow: hidden;
 }
 
 

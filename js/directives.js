@@ -224,15 +224,6 @@ GDirectives.directive("sectionBox", ['$window', '$animate', 'smoothScroll', '$ro
             }
         };
 
-        /*
-        var endListener = function() {
-            playing = false;
-            notPlayed = true;
-            //video.pause();
-            video.removeEventListener('ended', endListener);
-        };
-        */
-
         scope.trustResource = function trustResource(resourceUrl) {
             return $sce.trustAsResourceUrl(resourceUrl);
         };
@@ -411,23 +402,32 @@ GDirectives.directive("readmore", ['$timeout', function($timeout) {
         // Controls open and close of the sliding section in this directive
         scope.slideToggle = function() {
             var target = document.getElementById(scope.slideId);
+            var aTarget = angular.element(target);
             var content = target.querySelector('.content-selector');
             var contentHeight = content.offsetHeight+'px';
             if(scope.detailActive) {
                 scope.addlowerborder = false;
                 scope.iconRef = "views/icons/body/readmore/746-plus-circle@2x.svg";
+                aTarget.addClass('notransition');
                 target.style.height = contentHeight;  // Set height from 'auto' back to 'px' before reducing to '0px'
+                var rcontent = target.querySelector('.content-selector');  // These two step necessary to flush browser cache so that animation is not run
+                var rcontentHeight = rcontent.offsetHeight;  // Accessing the offsetHeight flushes broswer cache
+                aTarget.removeClass('notransition');
                 $timeout(function () {
                     target.style.height = '0';
-                }, 0);
+                }, 10);
             }
             else {
                 scope.addlowerborder = true;
                 scope.iconRef = "views/icons/body/readmore/746-minus-circle-modified@2x.svg";
                 target.style.height = contentHeight;
                 $timeout(function () {
+                    aTarget.addClass('notransition');
                     target.style.height = 'auto';  // If a fixed height property is retained, any internal slidables will not expand within this slidable's section
-                }, 1000);
+                    var rcontent = target.querySelector('.content-selector');
+                    var rcontentHeight = rcontent.offsetHeight;
+                    aTarget.removeClass('notransition');
+                }, 1100);
             }
             scope.detailActive = !scope.detailActive;
         };
