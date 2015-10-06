@@ -256,9 +256,19 @@ md-radio-group[disabled], md-radio-button[disabled] {
 /**** Masonry ****/
 
 .my-masonry-brick {
-    width: 400px;
+    width: 200px;
     margin:5px;
     float: left;
+}
+
+/* -------- Footer --- */
+
+.inline-block-center {
+    text-align: center;
+}
+.inline-block-center div {
+    display: inline-block;
+    text-align: left;
 }
 
 /* ------ Top Quotation Section -------- */
