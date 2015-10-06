@@ -146,7 +146,7 @@ GDirectives.directive('ngEnter', ['$timeout', function ($timeout) {
  *          <section-box></section-box>
  *      </pre>
  */
-GDirectives.directive("sectionBox", ['$window', '$document', 'smoothScroll', '$route', '$sce', '$timeout', 'CONSTANTS', function($window, $document, smoothScroll, $route, $sce, $timeout, CONSTANTS){
+GDirectives.directive("sectionBox", ['$window', '$animate', 'smoothScroll', '$route', '$sce', '$timeout', 'CONSTANTS', function($window, $animate, smoothScroll, $route, $sce, $timeout, CONSTANTS){
     var linker = function(scope, element, attrs) {
         var video;
         var notPlayed = true;
@@ -165,21 +165,29 @@ GDirectives.directive("sectionBox", ['$window', '$document', 'smoothScroll', '$r
         scope.imageSrcPath = imagePath + scope.posterSrc;
         scope.detailActive = false;
         scope.includeSrcPath = CONSTANTS.TOP_LEVEL_MODULE_PATH + $route.current.params.language + '/' + attrs.id + '.html';
+        scope.slideOpen = false;
 
         // Controls open and close of the sliding section in this directive
         scope.slideToggle = function() {
+
             var target = document.getElementById(scope.slideId);
+            var aTarget = angular.element(target);
             var content = target.querySelector('.content-selector');
             var contentHeight = content.offsetHeight+'px';
+
             if(scope.detailActive) {
+                aTarget.addClass('notransition');
                 target.style.height = contentHeight;  // Set height from 'auto' back to 'px' before reducing to '0px'
+                var rcontent = target.querySelector('.content-selector');  // These two step necessary to flush browser cache so that animation is not run
+                var rcontentHeight = rcontent.offsetHeight;  // Accessing the offsetHeight flushes broswer cache
+                aTarget.removeClass('notransition');
+
                 $timeout(function () {
                     target.style.height = '0';
                     if(scope.videoSrc !== "") {
-                        scope.showVideo = false;
                         video.style.height = '0';   // Video height interferes with slide closed - must set it's height also..
                     }
-                }, 0);
+                }, 10);
             }
             else {
                 if(scope.videoSrc !== "") {
@@ -187,8 +195,12 @@ GDirectives.directive("sectionBox", ['$window', '$document', 'smoothScroll', '$r
                 }
                 target.style.height = contentHeight;
                 $timeout(function () {
+                    aTarget.addClass('notransition');
                     target.style.height = 'auto';  // If a fixed height property is retained, any internal slidables will not expand within this slidable's section
-                }, 1000);
+                    var rcontent = target.querySelector('.content-selector');
+                    var rcontentHeight = rcontent.offsetHeight;
+                    aTarget.removeClass('notransition');
+                }, 2100);
             }
             scope.detailActive = !scope.detailActive;
             pickLanguage();
