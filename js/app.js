@@ -129,7 +129,7 @@ GApp.config(['$httpProvider', function($httpProvider) {
  */
 GApp.controller('IndexCtrl', ['$scope', '$translate', '$mdSidenav', '$location', '$routeParams', '$timeout', '$window', 'smoothScroll', 'DataService', 'CONSTANTS', function($scope, $translate, $mdSidenav, $location, $routeParams, $timeout, $window, smoothScroll, DataService, CONSTANTS) {
     $scope.modules = CONSTANTS.MODULE_NAME_ARRAY;
-    $scope.currentLanguage = DataService.applicationVariable.currentLanguage;
+    $scope.currentLanguage = 'en';
     $scope.dymanicTheme = 'default';
     $scope.currentModule = "";
 
