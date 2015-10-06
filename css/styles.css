@@ -261,15 +261,6 @@ md-radio-group[disabled], md-radio-button[disabled] {
     float: left;
 }
 
-/* -------- Footer --- */
-
-.inline-block-center {
-    text-align: center;
-}
-.inline-block-center div {
-    display: inline-block;
-    text-align: left;
-}
 
 /* ------ Top Quotation Section -------- */
 .topQuoteMarks {
@@ -379,30 +370,13 @@ md-sidenav md-input-container.md-main-theme .md-input {
 
 /* --------- Footer ---------- */
 
-.gfooter div {
+.gfooter {
     display: inline-block;
     margin-left: 5%;
 }
-.gfooter div div {
-    max-width: 250px;
-    padding: 1em;
-}
-.gfooter p {
-    color: white;
-    font-size: 0.8em;
-}
-.gfooter p span {
-    font-family:"HelveticaNeueW01-75Bold", "Arial", sans-serif;
-}
-.gfooter a {
-    color: white;
-}
 .gfooter img {
-    padding: 0.5em;
-    width: 90%;
-    height: auto;
+    width: 100%;
 }
-
 
 /* --------------- */
 

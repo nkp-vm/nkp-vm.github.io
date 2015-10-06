@@ -385,18 +385,55 @@ GDirectives.directive("myMasonry", function($parse, $timeout) {
 
 /**
  * @ngdoc directive
- * @name hms.readmore
+ * @name readmore
  * @restrict A
  * @description
  * Add this attribute to make an element (use a div) containing 'read more' information.
- * Any HTML placed inside as children will be hidden until "Read More.." is clicked
- *  * rid:   Must be a unique ID
- *  * type:   'readmore' or 'task'
- *  * title:   Title of the box
- * <pre><div readmore rid="rm1" title="This is my title" type="readmore"></div></pre>
  */
 GDirectives.directive("readmore", ['$timeout', function($timeout) {
-    var linker = function(scope) {
+
+
+    var linker = function(scope, elem, attrs) {
+        scope.slideId = attrs.id+'_slide';
+
+        // Controls open and close of the sliding section in this directive
+        scope.slideToggle = function() {
+            var target = document.getElementById(scope.slideId);
+            var content = target.querySelector('.content-selector');
+            var contentHeight = content.offsetHeight+'px';
+            if(scope.detailActive) {
+                target.style.height = contentHeight;  // Set height from 'auto' back to 'px' before reducing to '0px'
+                $timeout(function () {
+                    target.style.height = '0';
+                    if(scope.videoSrc !== "") {
+                        scope.showVideo = false;
+                        video.style.height = '0';   // Video height interferes with slide closed - must set it's height also..
+                    }
+                }, 0);
+            }
+            else {
+                if(scope.videoSrc !== "") {
+                    video.style.height = 'auto';
+                }
+                target.style.height = contentHeight;
+                $timeout(function () {
+                    target.style.height = 'auto';  // If a fixed height property is retained, any internal slidables will not expand within this slidable's section
+                }, 1000);
+            }
+            scope.detailActive = !scope.detailActive;
+
+        };
+    }
+    return {
+        templateUrl: 'views/templates/readmore.html',
+        restrict: 'A',
+        transclude : true,
+        link: linker,
+        scope : {
+            title : '@'
+        }
+    }
+        /*
         var openState = false;
         var iconClosed;
         var iconOpened;
@@ -435,6 +472,8 @@ GDirectives.directive("readmore", ['$timeout', function($timeout) {
             type : '@'
         }
     };
+
+    */
 }]);
 
 /**

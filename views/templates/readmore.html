@@ -1,11 +1,13 @@
-<div class="readmore upperborder" ng-class="{lowerborder: addlowerborder}" slider-toggle="#{{rid}}" prevent-close="false" section-detail-area=false" click-to-activate="true" ng-click="toggleIcon()">
-    <div layout="row" layout-align="start center">
-        <img ng-src="{{readmoreImageSrc}}" class="widget-icon">
-        <h4 style="margin: 0 0 0.1em;">{{title}}</h4>
+<div>
+    <div class="readmore upperborder" ng-class="{lowerborder: addlowerborder}" slider-toggle="#{{rid}}" prevent-close="false" section-detail-area=false" click-to-activate="true" ng-click="toggleIcon()">
+        <div layout="row" layout-align="start center">
+            <img ng-src="{{readmoreImageSrc}}" class="widget-icon">
+            <h4 style="margin: 0 0 0.1em;">{{title}}</h4>
+        </div>
     </div>
-</div>
-<div id="{{rid}}" class="slideable" ng-class="{lowerborder: !addlowerborder}" easing="linear" duration="1s" delay="0s">
-    <div class="readmore">
+    <!-- This div will slide open: -->
+    <div id="{{slideId}}" class="slidingBox">
+        <div class="content-selector" ng-include="includeSrcPath"></div>
         <ng-transclude></ng-transclude>
     </div>
 </div>
