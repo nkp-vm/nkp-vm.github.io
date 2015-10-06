@@ -11,5 +11,12 @@
   "NAV": "Open slideable menu",
   "ARIA_LANGUAGE": "language toggle",
   "ARIA_MENU": "open or close menu",
-  "SIDEMENUITEM_SELECTED": "This menuitem is currently selected"
+  "SIDEMENUITEM_SELECTED": "This menuitem is currently selected",
+  "intro" : "Intro",
+  "context" : "Context",
+  "timeline" : "Timeline",
+  "collection" : "Collection",
+  "provenance" : "Provenance",
+  "archival_process" : "Archival Process",
+  "about" : "About"
 }

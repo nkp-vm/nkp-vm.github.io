@@ -146,7 +146,7 @@ GDirectives.directive('ngEnter', ['$timeout', function ($timeout) {
  *          <section-box></section-box>
  *      </pre>
  */
-GDirectives.directive("sectionBox", ['$window', '$document', '$route', '$sce', '$timeout', 'smoothScroll', 'CONSTANTS', function($window, $document, $route, $sce, $timeout, smoothScroll, CONSTANTS){
+GDirectives.directive("sectionBox", ['$window', '$document', 'smoothScroll', '$route', '$sce', '$timeout', 'CONSTANTS', function($window, $document, smoothScroll, $route, $sce, $timeout, CONSTANTS){
     var linker = function(scope, element, attrs) {
         var video;
         var notPlayed = true;
@@ -164,7 +164,7 @@ GDirectives.directive("sectionBox", ['$window', '$document', '$route', '$sce', '
         scope.videoSrcPath = imagePath + scope.videoSrc;
         scope.imageSrcPath = imagePath + scope.posterSrc;
         scope.detailActive = false;
-        scope.includeSrcPath = CONSTANTS.TOP_LEVEL_MODULE_PATH + $route.current.params.lingo + '/' + attrs.id + '.html';
+        scope.includeSrcPath = CONSTANTS.TOP_LEVEL_MODULE_PATH + $route.current.params.language + '/' + attrs.id + '.html';
 
         // Controls open and close of the sliding section in this directive
         scope.slideToggle = function() {
@@ -259,9 +259,29 @@ GDirectives.directive("sectionBox", ['$window', '$document', '$route', '$sce', '
             video = element.find('video')[0];
         });
 
+
+
+        function genBrick() {
+            var height = ~~(Math.random() * 500) + 100;
+            var id = ~~(Math.random() * 10000);
+            return {
+                src: 'http://lorempixel.com/g/280/' + height + '/?' + id
+            };
+        };
+        scope.bricks = [
+            genBrick(),
+            genBrick(),
+            genBrick(),
+            genBrick(),
+            genBrick()
+        ];
+        scope.add = function add() {
+            scope.bricks.push(genBrick());
+        };
+
     };
     return {
-        restrict: 'E',
+        restrict: 'A',
         replace: true,
         scope:{
             posterSrc: '@',

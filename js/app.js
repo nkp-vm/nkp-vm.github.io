@@ -26,6 +26,7 @@ var GApp = angular.module("GApp", [
     'ngCookies',
     'smoothScroll',
     'ng.deviceDetector',
+    'wu.masonry',
     'GDirectives'
 ]);
 
@@ -38,26 +39,31 @@ GApp.constant("CONSTANTS", {
     ICON_PATH : "views/icons/",
 
     // Variables
-    USE_ALT_VIDEO_SERVER : false,
-    ALT_VIDEO_PATH : "",
     CROP_MIN_WIDTH : 1281,
     GIF_MAX_WIDTH : 768,
-    MODULE_NAME_ARRAY : ['intro', 'Context', 'Timeline', 'Collection', 'Provenance', 'Archival Process', 'About'],
-    DICTIONARY_NAME : 'json/freetext_dictionary.json'
+    MODULE_NAME_ARRAY : ['intro', 'context', 'timeline', 'collection', 'provenance', 'archival_process', 'about']
 });
 
 /* --------------  CONFIGURATION ---------------- */
 
 // Routes are calculated from the module number and current language
 GApp.config(['$routeProvider', function($routeProvider) {
-    //section: section name e.g. 'about'   lingo: language code e.g. 'en'    anchor:  optional id of section e.g. 'archival_process'
-    $routeProvider.when('/:lingo/:anchor?', {
+    //section: section name e.g. 'about'   language: language code e.g. 'en'    anchor:  optional id of section e.g. 'archival_process'
+    $routeProvider.
+    when('/overview/:language', {
         templateUrl: function($routeParams) {
-            return 'views/content/'+$routeParams.lingo+'/overview.html';
+            if($routeParams.language === 'no' || $routeParams.language === 'cs') {
+                return 'views/content/' + $routeParams.language + '/overview.html';
+            }
+            else {
+                return 'views/content/en/overview.html';
+            }
         },
         controller: 'IndexCtrl'
+    }).
+    otherwise({
+        redirectTo: '/overview/en'
     });
-    $routeProvider.otherwise({redirectTo: '/en'});
 }]);
 
 GApp.config(['$mdGestureProvider', function( $mdGestureProvider ) {
@@ -81,15 +87,32 @@ GApp.config(['$translateProvider', function($translateProvider) {
     });
     $translateProvider.preferredLanguage('no');
 }]);
+/*
+GApp.config(['$anchorScrollProvider', function($anchorScrollProvider) {
+    $anchorScrollProvider.disableAutoScrolling();
+}]);
+*/
+GApp.config(['$locationProvider', function($locationProvider) {
+    //$locationProvider.html5Mode(true);
+    //$locationProvider.hashPrefix('!');
+  /*  $locationProvider.html5Mode({
+        enabled : true,
+        requireBase: false,
+        rewriteLinks : false
+    });
+    */
+}]);
+
 
 // Angular Material themes can be configured with custom Palettes
+/*
 GApp.config(['$mdThemingProvider', function($mdThemingProvider) {
     $mdThemingProvider.theme('main').primaryPalette('indigo');
     $mdThemingProvider.setDefaultTheme('main');
 }]);
 
+*/
 GApp.config(['$httpProvider', function($httpProvider) {
-    //$httpProvider.defaults.useXDomain = true;
     $httpProvider.defaults.withCredentials = false;
     $httpProvider.defaults.headers.common.Accept = "application/json";
     $httpProvider.defaults.headers.common["Content-Type"] = "application/json";
@@ -104,52 +127,18 @@ GApp.config(['$httpProvider', function($httpProvider) {
  * @description
  * Controller for basic site functionality. Takes care of common functions such as menu and language switching.
  */
-GApp.controller('IndexCtrl', ['$scope', '$translate', '$mdSidenav', '$location', '$routeParams', '$timeout', '$window', 'DataService', 'smoothScroll', 'CONSTANTS', function($scope, $translate, $mdSidenav, $location, $routeParams, $timeout, $window, DataService, smoothScroll, CONSTANTS) {
+GApp.controller('IndexCtrl', ['$scope', '$translate', '$mdSidenav', '$location', '$routeParams', '$timeout', '$window', 'smoothScroll', 'DataService', 'CONSTANTS', function($scope, $translate, $mdSidenav, $location, $routeParams, $timeout, $window, smoothScroll, DataService, CONSTANTS) {
     $scope.modules = CONSTANTS.MODULE_NAME_ARRAY;
     $scope.currentLanguage = DataService.applicationVariable.currentLanguage;
     $scope.dymanicTheme = 'default';
     $scope.currentModule = "";
-    $scope.searchWord = "";
-    $scope.searchResults = [];
-    $scope.uid = "";
 
-    var menuIsOpen = false;
-    var anchorToSeek = "";
-
-    $scope.$on('$viewContentLoaded', function() {
-        if(anchorToSeek !== "") {
-            $timeout(function() {
-                $scope.seekToAnchor(anchorToSeek);
-            }, 500 );
-        }
-    });
-
-    $scope.$on('$routeChangeSuccess', function(e, current) {
-        $scope.closeMenu();
-        $window.scrollTo(0,0);
-        if(current.params.anchor) {
-            anchorToSeek = DataService.applicationVariable.anchorToSeek = current.params.anchor;
-        }
-        if(current.params.lingo !== $scope.currentLanguage) {
-            $scope.changeLanguage(current.params.lingo);
-        }
-
-    });
-
+    // Open and close menu can be chained to with '.then(function(){})'
     $scope.openMenu = function () {
-        $mdSidenav('right').open();
-        menuIsOpen = true;
+        return $mdSidenav('right').open();
     };
     $scope.closeMenu = function () {
-        if(menuIsOpen) {
-            $mdSidenav('right').close();
-        }
-        menuIsOpen = false;
-
-        var topDiv = angular.element( document.querySelector( '#content' ) );
-        if(typeof topDiv[0] !== 'undefined') {
-            topDiv[0].focus();
-        }
+        return $mdSidenav('right').close();
     };
     $scope.changeLanguage = function (lang) {
         if(typeof lang === 'undefined') {
@@ -157,50 +146,14 @@ GApp.controller('IndexCtrl', ['$scope', '$translate', '$mdSidenav', '$location',
         }
         $scope.displayLanguage = $scope.currentLanguage = DataService.applicationVariable.currentLanguage = lang;
         $translate.use($scope.currentLanguage);
-        $location.path(lang);
-    };
-    $scope.playVideo = function (id) {
-        var theVideo = angular.element('video')[id];
-        if (theVideo.paused) {
-            theVideo.play();
-        }
-        else {
-            theVideo.pause();
-        }
-    };
-    $scope.submit = function() {
-        if ($scope.searchWord) {
-            $scope.searchResults = DataService.getDictionaryValues($scope.searchWord.toLowerCase());
-        }
+        $location.path('/overview/'+$scope.currentLanguage);
     };
     $scope.seekToAnchor = function(elementId) {
-        anchorToSeek = DataService.applicationVariable.anchorToSeek = "";
-        var element = document.getElementById(elementId);
-        smoothScroll(element, {duration: 700, easing: 'easeInQuad'});
-
-        $timeout(function() {
-            $scope.$broadcast('slideToggle', elementId);
-        }, 1000);
-
+        $scope.closeMenu().then(function() {
+            var sElement = document.getElementById(elementId);
+            smoothScroll(sElement, {duration: 500});
+        });
     };
-    $scope.seek = function(code) {
-        if(code[0] && code[1] && code[2]) {
-            $scope.closeMenu();
-            if (DataService.applicationVariable.currentModule && DataService.applicationVariable.currentModule === code[1] && $scope.currentLanguage && $scope.currentLanguage === code[2]) {
-                $scope.seekToAnchor('s' + code[0]);
-            }
-            else {
-                $location.path('/' + code[1] + '/' + code[2] + '/' + code[0]);
-            }
-        }
-    };
-    $scope.orderItemByIdFunction = function(quizpoll){
-        return parseInt(quizpoll.id);
-    };
-    $scope.orderItemByKandidatnrFunction = function(c){
-        return parseInt(c.candidate_number);
-    };
-
 }]);
 
 /* --------------  SERVICES ---------------- */
@@ -213,7 +166,6 @@ GApp.controller('IndexCtrl', ['$scope', '$translate', '$mdSidenav', '$location',
  * Provide access to queries for Quiz and Poll. Provide dictionary file for site searching. Shuffle arrays.
  */
 GApp.service('DataService', ['$http', 'CONSTANTS', function($http, CONSTANTS) {
-    var dictionary;
 
     var applicationVariable = {
         currentModule : "1",
@@ -252,19 +204,8 @@ GApp.service('DataService', ['$http', 'CONSTANTS', function($http, CONSTANTS) {
         });
     };
 
-    // Request the search dictionary object
-    $http.get(CONSTANTS.DICTIONARY_NAME)
-        .then(function(res){
-            dictionary = res.data;
-        });
-
     return {
         serverRequest : serverRequest,
-        getDictionary : function getDictionary() { return dictionary; },
-        getDictionaryKeys : function getDictionaryKeys() { return Object.keys(dictionary); },
-        getDictionaryValues : function getDictionaryValues(key) {
-            return dictionary[key];
-        },
         shuffle : shuffle,
         applicationVariable : applicationVariable
     };

@@ -12,7 +12,6 @@
     <link rel="stylesheet" type="text/css" href="bower_components/angular-material/angular-material.min.css" />
     <link rel="stylesheet" href="css/styles.css">
     <link rel="stylesheet" href="css/animations.css">
-    <!--change for the sake of change-->
 </head>
 
 
@@ -25,7 +24,7 @@
 <div ng-include="'views/templates/sidemenu.html'"></div>
 
 <!-- Site sub-pages are included dynamically here -->
-<main ng-view role="main" id="content"></main>
+<div ng-view role="main" id="content"></div>
 
 <!-- Footer -->
 <div ng-include="'views/templates/footer_'+currentLanguage+'.html'"></div>
@@ -36,6 +35,15 @@
 
 </body>
 
+<!-- These are dependencies for Masonry, must be placed before Angular -->
+<!-- Including JQuery here will allow Angular to substitute it for JQLite -->
+<!-- Bridget is used to space the grid. ImagesLoaded notifies when images are ready -->
+<script src="bower_components/jquery/dist/jquery.min.js"></script>
+<script src="bower_components/jquery-bridget/jquery.bridget.js"></script>
+<script src="bower_components/imagesloaded/imagesloaded.pkgd.min.js"></script>
+<script src="bower_components/masonry/dist/masonry.pkgd.min.js"></script>
+
+<!-- Regular dependencies -->
 <script src="bower_components/angular/angular.min.js"></script>
 <script src="bower_components/angular-route/angular-route.min.js"></script>
 <script src="bower_components/angular-animate/angular-animate.min.js"></script>
@@ -47,9 +55,10 @@
 <script src="bower_components/angular-cookies/angular-cookies.min.js"></script>
 <script src="bower_components/angular-translate-storage-cookie/angular-translate-storage-cookie.min.js"></script>
 <script src="bower_components/angular-translate-storage-local/angular-translate-storage-local.min.js"></script>
-<script src="bower_components/ngSmoothScroll/angular-smooth-scroll.min.js"></script>
+<script src="bower_components/angular-smooth-scroll/angular-smooth-scroll.js"></script>
 <script src="bower_components/re-tree/re-tree.min.js"></script>
 <script src="bower_components/ng-device-detector/ng-device-detector.min.js"></script>
+<script src="bower_components/angular-masonry/angular-masonry.js"></script>
 <script src="js/app.js"></script>
 <script src="js/directives.js"></script>
 </html>

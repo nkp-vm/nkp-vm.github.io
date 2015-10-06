@@ -5,34 +5,10 @@
     <md-content role="navigation">
         <nav>
             <md-list-item ng-repeat="module in modules" ng-class="{'menuItemActive' : currentModule == $index+1}" role="menuitem">
-                <img ng-src="views/icons/{{$index+1}}-1.svg" class="md-avatar" alt="{{module}}" aria-hidden="true">
-                <a href="#/{{$index+1}}/{{currentLanguage}}"><span class="screenReadersOnly" ng-if="currentModule == $index+1">{{ 'SIDEMENUITEM_SELECTED' | translate }}</span> {{'M'+($index+1)+'TITLE' | translate}}</a>
+                <!--img ng-src="views/icons/{{$index+1}}-1.svg" class="md-avatar" alt="{{module}}" aria-hidden="true"-->
+                <span class="screenReadersOnly" ng-if="currentModule == $index+1">{{ 'SIDEMENUITEM_SELECTED' | translate }}</span><span class="menuItem" ng-click="seekToAnchor(module)">{{module | translate}}</span>
                 <md-divider></md-divider>
             </md-list-item>
-        </nav><br>
-
-
-        <!-- Enable this section for the search form -->
-
-        <!--form ng-submit="submit()" role="search">
-            <div layout>
-                <md-input-container id="searchContainer" layout-padding>
-                    <label for="searchInput" aria-hidden="true">{{'SEARCH' | translate}} </label>
-                    <input type="text" id="searchInput" ng-model="searchWord" required aria-required="true" aria-label="Type search text. Activate to search.">
-                </md-input-container>
-                <md-input-container flex layout-align="center center" ng-click="submit()" ng-disabled="searchWord.length == 0" aria-hidden="true">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 48 48"><path ng-style="{ fill: searchWord.length > 0 ? '#fff' : '#777'}" d="M31 28h-1.59l-.55-.55C30.82 25.18 32 22.23 32 19c0-7.18-5.82-13-13-13S6 11.82 6 19s5.82 13 13 13c3.23 0 6.18-1.18 8.45-3.13l.55.55V31l10 9.98L40.98 38 31 28zm-12 0c-4.97 0-9-4.03-9-9s4.03-9 9-9 9 4.03 9 9-4.03 9-9 9z"/></svg>
-                </md-input-container>
-            </div>
-        </form>
-        <div id="searchResultsContainer">
-            <md-content flex md-scroll-y class="searchResults">
-                <section ng-repeat="res in searchResults">
-                    <p>{{res.extract}}</p>
-                    <a ng-click="seek(res.code)"><p>Section {{res.code[0]}}, Module {{res.code[1]}}, {{ res.code[2] | translate}}</p></a>
-                    <br>
-                </section>
-            </md-content>
-        </div-->
+        </nav>
     </md-content>
 </md-sidenav>

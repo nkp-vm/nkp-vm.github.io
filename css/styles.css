@@ -283,8 +283,8 @@ md-radio-group[disabled], md-radio-button[disabled] {
     /*line-height: 0;*/
 }
 md-sidenav {
-    width: 300px;
-    min-width: 220px;
+    width: 175px;
+    min-width: 100px;
     max-height: 800px;
 }
 md-sidenav, md-sidenav md-content.md-main-theme, md-sidenav md-content md-list-item {
@@ -293,6 +293,9 @@ md-sidenav, md-sidenav md-content.md-main-theme, md-sidenav md-content md-list-i
 .md-sidenav-right {
     height: 700px;
     z-index: 200;
+}
+.menuItem {
+    color: white;
 }
 .menuItemActive, .menuItemActive a {
     background-color: white;

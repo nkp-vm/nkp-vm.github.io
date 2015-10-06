@@ -1,2 +1,7 @@
 
-<!-- MOSAIC HERE -->
+<button class="btn btn-primary" ng-click="add()">Add</button>
+<div masonry column-width="150">
+    <div class="masonry-brick" ng-repeat="brick in bricks">
+        <img ng-src="{{ brick.src }}" alt="A masonry brick">
+    </div>
+</div>
