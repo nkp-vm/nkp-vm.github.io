@@ -1,7 +1,15 @@
 
 <button class="btn btn-primary" ng-click="add()">Add</button>
-<div masonry column-width="150">
-    <div class="masonry-brick" ng-repeat="brick in bricks">
+
+<!--masonry masonry-options="{ columnWidth: '.grid-sizer', percentPosition: true }">
+    <div class="grid-sizer"></div>
+    <masonry-brick ng-repeat="brick in bricks">
+        <img ng-src="{{ brick.src }}" alt="A masonry brick">
+    </masonry-brick>
+</masonry-->
+
+<div class="my-masonry">
+    <div class="my-masonry-brick" ng-repeat="brick in bricks">
         <img ng-src="{{ brick.src }}" alt="A masonry brick">
     </div>
 </div>

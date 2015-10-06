@@ -239,9 +239,27 @@ md-radio-group.md-main-theme[disabled], md-radio-button.md-main-theme[disabled] 
 md-radio-group[disabled], md-radio-button[disabled] {
     color: black;
 }
-/*---------------------------- */
+/*-------- Masonry --------- */
+/*
+.grid-sizer,
+.masonry-brick {
+    margin: 1em;
+    display: none;
+    width: 20%;
+}
 
+.masonry-brick.loaded {
+    display: block;
+}
+*/
 
+/**** Masonry ****/
+
+.my-masonry-brick {
+    width: 400px;
+    margin:5px;
+    float: left;
+}
 
 /* ------ Top Quotation Section -------- */
 .topQuoteMarks {
@@ -271,6 +289,8 @@ md-radio-group[disabled], md-radio-button[disabled] {
     font-size: 6vmin;
     letter-spacing: 1px;
 }
+
+
 
 /* ---- Side Nav & Search ---- */
 .hideMe {
