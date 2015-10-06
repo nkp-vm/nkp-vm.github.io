@@ -391,37 +391,33 @@ GDirectives.directive("myMasonry", function($parse, $timeout) {
  * Add this attribute to make an element (use a div) containing 'read more' information.
  */
 GDirectives.directive("readmore", ['$timeout', function($timeout) {
-
-
     var linker = function(scope, elem, attrs) {
         scope.slideId = attrs.id+'_slide';
-
+        scope.detailActive = false;
+        scope.addlowerborder = true;
+        scope.iconRef = "views/icons/body/readmore/746-plus-circle@2x.svg";
         // Controls open and close of the sliding section in this directive
         scope.slideToggle = function() {
             var target = document.getElementById(scope.slideId);
             var content = target.querySelector('.content-selector');
             var contentHeight = content.offsetHeight+'px';
             if(scope.detailActive) {
+                scope.addlowerborder = false;
+                scope.iconRef = "views/icons/body/readmore/746-plus-circle@2x.svg";
                 target.style.height = contentHeight;  // Set height from 'auto' back to 'px' before reducing to '0px'
                 $timeout(function () {
                     target.style.height = '0';
-                    if(scope.videoSrc !== "") {
-                        scope.showVideo = false;
-                        video.style.height = '0';   // Video height interferes with slide closed - must set it's height also..
-                    }
                 }, 0);
             }
             else {
-                if(scope.videoSrc !== "") {
-                    video.style.height = 'auto';
-                }
+                scope.addlowerborder = true;
+                scope.iconRef = "views/icons/body/readmore/746-minus-circle-modified@2x.svg";
                 target.style.height = contentHeight;
                 $timeout(function () {
                     target.style.height = 'auto';  // If a fixed height property is retained, any internal slidables will not expand within this slidable's section
                 }, 1000);
             }
             scope.detailActive = !scope.detailActive;
-
         };
     }
     return {
@@ -433,47 +429,6 @@ GDirectives.directive("readmore", ['$timeout', function($timeout) {
             title : '@'
         }
     }
-        /*
-        var openState = false;
-        var iconClosed;
-        var iconOpened;
-        scope.addlowerborder = true;
-        if (scope.type && scope.type === 'task') {
-            iconClosed = iconOpened = "views/icons/widgets/oppgave/704-compose@2x.svg";
-        }
-        else {
-            iconOpened = "views/icons/body/readmore/remove.svg";
-            iconClosed = "views/icons/body/readmore/readmore.svg";
-        }
-        scope.readmoreImageSrc = iconClosed;
-
-        scope.toggleIcon = function () {
-            $timeout(function () {
-                openState = !openState;
-                if (openState) {
-                    scope.readmoreImageSrc = iconOpened;
-                    scope.addlowerborder = false;
-                }
-                else {
-                    scope.readmoreImageSrc = iconClosed;
-                    scope.addlowerborder = true;
-                }
-            }, 1000);
-        };
-    };
-    return {
-        templateUrl: 'views/templates/readmore.html',
-        restrict: 'A',
-        transclude : true,
-        link: linker,
-        scope : {
-            rid : '@',
-            title : '@',
-            type : '@'
-        }
-    };
-
-    */
 }]);
 
 /**
