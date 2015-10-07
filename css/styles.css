@@ -258,6 +258,16 @@ md-radio-group[disabled], md-radio-button[disabled] {
 .mosaic-detail-show {
     transition: all 1s ease-out 50ms;
 }
+.mosaic-regular-figure figure {
+    display: block;
+    margin: 0;
+}
+.mosaic-detail-figure figure {
+    display: flex !important;
+}
+md-card {
+    margin: 0;
+}
 /* ------ Top Quotation Section -------- */
 .topQuoteMarks {
     display: none;

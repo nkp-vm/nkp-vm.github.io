@@ -1,14 +1,14 @@
 <div class="mosaic">
-    <md-grid-list md-cols-sm="2" md-cols-md="3" md-cols-lg="5" md-cols-gt-lg="7" md-row-height="1:1">
-        <md-grid-tile ng-repeat="tile in tiles" md-rowspan="{{tile.span.row}}" md-colspan="{{tile.span.col}}" ng-click="showDetail(tile)">
+    <md-grid-list md-cols-sm="2" md-cols-md="3" md-cols-lg="5" md-cols-gt-lg="7" md-row-height="1:1" md-gutter="1px">
+        <md-grid-tile ng-repeat="tile in tiles" ng-class="{'mosaic-detail-figure' : tile.detail, 'mosaic-regular-figure' : !tile.detail}" md-rowspan="{{tile.span.row}}" md-colspan="{{tile.span.col}}" ng-click="showDetail(tile)">
             <md-card ng-hide="tile.detail">
                 <img ng-src="{{tile.src}}_200.jpg">
             </md-card>
             <md-card ng-show="tile.detail">
-                <img ng-src="{{tile.src}}_640.jpg" >
+                <img ng-src="{{tile.src}}_640.JPG" >
             </md-card>
             <md-card ng-show="tile.detail">
-                <img ng-src="{{tile.src}}_640.jpg">
+                <img ng-src="{{tile.src}}_640.JPG">
             </md-card>
             <!--div>
                 <img ng-src="{{tile.src}}_200.jpg" ng-hide="tile.detail">
