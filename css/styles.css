@@ -240,10 +240,10 @@ md-radio-group[disabled], md-radio-button[disabled] {
     color: black;
 }
 /*-------- Masonry --------- */
-/*
+
 .grid-sizer,
 .masonry-brick {
-    margin: 1em;
+    margin: 3em;
     display: none;
     width: 20%;
 }
@@ -251,7 +251,7 @@ md-radio-group[disabled], md-radio-button[disabled] {
 .masonry-brick.loaded {
     display: block;
 }
-*/
+
 
 /**** Masonry ****/
 
@@ -263,6 +263,34 @@ md-radio-group[disabled], md-radio-button[disabled] {
 
 .content-selector {
     background-color: white;
+}
+
+
+/* ------- DeckGrid ------- */
+
+.mosaic {
+    position: relative;
+}
+.mosaic-detail {
+    min-width: 100%;
+    min-height: 400px;
+    color: black;
+    background-color: white;
+}
+
+.deckgrid[deckgrid]::before {
+    /* Specifies that the grid should have a maximum of 4 columns. Each column will have the classes 'column' and 'column-1-4' */
+    content: '4 .column.column-1-4';
+    font-size: 0; /* See https://github.com/akoenig/angular-deckgrid/issues/14#issuecomment-35728861 */
+    visibility: hidden;
+}
+
+.deckgrid .column {
+    float: left;
+}
+
+.deckgrid .column-1-4 {
+    width: 25%;
 }
 
 /* ------ Top Quotation Section -------- */

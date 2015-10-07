@@ -179,7 +179,7 @@ GDirectives.directive("sectionBox", ['$window', '$animate', 'smoothScroll', '$ro
                 aTarget.addClass('notransition');
                 target.style.height = contentHeight;  // Set height from 'auto' back to 'px' before reducing to '0px'
                 var rcontent = target.querySelector('.content-selector');  // These two step necessary to flush browser cache so that animation is not run
-                var rcontentHeight = rcontent.offsetHeight;  // Accessing the offsetHeight flushes broswer cache
+                var rcontentHeight = rcontent.offsetHeight;  // Accessing the offsetHeight flushes broswer cache.  http://stackoverflow.com/questions/11131875/what-is-the-cleanest-way-to-disable-css-transition-effects-temporarily
                 aTarget.removeClass('notransition');
 
                 $timeout(function () {
@@ -255,13 +255,23 @@ GDirectives.directive("sectionBox", ['$window', '$animate', 'smoothScroll', '$ro
                 }
             }
         };
-
+        scope.bricks = [];
         // Setup on initial creation
         $timeout(function timeout() {
             pickLanguage();
             video = element.find('video')[0];
+            getBricks();
         });
 
+        function getBricks() {
+            var i=1;
+            while(i< 61) {
+                var b = { src: 'views/content/img/samples/image0'+i+'.png' }
+                scope.bricks.push(b);
+                i++;
+            }
+        }
+        /*
         function genBrick() {
             var height = ~~(Math.random() * 500) + 100;
             var id = ~~(Math.random() * 10000);
@@ -279,7 +289,7 @@ GDirectives.directive("sectionBox", ['$window', '$animate', 'smoothScroll', '$ro
         scope.add = function add() {
             scope.bricks.push(genBrick());
         };
-
+        */
     };
     return {
         restrict: 'A',
@@ -443,9 +453,33 @@ GDirectives.directive("readmore", ['$timeout', function($timeout) {
     }
 }]);
 
+GDirectives.directive("mosaic", ['$http', function($http) {
+    var linker = function(scope, elem, attr) {
+        scope.photos = [];
+        scope.showingDetail = false;
+        $http({ method: 'GET', url: 'json/photos.json'})
+            .then(function successCallback(response) {
+                scope.photos = response.data.mosaic;
+            })
+        scope.showDetail = function(card) {
+            scope.showingDetail = true;
+            scope.detailCard = card;
+        };
+        scope.hideDetail = function() {
+            scope.showingDetail = false;
+        };
+    };
+    return {
+        templateUrl: 'views/templates/mosaic.html',
+        restrict: 'A',
+        transclude : true,
+        link: linker
+    }
+}]);
+
 /**
  * @ngdoc directive
- * @name hms.quickquestion
+ * @name quickquestion
  * @restrict A
  * @description
  * Add this attribute to make an element (use a div) containing 'did you know?' comment.

@@ -1,0 +1,42 @@
+{
+
+  "mosaic" : [
+    {
+      "title" : "Android",
+      "description" : "About this image",
+      "src" : "android.jpeg",
+      "thumb" : "about_s.jpg"
+    },
+    {
+      "title" : "Chrome",
+      "description" : "Image 2",
+      "src" : "chrome.jpeg",
+      "thumb" : "cleaning_s.jpg"
+    },
+    {
+      "title" : "Firefox",
+      "description" : "About this image",
+      "src" : "firefox.jpeg",
+      "thumb" : "context_s.jpg"
+    },
+    {
+      "title" : "Homer",
+      "description" : "About this image",
+      "src" : "homer.jpeg",
+      "thumb" : "context_s.jpg"
+    },
+    {
+      "title" : "Thunderbird",
+      "description" : "About this image",
+      "src" : "thunderbird.jpeg",
+      "thumb" : "context_s.jpg"
+    },
+    {
+      "title" : "Wordpress",
+      "description" : "About this image",
+      "src" : "wordpress.jpeg",
+      "thumb" : "context_s.jpg"
+    }
+  ]
+
+}

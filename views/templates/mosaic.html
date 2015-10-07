@@ -1,0 +1,12 @@
+<div class="mosaic">
+    <div deckgrid source="photos" class="deckgrid" ng-hide="showingDetail">
+        <div class="a-card">
+            <!--h1>{{card.title}}</h1-->
+            <img src="" data-ng-click="mother.showDetail(card)" data-ng-src="views/content/img/mosaic/{{card.src}}">
+        </div>
+    </div>
+    <div class="mosaic-detail" ng-click="hideDetail()" ng-show="showingDetail">
+        <h1>{{detailCard.title}}</h1>
+        <img data-ng-src="views/content/img/mosaic/{{detailCard.src}}">
+    </div>
+</div>
