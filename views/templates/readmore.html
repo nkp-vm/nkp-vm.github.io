@@ -1,12 +1,12 @@
 <div>
-    <div class="readmore upperborder" ng-class="{lowerborder: addlowerborder}" ng-click="slideToggle()">
+    <div class="readmore"  ng-click="slideToggle()">
         <div layout="row" layout-align="start center">
             <img ng-src="{{iconRef}}" class="widget-icon">
             <h4 style="margin: 0 0 0.1em;">{{title}}</h4>
         </div>
     </div>
     <!-- This div will slide open: -->
-    <div id="{{slideId}}" class="sliding-readmore">
+    <div id="{{slideId}}" class="sliding-readmore" ng-class="{lowerborder: addlowerborder}">
         <div class="content-selector">
             <br>
             <ng-transclude></ng-transclude>

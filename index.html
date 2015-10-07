@@ -15,33 +15,26 @@
 </head>
 
 
-<body ng-controller="IndexCtrl" style="max-width: 1280px;">
+<body ng-controller="IndexCtrl">
 
-<!-- Navigation control for entire site -->
-<div role="menubar" ng-include="'views/templates/navbar.html'"></div>
+    <div style="margin: 0 auto; max-width: 1280px;">
+        <!-- Navigation control for entire site -->
+        <div role="menubar" ng-include="'views/templates/navbar.html'"></div>
 
-<!-- Side Menu -->
-<div ng-include="'views/templates/sidemenu.html'"></div>
+        <!-- Side Menu -->
+        <div ng-include="'views/templates/sidemenu.html'"></div>
 
-<!-- Site sub-pages are included dynamically here -->
-<div ng-view role="main" id="content"></div>
+        <!-- Site sub-pages are included dynamically here -->
+        <div ng-view role="main" id="content"></div>
 
-<!-- Footer -->
-<div ng-include="'views/templates/footer_'+currentLanguage+'.html'"></div>
+        <!-- Footer -->
+        <div ng-include="'views/templates/footer.html'"></div>
 
-<!--[if lt IE 7]>
-<p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
-<![endif]-->
-
+        <!--[if lt IE 7]>
+        <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+        <![endif]-->
+    </div>
 </body>
-
-<!-- These are dependencies for Masonry, must be placed before Angular -->
-<!-- Including JQuery here will allow Angular to substitute it for JQLite -->
-<!-- Bridget is used to space the grid. ImagesLoaded notifies when images are ready -->
-<script src="bower_components/jquery/dist/jquery.min.js"></script>
-<script src="bower_components/jquery-bridget/jquery.bridget.js"></script>
-<script src="bower_components/imagesloaded/imagesloaded.pkgd.min.js"></script>
-<script src="bower_components/masonry/dist/masonry.pkgd.min.js"></script>
 
 <!-- Regular dependencies -->
 <script src="bower_components/angular/angular.min.js"></script>
@@ -58,9 +51,6 @@
 <script src="bower_components/angular-smooth-scroll/angular-smooth-scroll.js"></script>
 <script src="bower_components/re-tree/re-tree.min.js"></script>
 <script src="bower_components/ng-device-detector/ng-device-detector.min.js"></script>
-
-<script src="bower_components/angular-masonry/angular-masonry.js"></script>
-<script src="bower_components/angular-deckgrid/angular-deckgrid.js"></script>
 
 <script src="js/app.js"></script>
 <script src="js/directives.js"></script>

@@ -73,13 +73,6 @@ nav {
 }
 a { text-decoration: none; }
 a:focus { outline: thin dotted; }
-/*
-div.mainContainer {
-    width: 100%;
-    margin-left: auto;
-    margin-right: auto;
-}
-*/
 
 .screenReadersOnly {
     border: 0;
@@ -182,9 +175,6 @@ md-checkbox .md-icon {
 .lowerborder {
     border-bottom: thin solid lightgrey;
 }
-.readmoreSVG {
-
-}
 
 /*
 .quiz h1 {
@@ -196,7 +186,11 @@ md-checkbox .md-icon {
 }
 .readmore {
     padding: 10px 0 10px;
-/*    border-bottom: thin solid lightgrey;*/
+}
+.readmore:focus, md-grid-tile:focus {
+    outline: none;
+    border: 0;
+    /*    border-bottom: thin solid lightgrey;*/
 }
 
 /* Feedback colours for Quiz controls */
@@ -239,34 +233,8 @@ md-radio-group.md-main-theme[disabled], md-radio-button.md-main-theme[disabled] 
 md-radio-group[disabled], md-radio-button[disabled] {
     color: black;
 }
-/*-------- Masonry --------- */
 
-.grid-sizer,
-.masonry-brick {
-    margin: 3em;
-    display: none;
-    width: 20%;
-}
-
-.masonry-brick.loaded {
-    display: block;
-}
-
-
-/**** Masonry ****/
-
-.my-masonry-brick {
-    width: 200px;
-    margin:5px;
-    float: left;
-}
-
-.content-selector {
-    background-color: white;
-}
-
-
-/* ------- DeckGrid ------- */
+/* ---------- Mosaic ---------- */
 
 .mosaic {
     position: relative;
@@ -277,22 +245,19 @@ md-radio-group[disabled], md-radio-button[disabled] {
     color: black;
     background-color: white;
 }
-
-.deckgrid[deckgrid]::before {
-    /* Specifies that the grid should have a maximum of 4 columns. Each column will have the classes 'column' and 'column-1-4' */
-    content: '4 .column.column-1-4';
-    font-size: 0; /* See https://github.com/akoenig/angular-deckgrid/issues/14#issuecomment-35728861 */
-    visibility: hidden;
+.mosaic-tile img {
+    display: block;
+    max-width:640px;
+    max-height:640px;
+    width: auto;
+    height: auto;
 }
-
-.deckgrid .column {
-    float: left;
+.mosaic md-grid-tile {
+    transition: all 300ms ease-out 50ms;
 }
-
-.deckgrid .column-1-4 {
-    width: 25%;
+.mosaic-detail-show {
+    transition: all 1s ease-out 50ms;
 }
-
 /* ------ Top Quotation Section -------- */
 .topQuoteMarks {
     display: none;
@@ -333,6 +298,10 @@ md-radio-group[disabled], md-radio-button[disabled] {
 }
 #toggleMenu.md-button {
     /*line-height: 0;*/
+}
+.md-button {
+    min-width: 60px;
+    margin: 4px 6px;
 }
 md-sidenav {
     width: 175px;
@@ -559,21 +528,18 @@ ul.dashlist li:before, ol.dashlist li:before {
     color: white;
     position: relative;
     cursor: pointer;
-    /*max-height: 350px;*/  /* Required for smooth transition effect */
-    /*max-height:250px;*/    /* CHANGE HERE FOR VIDEO WIDTH / HEIGHT */
 }
 
 .sectionBox .overlaytext {
     position: absolute;
     font-family:"HelveticaNeueW01-Thin", "Arial Narrow", sans-serif;
-    text-shadow: 1px 1px #000000;
+   /* text-shadow: 1px 1px #000000;*/
 }
 .sectionBox .presenter {
     position: relative;
-    max-width: 1280px;
 }
 .sectionBox .presenter .visuals {
-    max-width: 100%;
+    width: 100%;
 }
 .readmore {
     cursor: pointer;
@@ -599,8 +565,7 @@ ul.dashlist li:before, ol.dashlist li:before {
 }
 .quotebox {
     background-color: #FFFFFF;
-    padding: 15px;
-    margin: 0 25% 0 15%;
+    padding: 0 20% 0 8%;
 }
 .quotebox-quote {
     font-family:"HelveticaNeueW01-75Bold", "Arial", sans-serif;
@@ -676,7 +641,8 @@ ul.dashlist li:before, ol.dashlist li:before {
 /* Media Queries ------------------------------------------------------------------------------------ */
 
 /* iPhone, etc portrait ---- */
-@media only screen and (min-width: 320px) {
+
+@media only screen and (max-width: 768px) {
 
     .topQuote {
         font-size: 12vmin;
@@ -692,10 +658,10 @@ ul.dashlist li:before, ol.dashlist li:before {
         font-size: 5vmin;
         font-family:"HelveticaNeueW01-45Ligh", "Arial Narrow", sans-serif;
     }
-    .hide-sm {
+    .hide-small {
         display: none;
     }
-    .hide-gt-sm {
+    .hide-gt-small {
         display: block;
     }
     .gfooter {
@@ -716,6 +682,7 @@ ul.dashlist li:before, ol.dashlist li:before {
 
 
 /* iPad, tablets etc portrait ---- */
+/*
 @media only screen and (min-width: 769px) {
 
     .sectionDetail {
@@ -737,20 +704,28 @@ ul.dashlist li:before, ol.dashlist li:before {
     }
 
 }
+*/
 /* Laptops, Desktops, etc ---- */
-@media only screen and (min-width: 1281px) {
+
+@media only screen and (min-width: 769px) {
 
     .topQuote {
         font-size: 14vmin;
         line-height: 14vmin;
     }
+    .sectionBox .overlaytext {
+        bottom: 20px;
+        left: 40px;
+        font-size: 5vmin;
+        font-family:"HelveticaNeueW01-45Ligh", "Arial Narrow", sans-serif;
+    }
     .sectionDetail {
         padding: 50px 30% 50px 7%;
     }
-    .hide-sm {
+    .hide-small {
         display: block;
     }
-    .hide-gt-sm {
+    .hide-gt-small {
         display: none;
     }
     .gfooter {

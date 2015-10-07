@@ -1,7 +1,7 @@
 <div class="sectionBox">
     <div aria-hidden="true" tabindex="-1" class="presenter" ng-click="activate()">
-        <img tabindex="-1" aria-hidden="true" ng-hide="showVideo" class="visuals hide-sm" ng-src="{{imageSrcPath}}">
-        <img tabindex="-1" aria-hidden="true" ng-hide="showVideo" class="visuals hide-gt-sm" ng-src="{{noPreloadGifSrcPath}}">
+        <img tabindex="-1" aria-hidden="true" ng-hide="showVideo" class="visuals hide-small" ng-src="{{imageSrcPath}}">
+        <img tabindex="-1" aria-hidden="true" ng-hide="showVideo" class="visuals hide-gt-small" ng-src="{{noPreloadGifSrcPath}}">
         <video tabindex="-1" aria-hidden="true" type='video/mp4' class="visuals" ng-show="showVideo" ng-src="{{trustResource(videoSrcPath)}}" ng-attr-crossorigin="anonymous" ng-attr-preload="auto"></video>
         <span tabindex="-1" aria-hidden="true" class="overlaytext">{{overlayText}}</span>
     </div>

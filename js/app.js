@@ -26,8 +26,6 @@ var GApp = angular.module("GApp", [
     'ngCookies',
     'smoothScroll',
     'ng.deviceDetector',
-    'wu.masonry',
-    'akoenig.deckgrid',
     'GDirectives'
 ]);
 

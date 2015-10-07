@@ -1,12 +1,26 @@
 <div class="mosaic">
-    <div deckgrid source="photos" class="deckgrid" ng-hide="showingDetail">
-        <div class="a-card">
-            <!--h1>{{card.title}}</h1-->
-            <img src="" data-ng-click="mother.showDetail(card)" data-ng-src="views/content/img/mosaic/{{card.src}}">
-        </div>
-    </div>
-    <div class="mosaic-detail" ng-click="hideDetail()" ng-show="showingDetail">
-        <h1>{{detailCard.title}}</h1>
-        <img data-ng-src="views/content/img/mosaic/{{detailCard.src}}">
-    </div>
+    <md-grid-list md-cols-sm="2" md-cols-md="3" md-cols-lg="5" md-cols-gt-lg="7" md-row-height="1:1">
+        <md-grid-tile ng-repeat="tile in tiles" md-rowspan="{{tile.span.row}}" md-colspan="{{tile.span.col}}" ng-click="showDetail(tile)">
+            <md-card ng-hide="tile.detail">
+                <img ng-src="{{tile.src}}_200.jpg">
+            </md-card>
+            <md-card ng-show="tile.detail">
+                <img ng-src="{{tile.src}}_640.jpg" >
+            </md-card>
+            <md-card ng-show="tile.detail">
+                <img ng-src="{{tile.src}}_640.jpg">
+            </md-card>
+            <!--div>
+                <img ng-src="{{tile.src}}_200.jpg" ng-hide="tile.detail">
+                <img ng-src="{{tile.src}}_640.jpg" ng-show="tile.detail">
+                <img ng-src="{{tile.src}}_640.jpg" ng-show="tile.detail">
+            </div-->
+            <!--md-grid-tile-footer ng-show="tile.detail"><h3>{{tile.title}}</h3></md-grid-tile-footer-->
+        </md-grid-tile>
+    </md-grid-list>
 </div>
+
+<!--div class="mosaic-detail" ng-click="hideDetail()" ng-show="showingDetail">
+    <h1>{{detailTile.title}}</h1>
+    <img class="mosaic-image" ng-src="{{detailTile.src}}">
+</div-->

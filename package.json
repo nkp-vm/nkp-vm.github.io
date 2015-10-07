@@ -1,6 +1,7 @@
 {
-  "name": "generic",
+  "name": "nkp-vm",
   "description": "",
+  "license": "UNLICENSED",
   "devDependencies": {
     "grunt": "0.4.x",
     "grunt-contrib-clean": "",
@@ -9,7 +10,6 @@
     "grunt-contrib-uglify": "",
     "grunt-ng-annotate": "^1.0.1",
     "grunt-ngdocs": "",
-    "grunt-shell": "^1.1.2",
-    "webkit-assign": ""
+    "grunt-shell": "^1.1.2"
   }
 }
