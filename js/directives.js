@@ -226,7 +226,7 @@ GDirectives.directive("readmore", ['$timeout', function($timeout) {
     var linker = function(scope, elem, attrs) {
         scope.slideId = attrs.id+'_slide';
         scope.detailActive = false;
-        scope.addlowerborder = true;
+        scope.addlowerborder = false;
         scope.iconRef = "views/icons/body/readmore/746-plus-circle@2x.svg";
         // Controls open and close of the sliding section in this directive
         scope.slideToggle = function() {
@@ -235,7 +235,7 @@ GDirectives.directive("readmore", ['$timeout', function($timeout) {
             var content = target.querySelector('.content-selector');
             var contentHeight = content.offsetHeight+'px';
             if(scope.detailActive) {
-                scope.addlowerborder = true;
+                scope.addlowerborder = false;
                 scope.iconRef = "views/icons/body/readmore/746-plus-circle@2x.svg";
                 aTarget.addClass('notransition');
                 target.style.height = contentHeight;  // Set height from 'auto' back to 'px' before reducing to '0px'

@@ -6,10 +6,11 @@
         </div>
     </div>
     <!-- This div will slide open: -->
-    <div id="{{slideId}}" class="sliding-readmore" ng-class="{lowerborder: addlowerborder}">
+    <div id="{{slideId}}" class="sliding-readmore">
         <div class="content-selector">
             <br>
             <ng-transclude></ng-transclude>
         </div>
+        <div class="lowerborder" ng-show="detailActive"></div><br>
     </div>
 </div>
