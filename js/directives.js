@@ -78,7 +78,7 @@ GDirectives.directive("sectionBox", ['$window', '$animate', 'smoothScroll', '$ro
                 var rcontent = target.querySelector('.content-selector');  // These two step necessary to flush browser cache so that transition is not run
                 var rcontentHeight = rcontent.offsetHeight;  // Accessing the offsetHeight flushes broswer cache.  http://stackoverflow.com/questions/11131875/what-is-the-cleanest-way-to-disable-css-transition-effects-temporarily
                 aTarget.removeClass('notransition');
-
+                scope.slideOpen = false;
                 $timeout(function () {
                     target.style.height = '0';   // prompt a transition to '0'
                     if(scope.videoSrc !== "") {
@@ -97,6 +97,7 @@ GDirectives.directive("sectionBox", ['$window', '$animate', 'smoothScroll', '$ro
                     var rcontent = target.querySelector('.content-selector');
                     var rcontentHeight = rcontent.offsetHeight;
                     aTarget.removeClass('notransition');
+                    scope.slideOpen = true;
                 }, 2100);
             }
             scope.detailActive = !scope.detailActive;
@@ -204,6 +205,7 @@ GDirectives.directive("sectionBox", ['$window', '$animate', 'smoothScroll', '$ro
             gifSrc: '@',
             textClosed: '@',
             textOpen: '@',
+            captionText: '@',
             icon: '@',
             forceIphoneVideo: '@'
         },
@@ -290,13 +292,13 @@ GDirectives.directive("mosaic", ['$http', '$window', '$timeout', function($http,
             detail: false
         });
 
-        // These values should match those column values in the mosaic template
+        // These values should compliment those column values in the mosaic template, to display detail images without whitespace
         function getCurrentTotalColumns() {
             var width = $window.innerWidth;
-            if(width <= 600) { scope.currentColumns = 2; scope.currentRows = 1}
-            else if(width <= 960) { scope.currentColumns = 3; scope.currentRows = 2}
-            else if(width <= 1200) { scope.currentColumns = 5; scope.currentRows = 3}
-            else { scope.currentColumns = 7; scope.currentRows = 4 }
+            if(width <= 600) { scope.currentColumns = 2; scope.currentRows = 4}
+            else if(width <= 960) { scope.currentColumns = 4; scope.currentRows = 2}
+            else if(width <= 1200) { scope.currentColumns = 6; scope.currentRows = 3}
+            else { scope.currentColumns = 8; scope.currentRows = 4 }
         };
 
         // Automatically reset columns when window changes width.  Currently however, md-grid-list cannot be triggered by a new md-cols value!

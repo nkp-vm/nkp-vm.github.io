@@ -1,26 +1,19 @@
 <div class="mosaic">
-    <md-grid-list md-cols-sm="2" md-cols-md="3" md-cols-lg="5" md-cols-gt-lg="7" md-row-height="1:1" md-gutter="1px">
+    <md-grid-list md-cols-sm="2" md-cols-md="4" md-cols-lg="6" md-cols-gt-lg="8" md-row-height="1:1" md-gutter="1px">
         <md-grid-tile ng-repeat="tile in tiles" ng-class="{'mosaic-detail-figure' : tile.detail, 'mosaic-regular-figure' : !tile.detail}" md-rowspan="{{tile.span.row}}" md-colspan="{{tile.span.col}}" ng-click="showDetail(tile)">
-            <md-card ng-hide="tile.detail">
+            <md-card ng-hide="tile.detail">   <!-- This is the standard tile (no detail) image-->
                 <img ng-src="{{tile.src}}_200.jpg">
             </md-card>
-            <md-card ng-show="tile.detail">
+            <md-card ng-show="tile.detail" hide-gt-sm>  <!-- Small screens show two images laid out vertically-->
                 <img ng-src="{{tile.src}}_640.JPG" >
-            </md-card>
-            <md-card ng-show="tile.detail">
                 <img ng-src="{{tile.src}}_640.JPG">
             </md-card>
-            <!--div>
-                <img ng-src="{{tile.src}}_200.jpg" ng-hide="tile.detail">
-                <img ng-src="{{tile.src}}_640.jpg" ng-show="tile.detail">
-                <img ng-src="{{tile.src}}_640.jpg" ng-show="tile.detail">
-            </div-->
-            <!--md-grid-tile-footer ng-show="tile.detail"><h3>{{tile.title}}</h3></md-grid-tile-footer-->
+            <md-card ng-show="tile.detail" hide-sm>  <!-- Larger screens show two images laid out horizontally-->
+                <img ng-src="{{tile.src}}_640.JPG" >
+            </md-card>
+            <md-card ng-show="tile.detail" hide-sm>
+                <img ng-src="{{tile.src}}_640.JPG">
+            </md-card>
         </md-grid-tile>
     </md-grid-list>
 </div>
-
-<!--div class="mosaic-detail" ng-click="hideDetail()" ng-show="showingDetail">
-    <h1>{{detailTile.title}}</h1>
-    <img class="mosaic-image" ng-src="{{detailTile.src}}">
-</div-->

@@ -551,6 +551,12 @@ ul.dashlist li:before, ol.dashlist li:before {
 .sectionBox .presenter .visuals {
     width: 100%;
 }
+.captiontext {
+    color: #999;
+    font-size: 0.9em;
+    margin: 0;
+    padding: 0;
+}
 .readmore {
     cursor: pointer;
     margin: 0;
@@ -662,6 +668,9 @@ ul.dashlist li:before, ol.dashlist li:before {
     .sectionDetail {
         padding: 50px 7% 50px 7%;
     }
+    .captiontext {
+        padding: 0 7% 0 7%;
+    }
     .sectionBox .overlaytext {
         bottom: 20px;
         left: 40px;
@@ -731,6 +740,9 @@ ul.dashlist li:before, ol.dashlist li:before {
     }
     .sectionDetail {
         padding: 50px 30% 50px 7%;
+    }
+    .captiontext {
+        padding: 0 30% 0 7%;
     }
     .hide-small {
         display: block;
