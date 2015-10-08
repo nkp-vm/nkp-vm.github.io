@@ -1,0 +1,17 @@
+<div class="timeline" ng-style="{background: bgColour}">
+    <div style="width: 50%;">
+        <h2>{{datePlace}}</h2>
+        <h3>{{title}}</h3>
+    </div>
+    <div class="timeline-content">
+        <div class="image-and-caption" hide-gt-md>
+            <img ng-src="{{imageSrc}}">
+            <p>{{captionText}}</p>
+        </div>
+        <ng-transclude></ng-transclude>
+        <div class="image-and-caption" hide-md>
+            <img ng-src="{{imageSrc}}">
+            <p>{{captionText}}</p>
+        </div>
+    </div>
+</div>

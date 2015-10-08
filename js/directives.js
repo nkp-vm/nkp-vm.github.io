@@ -51,6 +51,9 @@ GDirectives.directive("sectionBox", ['$window', '$animate', 'smoothScroll', '$ro
         if (typeof scope.videosrc === "undefined") { scope.videosrc = ""; }
         if (typeof scope.posterSrc === "undefined") { scope.posterSrc = ""; }
         if (typeof scope.gifSrc === "undefined") { scope.gifSrc = ""; }
+        if (typeof scope.captionText === "undefined") {
+            scope.captionText = "";
+        }
 
         scope.slideId = attrs.id+'_slide';
         scope.showVideo = false;
@@ -126,7 +129,7 @@ GDirectives.directive("sectionBox", ['$window', '$animate', 'smoothScroll', '$ro
             return $sce.trustAsResourceUrl(resourceUrl);
         };
 
-        // Play the video on click
+        // On click, play the video, or insert a GIF on mobile screens
         scope.activate = function() {
             scope.slideToggle();
             // If this is the first play, scroll to me and open the sliding section
@@ -171,30 +174,11 @@ GDirectives.directive("sectionBox", ['$window', '$animate', 'smoothScroll', '$ro
         function getBricks() {
             var i=1;
             while(i< 61) {
-                var b = { src: 'views/content/img/samples/image0'+i+'.png' }
+                var b = { src: 'views/content/img/mosaic/image0'+i+'.png' }
                 scope.bricks.push(b);
                 i++;
             }
         }
-        /*
-         function genBrick() {
-         var height = ~~(Math.random() * 500) + 100;
-         var id = ~~(Math.random() * 10000);
-         return {
-         src: 'http://lorempixel.com/g/280/' + height + '/?' + id
-         };
-         };
-         scope.bricks = [
-         genBrick(),
-         genBrick(),
-         genBrick(),
-         genBrick(),
-         genBrick()
-         ];
-         scope.add = function add() {
-         scope.bricks.push(genBrick());
-         };
-         */
     };
     return {
         restrict: 'A',
@@ -279,18 +263,29 @@ GDirectives.directive("mosaic", ['$http', '$window', '$timeout', function($http,
         var savedTileSpanCol;
         scope.currentColumns = 1;
         scope.currentRows = 1;
-/*
-        $http({ method: 'GET', url: 'json/photos.json'})
-            .then(function successCallback(response) {
-                scope.tiles = response.data.mosaic;
-            });
-*/
+
+        // This is a model to contain image properties
         scope.tiles = buildGridModel({
-            src : "views/content/img/samples/",
+            src : "views/content/img/mosaic/",
             title: "Test Title ",
             background: "",
             detail: false
         });
+
+        // This generates image links based on the above model
+        // Source for 'large' and 'context view' detail images are determined by the same image root + '_640.JPG' or otherwise
+        function buildGridModel(tileTmpl) {
+            var it, results = [ ];
+
+            for (var j=1; j<60; j++) {
+                it = angular.extend({},tileTmpl);
+                it.src  = it.src + 'image'+j;
+                it.title = it.title + (j);
+                it.span  = { row : 1, col : 1 };
+                results.push(it);
+            }
+            return results;
+        }
 
         // These values should compliment those column values in the mosaic template, to display detail images without whitespace
         function getCurrentTotalColumns() {
@@ -311,19 +306,7 @@ GDirectives.directive("mosaic", ['$http', '$window', '$timeout', function($http,
             scope.$apply();
         });
 
-        function buildGridModel(tileTmpl) {
-            var it, results = [ ];
-
-            for (var j=1; j<60; j++) {
-                it = angular.extend({},tileTmpl);
-                it.src  = it.src + 'image'+j;
-                it.title = it.title + (j);
-                it.span  = { row : 1, col : 1 };
-                results.push(it);
-            }
-            return results;
-        }
-
+        // Adjust a tile's row and column dimensions so that it becomes a 'detail' tile in the view
         scope.showDetail = function(tile) {
             if(scope.detailTile !== null) {
                 scope.detailTile.span.row = savedTileSpanRow;
@@ -347,6 +330,37 @@ GDirectives.directive("mosaic", ['$http', '$window', '$timeout', function($http,
         transclude : true,
         link: linker
     }
+}]);
+
+/**
+ * @ngdoc directive
+ * @name timelinebox
+ * @restrict A
+ * @description
+ * Add this attribute to make 'timeline' box element.
+ *  * date-place:   Date and place
+ *  * title:   Title of the item
+ *  * image-src:   Link to image
+ *  * caption:   caption text
+ * <pre><div timelinebox date-place="June 1970" title="test 1" image-src="views/content/img/timeline/..." caption="caption text">Detailed text about the item</div></pre>
+ */
+GDirectives.directive("timelinebox", [function() {
+    var linker = function(scope,elem,attr) {
+
+    };
+    return {
+        templateUrl: 'views/templates/timelineItem.html',
+        restrict: 'A',
+        transclude : true,
+        link: linker,
+        scope: {
+            datePlace: '@',
+            title: '@',
+            imageSrc: '@',
+            captionText: '@',
+            bgColour: '@'
+        }
+    };
 }]);
 
 /**

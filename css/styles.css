@@ -539,6 +539,26 @@ ul.dashlist li:before, ol.dashlist li:before {
 }
 
 /* --------- Directives ------*/
+.timeline {
+    color: black;
+    padding: 20px 7% 0 7%;
+}
+.timeline h2 {
+    margin-top: 0;
+}
+.timeline h3 {
+
+}
+.timeline-content {
+    padding-bottom: 20px;
+    -webkit-column-count: 2; /* Chrome, Safari, Opera */
+    -moz-column-count: 2; /* Firefox */
+    column-count: 2;
+}
+.timeline-content p {
+    margin: 0;
+    padding: 0;
+}
 
 .sectionBox {
     color: white;
@@ -574,9 +594,13 @@ ul.dashlist li:before, ol.dashlist li:before {
 }
 .image-and-caption {
     margin-bottom: 10px;
+    margin-top: 10px;
 }
 .image-and-caption img {
     width: 100%;
+}
+.timeline-content .image-and-caption {
+    margin-bottom: 0;
 }
 .readmore {
     cursor: pointer;
@@ -679,7 +703,7 @@ ul.dashlist li:before, ol.dashlist li:before {
 
 /* iPhone, etc portrait ---- */
 
-@media only screen and (max-width: 768px) {
+@media only screen and (max-width: 960px) {
 
     .topQuote {
         font-size: 12vmin;
@@ -694,6 +718,11 @@ ul.dashlist li:before, ol.dashlist li:before {
     }
     .captiontext {
         padding: 0 7% 0 7%;
+    }
+    .timeline-content {
+        -webkit-column-count: 1; /* Chrome, Safari, Opera */
+        -moz-column-count: 1; /* Firefox */
+        column-count: 1;
     }
     .sectionBox .overlaytext {
         bottom: 20px;
@@ -750,7 +779,7 @@ ul.dashlist li:before, ol.dashlist li:before {
 */
 /* Laptops, Desktops, etc ---- */
 
-@media only screen and (min-width: 769px) {
+@media only screen and (min-width: 961px) {
 
     .topQuote {
         font-size: 14vmin;
