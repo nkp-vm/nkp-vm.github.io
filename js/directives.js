@@ -439,6 +439,26 @@ GDirectives.directive("quotebox", [function() {
 
 /**
  * @ngdoc directive
+ * @name caption
+ * @restrict E
+ * @description
+ * Add this attribute to make 'caption' element.
+ * <pre><caption> This is the caption content </caption></pre>
+ */
+GDirectives.directive("imageAndCaption", [function() {
+    return {
+        template: '<div class="image-and-caption"><img ng-src="{{imageSrc}}"><p>{{captionText}}</p></div>',
+        restrict: 'E',
+        transclude : true,
+        scope : {
+            imageSrc : '@',
+            captionText : '@'
+        }
+    };
+}]);
+
+/**
+ * @ngdoc directive
  * @name link
  * @restrict A
  * @description
