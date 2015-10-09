@@ -544,10 +544,18 @@ ul.dashlist li:before, ol.dashlist li:before {
     padding: 20px 7% 0 7%;
 }
 .timeline h2 {
+    color: #226666;
+    font-family: "HelveticaNeueW01-Thin","Arial Narrow",sans-serif;
+    font-size: 2em;
     margin-top: 0;
 }
 .timeline h3 {
-
+    font-family: "HelveticaNeueW01-75Bold","Arial",sans-serif;
+    font-size: 2.5em;
+    line-height: 2.5rem;
+    color: #222222;
+    margin-top: 20px;
+    margin-bottom: 20px;
 }
 .timeline-content {
     padding-bottom: 20px;
@@ -559,7 +567,17 @@ ul.dashlist li:before, ol.dashlist li:before {
     margin: 0;
     padding: 0;
 }
-
+.sliding-box {
+    position: relative;
+}
+.stickytime {
+    width: 100%;
+    max-width: 1280px;
+}
+.sticky-fixed {
+    top: 0;
+    position: fixed;
+}
 .sectionBox {
     color: white;
     position: relative;
@@ -601,6 +619,45 @@ ul.dashlist li:before, ol.dashlist li:before {
 }
 .timeline-content .image-and-caption {
     margin-bottom: 0;
+}
+.stickytime {
+    background-color: grey;
+    z-index: 100;
+}
+.timeline-textbox {
+    width: 100%;
+    position: relative;
+}
+.timeline-textbox .tt-bg-image {
+    width: 100%;
+}
+.timeline-textbox .tt-tint-colour, .timeline-textbox .tt-text {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+.timeline-textbox .tt-content {
+
+}
+.timeline-textbox .widget-icon {
+    color: white;
+}
+.tt-text {
+    padding: 20px 7% 0 7%;
+}
+.tt-text h2 {
+    font-family: "HelveticaNeueW01-Thin","Arial Narrow",sans-serif;
+    font-size: 2em;
+    margin-top: 0;
+}
+.tt-text h3 {
+    font-family: "HelveticaNeueW01-75Bold","Arial",sans-serif;
+    font-size: 2.5em;
+    line-height: 2.5rem;
+    margin-top: 0;
+    margin-bottom: 20px;
 }
 .readmore {
     cursor: pointer;

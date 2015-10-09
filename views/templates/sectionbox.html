@@ -8,6 +8,40 @@
     <!-- This div will slide open: -->
     <div id="{{slideId}}" class="sliding-box">
         <p tabindex="-1" aria-hidden="true" class="captiontext" ng-show="captionText">{{captionText}}</p>
+
+        <!-- This is the sticky timeline controller which shows only if we are in the timeline section -->
+
+        <!-- Some interesting slider libraries here:
+                http://darul75.github.io/angular-awesome-slider/
+                http://rzajac.github.io/angularjs-slider/index.html
+                https://github.com/Venturocket/angular-slider
+        -->
+
+        <!--div class="stickytime" ng-show="timelineMode">
+            <div layout>
+                <div flex="10" layout="column" layout-align="center center">
+                    <md-switch ng-model="stickyNation.czech" class="md-primary" aria-label="Czech">
+                        Czech
+                    </md-switch>
+                    <md-switch ng-model="stickyNation.norsk" class="md-primary" aria-label="Norsk">
+                        Norsk
+                    </md-switch>
+                    <md-switch ng-model="stickyNation.english" class="md-primary" aria-label="English">
+                        English
+                    </md-switch>
+                </div>
+                <div flex="80" layout="column">
+                    <md-slider flex ng-model="stickySliders.czech" min="0" max="255" aria-label="blue" id="czech-slider" class="md-primary md-hue-1">
+                    </md-slider>
+                    <md-slider flex ng-model="stickySliders.norsk" min="0" max="255" aria-label="blue" id="norsk-slider" class="md-primary md-hue-2">
+                    </md-slider>
+                    <md-slider flex ng-model="stickySliders.english" min="0" max="255" aria-label="blue" id="english-slider" class="md-primary md-hue-4">
+                    </md-slider>
+                </div>
+            </div>
+        </div-->
+
+        <!-- Included content goes here -->
         <div class="content-selector" ng-include="includeSrcPath"></div>
     </div>
 </div>

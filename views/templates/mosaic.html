@@ -5,8 +5,8 @@
                 <img ng-src="{{tile.src}}_200.jpg">
             </md-card>
             <md-card ng-show="tile.detail" hide-gt-sm>  <!-- Small screens show two images laid out vertically-->
-                <img ng-src="{{tile.src}}_640.JPG" >
-                <img ng-src="{{tile.src}}_640.JPG">
+                <img ng-src="{{tile.src}}_640.JPG" >   <!-- larger size = to thumbnail -->
+                <img ng-src="{{tile.src}}_640.JPG">    <!-- context image -->
             </md-card>
             <md-card ng-show="tile.detail" hide-sm>  <!-- Larger screens show two images laid out horizontally-->
                 <img ng-src="{{tile.src}}_640.JPG" >

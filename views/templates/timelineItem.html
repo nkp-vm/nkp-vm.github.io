@@ -1,16 +1,20 @@
 <div class="timeline" ng-style="{background: bgColour}">
-    <div style="width: 50%;">
-        <h2>{{datePlace}}</h2>
-        <h3>{{title}}</h3>
+    <div style="width: 50%;" hide show-gt-md>
+        <h2 ng-style="{color: catColour}">{{datePlace}}</h2>   <!-- Date - place -->
+        <h3>{{title}}</h3>     <!-- Title -->
+    </div>
+    <div style="width: 100%;" hide-gt-md>
+        <h2 ng-style="{color: catColour}">{{datePlace}}</h2>   <!-- Date - place -->
+        <h3>{{title}}</h3>     <!-- Title -->
     </div>
     <div class="timeline-content">
         <div class="image-and-caption" hide-gt-md>
-            <img ng-src="{{imageSrc}}">
+            <img ng-src="views/content/img/timeline/{{imageSrc}}">     <!-- Image source -->
             <p>{{captionText}}</p>
         </div>
         <ng-transclude></ng-transclude>
-        <div class="image-and-caption" hide-md>
-            <img ng-src="{{imageSrc}}">
+        <div class="image-and-caption"  hide show-gt-md>
+            <img ng-src="views/content/img/timeline/{{imageSrc}}">
             <p>{{captionText}}</p>
         </div>
     </div>

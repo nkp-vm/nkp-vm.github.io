@@ -48,12 +48,19 @@ GDirectives.directive("sectionBox", ['$window', '$animate', 'smoothScroll', '$ro
         var moduleNumber = $route.current.params.module;
         var imagePath = CONSTANTS.TOP_LEVEL_MODULE_PATH + 'img/';
 
+        // Sticky Controller vars
+        var stickyBox = angular.element(element[0].querySelector('.stickytime'));
+        var yScrollOffset = 0;
+        var contentBottomDistanceFromTop = 0;
+        var contentDistanceFromTop = 0;
+
         if (typeof scope.videosrc === "undefined") { scope.videosrc = ""; }
         if (typeof scope.posterSrc === "undefined") { scope.posterSrc = ""; }
         if (typeof scope.gifSrc === "undefined") { scope.gifSrc = ""; }
-        if (typeof scope.captionText === "undefined") {
-            scope.captionText = "";
-        }
+        if (typeof scope.captionText === "undefined") { scope.captionText = "";}
+        if (typeof scope.timelineMode === "undefined") { scope.timelineMode = false;}
+        if(scope.timelineMode === "true") { scope.timelineMode = true; }
+
 
         scope.slideId = attrs.id+'_slide';
         scope.showVideo = false;
@@ -64,6 +71,41 @@ GDirectives.directive("sectionBox", ['$window', '$animate', 'smoothScroll', '$ro
         scope.includeSrcPath = CONSTANTS.TOP_LEVEL_MODULE_PATH + $route.current.params.language + '/' + attrs.id + '.html';
         scope.slideOpen = false;
 
+        /* ----   Experimental code for timeline sticky control - don't delete! -----------  */
+/*
+        scope.stickyNation = {
+            czech: true,
+            norsk: false,
+            english: false
+        };
+        scope.stickySliders = {
+            czech: 1,
+            norsk: 1,
+            english: 1
+        };
+
+        var stickyTimelineHandler = function() {
+            yScrollOffset = $window.pageYOffset;
+            contentDistanceFromTop = element.prop('offsetTop') + angular.element(element[0].querySelector('.presenter')).prop('offsetHeight');
+            contentBottomDistanceFromTop = element.prop('offsetTop') + element.prop('offsetHeight');
+            if(yScrollOffset >= contentDistanceFromTop && yScrollOffset < contentBottomDistanceFromTop) {
+                stickyBox.addClass('sticky-fixed');
+            }
+            else {
+                stickyBox.removeClass('sticky-fixed');
+            }
+        };
+        function activateStickyTimeline() {
+            angular.element($window).bind('scroll', stickyTimelineHandler);
+            //scope.$apply();
+        }
+        function  deactivateStickyTimeline() {
+            angular.element($window).unbind('scroll',stickyTimelineHandler);
+            //scope.$apply();
+        }
+*/
+        /* ------------------------------  */
+
         // Controls open and close of the sliding section in this directive
         scope.slideToggle = function() {
 
@@ -73,6 +115,8 @@ GDirectives.directive("sectionBox", ['$window', '$animate', 'smoothScroll', '$ro
             var contentHeight = content.offsetHeight+'px';
 
             if(scope.detailActive) {                // CLOSING
+  //              if (scope.timelineMode) { deactivateStickyTimeline(); }
+
                 // The CSS 'height: auto' property cannot be animated with CSS transitions. Only actual pixel values can be.
                 // However 'height: auto' should be applied to affect proper page sizing when the content increases height.
                 // Changing the 'height' from 'px' to 'auto' prompts a transition effect, therefore we need to disable/enable animations and trick the browser to flush its cache
@@ -90,6 +134,8 @@ GDirectives.directive("sectionBox", ['$window', '$animate', 'smoothScroll', '$ro
                 }, 10);
             }
             else {                                  // OPENING
+  //              if (scope.timelineMode) { activateStickyTimeline(); }
+
                 if(scope.videoSrc !== "") {
                     video.style.height = 'auto';
                 }
@@ -191,7 +237,8 @@ GDirectives.directive("sectionBox", ['$window', '$animate', 'smoothScroll', '$ro
             textOpen: '@',
             captionText: '@',
             icon: '@',
-            forceIphoneVideo: '@'
+            forceIphoneVideo: '@',
+            timelineMode: '@'
         },
         link: linker,
         templateUrl: 'views/templates/sectionbox.html'
@@ -244,7 +291,7 @@ GDirectives.directive("readmore", ['$timeout', function($timeout) {
             }
             scope.detailActive = !scope.detailActive;
         };
-    }
+    };
     return {
         templateUrl: 'views/templates/readmore.html',
         restrict: 'A',
@@ -256,7 +303,17 @@ GDirectives.directive("readmore", ['$timeout', function($timeout) {
     }
 }]);
 
+/**
+ * @ngdoc directive
+ * @name mosaic
+ * @restrict A
+ * @description
+ * Mosaic block
+ */
 GDirectives.directive("mosaic", ['$http', '$window', '$timeout', function($http, $window, $timeout) {
+
+    //  A potential alternative for mosaic:  http://vnjs.net/www/project/freewall/#
+
     var linker = function(scope, elem, attr) {
         scope.detailTile = null;
         var savedTileSpanRow;
@@ -358,7 +415,43 @@ GDirectives.directive("timelinebox", [function() {
             title: '@',
             imageSrc: '@',
             captionText: '@',
-            bgColour: '@'
+            bgColour: '@',
+            catColour: '@'
+        }
+    };
+}]);
+
+/**
+ * @ngdoc directive
+ * @name timeline-textbox
+ * @restrict A
+ * @description
+ * Add this attribute to make 'timeline' box element.
+ *  * type:   'quote' or 'regular'
+ *  * date-place:   Date and place
+ *  * title:   Title text
+ *  * caption:   Caption text
+ *  * content:   Content text'
+ *  * bg-colour:   background colour
+ *  * bg-image: background image
+ * <pre><div timeline-textbox box-type="quote" bg-colour="#226666" bg-image="image1.jpg" date-place="June 1970" title-text="Sample title" caption-text="caption text"></div></pre>
+ */
+GDirectives.directive("timelineTextbox", [function() {
+    var linker = function(scope,elem,attr) {
+
+    };
+    return {
+        templateUrl: 'views/templates/timelineTextbox.html',
+        restrict: 'A',
+        transclude : true,
+        link: linker,
+        scope: {
+            boxType: '@',
+            datePlace: '@',
+            titleText: '@',
+            captionText: '@',
+            bgColour: '@',
+            bgImage: '@'
         }
     };
 }]);
