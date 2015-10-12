@@ -10,8 +10,5 @@
     <ConfirmationsSetting value="0" id="Add" />
     <ConfirmationsSetting value="0" id="Remove" />
   </component>
-  <component name="ProjectRootManager" version="2" project-jdk-name="rbenv: 2.1.0" project-jdk-type="RUBY_SDK" />
-  <component name="UnicodeBrowser">
-    <option name="fontName" value="Menlo" />
-  </component>
+  <component name="ProjectRootManager" version="2" project-jdk-name="RVM: ruby-1.9.3-p194 [global]" project-jdk-type="RUBY_SDK" />
 </project>
