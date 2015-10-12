@@ -310,6 +310,83 @@ GDirectives.directive("readmore", ['$timeout', function($timeout) {
  * @description
  * Mosaic block
  */
+GDirectives.directive("mosaic", ['$http', '$window', '$timeout','$mdDialog', function($http, $window, $timeout, $mdDialog) {
+
+    var linker = function(scope, elem, attr) {
+
+        var wall;
+        scope.$on('LastBrick', function(event){
+            wall = new freewall("#freewall");
+            wall.reset({
+                selector: '.brick',
+                animate: true,
+                cellW: 250,
+                cellH: 'auto',
+                onResize: function() {
+                    wall.fitWidth();
+                }
+            });
+            wall.container.find('.brick img').load(function() {
+                wall.fitWidth();
+            });
+        });
+
+        scope.tiles = buildGridModel({
+            src : "views/content/img/mosaic/exp/",
+            title: "Test Title ",
+            background: "",
+            detail: false
+        });
+
+        scope.zoomBrick = function(tile, ev) {
+            $mdDialog.show({
+                templateUrl: 'views/templates/mosaic_dialog.html',
+                controller: function MosaicDialogController($scope, $mdDialog, url) {
+                    $scope.url = url;
+                },
+                clickOutsideToClose: true,
+                escapeToClose: true,
+                targetEvent: ev,
+                locals: {
+                    url: tile.src
+                }
+            });
+
+        };
+
+        // This generates image links based on the above model
+        // Source for 'large' and 'context view' detail images are determined by the same image root + '_640.JPG' or otherwise
+        function buildGridModel(tileTmpl) {
+            var it, results = [ ];
+
+            for (var j=1; j<11; j++) {
+                it = angular.extend({},tileTmpl);
+                it.src  = it.src + 'image'+j;
+                it.title = it.title + (j);
+                it.span  = { row : 1, col : 1 };
+                it.ind = j;
+                results.push(it);
+            }
+            return results;
+        }
+    };
+    return {
+        templateUrl: 'views/templates/mosaic.html',
+        restrict: 'A',
+        transclude : true,
+        link: linker
+    }
+}]);
+
+GDirectives.directive('repeatBrick', function() {
+    return function(scope, element, attrs) {
+        if (scope.$last){
+            scope.$emit('LastBrick');
+        }
+    }
+});
+
+/****** old logic from Richard
 GDirectives.directive("mosaic", ['$http', '$window', '$timeout', function($http, $window, $timeout) {
 
     //  A potential alternative for mosaic:  http://vnjs.net/www/project/freewall/#
@@ -387,7 +464,7 @@ GDirectives.directive("mosaic", ['$http', '$window', '$timeout', function($http,
         transclude : true,
         link: linker
     }
-}]);
+}]);*/
 
 /**
  * @ngdoc directive

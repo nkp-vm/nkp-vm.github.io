@@ -5,6 +5,24 @@ NG_DOCS={
   "pages": [
     {
       "section": "api",
+      "id": "caption",
+      "shortName": "caption",
+      "type": "directive",
+      "moduleName": "caption",
+      "shortDescription": "Add this attribute to make &#39;caption&#39; element.",
+      "keywords": "add api attribute caption content directive element"
+    },
+    {
+      "section": "api",
+      "id": "greybox",
+      "shortName": "greybox",
+      "type": "directive",
+      "moduleName": "greybox",
+      "shortDescription": "Add this attribute to make &#39;grey box&#39; element.",
+      "keywords": "add api attribute box content create directive element funfact grey greybox icon type warning"
+    },
+    {
+      "section": "api",
       "id": "hms",
       "shortName": "hms",
       "type": "overview",
@@ -20,15 +38,6 @@ NG_DOCS={
       "moduleName": "hms",
       "shortDescription": "Provide access to queries for Quiz and Poll. Provide dictionary file for site searching. Shuffle arrays.",
       "keywords": "$http access api arrays dataservice dictionary file hms interface poll provide queries quiz searching shuffle site"
-    },
-    {
-      "section": "api",
-      "id": "hms.greybox",
-      "shortName": "hms.greybox",
-      "type": "directive",
-      "moduleName": "hms",
-      "shortDescription": "Add this attribute to make &#39;grey box&#39; element.",
-      "keywords": "add api attribute box content create directive element funfact grey greybox hms icon type warning"
     },
     {
       "section": "api",
@@ -50,48 +59,30 @@ NG_DOCS={
     },
     {
       "section": "api",
-      "id": "hms.quickquestion",
-      "shortName": "hms.quickquestion",
-      "type": "directive",
-      "moduleName": "hms",
-      "shortDescription": "Add this attribute to make an element (use a div) containing &#39;did you know?&#39; comment.",
-      "keywords": "add answer api asked attribute box clicking comment didn directive div element hms question quickquestion"
-    },
-    {
-      "section": "api",
-      "id": "hms.readmore",
-      "shortName": "hms.readmore",
-      "type": "directive",
-      "moduleName": "hms",
-      "shortDescription": "Add this attribute to make an element (use a div) containing &#39;read more&#39; information.",
-      "keywords": "add api attribute box children clicked directive div element hidden hms html inside read readmore rid rm1 task title type unique"
-    },
-    {
-      "section": "api",
-      "id": "hms.slidable",
-      "shortName": "hms.slidable",
-      "type": "directive",
-      "moduleName": "hms",
-      "shortDescription": "Creates a div element capable of sliding open and closed",
-      "keywords": "api capable closed creates directive div element hms open slidable sliding"
-    },
-    {
-      "section": "api",
-      "id": "hms.sliderToggle",
-      "shortName": "hms.sliderToggle",
-      "type": "directive",
-      "moduleName": "hms",
-      "shortDescription": "Listens for a click on this element to activate a slidable element.",
-      "keywords": "activate api click directive element hms listens slidable slidertoggle"
-    },
-    {
-      "section": "api",
       "id": "link",
       "shortName": "link",
       "type": "directive",
       "moduleName": "link",
       "shortDescription": "Add this attribute to improve on the &#39;&#39; link element showing an external link icon.",
       "keywords": "add api attribute directive element external href icon improve link showing"
+    },
+    {
+      "section": "api",
+      "id": "mosaic",
+      "shortName": "mosaic",
+      "type": "directive",
+      "moduleName": "mosaic",
+      "shortDescription": "Mosaic block",
+      "keywords": "api block directive mosaic"
+    },
+    {
+      "section": "api",
+      "id": "quickquestion",
+      "shortName": "quickquestion",
+      "type": "directive",
+      "moduleName": "quickquestion",
+      "shortDescription": "Add this attribute to make an element (use a div) containing &#39;did you know?&#39; comment.",
+      "keywords": "add answer api asked attribute box clicking comment didn directive div element question quickquestion"
     },
     {
       "section": "api",
@@ -113,12 +104,39 @@ NG_DOCS={
     },
     {
       "section": "api",
+      "id": "readmore",
+      "shortName": "readmore",
+      "type": "directive",
+      "moduleName": "readmore",
+      "shortDescription": "Add this attribute to make an element (use a div) containing &#39;read more&#39; information.",
+      "keywords": "add api attribute directive div element read readmore"
+    },
+    {
+      "section": "api",
       "id": "sectionBox",
       "shortName": "sectionBox",
       "type": "directive",
       "moduleName": "sectionBox",
       "shortDescription": "Add this element anywhere to create a Video / GIF player box. Source material is taken from the current module route&#39;s corresponding &#39;img&#39; subfolder",
       "keywords": "activates add api box click closed connected corresponding create current directive displayed element false file folding force force-iphone-video gif gif-src h264 image img iphone jpg match material module mp4 overlay panel play player png poster-src route screen section-id sectionbox set small source static subfolder text text-xx- video video-src"
+    },
+    {
+      "section": "api",
+      "id": "timeline-textbox",
+      "shortName": "timeline-textbox",
+      "type": "directive",
+      "moduleName": "timeline-textbox",
+      "shortDescription": "Add this attribute to make &#39;timeline&#39; box element.",
+      "keywords": "add api attribute background bg-colour bg-image box box-type caption caption-text colour content date-place directive element image image1 jpg june place quote regular sample text timeline timeline-textbox title title-text type"
+    },
+    {
+      "section": "api",
+      "id": "timelinebox",
+      "shortName": "timelinebox",
+      "type": "directive",
+      "moduleName": "timelinebox",
+      "shortDescription": "Add this attribute to make &#39;timeline&#39; box element.",
+      "keywords": "add api attribute box caption date-place directive element image image-src item june link place test text timeline timelinebox title views"
     }
   ],
   "apis": {

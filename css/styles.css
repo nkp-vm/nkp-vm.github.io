@@ -872,3 +872,22 @@ ul.dashlist li:before, ol.dashlist li:before {
     }
 
 }
+
+.free-wall {
+    margin: 0px;
+}
+
+.brick {
+    max-width: 250px;
+}
+
+.brick .img {
+    margin: 0;
+    display: block;
+}
+
+md-dialog {
+    min-width: 70% !important;
+    max-width: 90% !important;
+    height: auto;
+}
