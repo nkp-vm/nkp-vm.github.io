@@ -310,7 +310,7 @@ GDirectives.directive("readmore", ['$timeout', function($timeout) {
  * @description
  * Mosaic block
  */
-GDirectives.directive("mosaic", ['$http', '$window', '$timeout','$mdDialog', function($http, $window, $timeout, $mdDialog) {
+GDirectives.directive("mosaic", ['$mdDialog', function($mdDialog) {
 
     var linker = function(scope, elem, attr) {
 
@@ -320,7 +320,7 @@ GDirectives.directive("mosaic", ['$http', '$window', '$timeout','$mdDialog', fun
             wall.reset({
                 selector: '.brick',
                 animate: true,
-                cellW: 250,
+                cellW: 150,
                 cellH: 'auto',
                 onResize: function() {
                     wall.fitWidth();
@@ -343,6 +343,10 @@ GDirectives.directive("mosaic", ['$http', '$window', '$timeout','$mdDialog', fun
                 templateUrl: 'views/templates/mosaic_dialog.html',
                 controller: function MosaicDialogController($scope, $mdDialog, url) {
                     $scope.url = url;
+
+                    $scope.closeDialog = function() {
+                        $mdDialog.hide();
+                    }
                 },
                 clickOutsideToClose: true,
                 escapeToClose: true,
@@ -379,7 +383,7 @@ GDirectives.directive("mosaic", ['$http', '$window', '$timeout','$mdDialog', fun
 }]);
 
 GDirectives.directive('repeatBrick', function() {
-    return function(scope, element, attrs) {
+    return function(scope) {
         if (scope.$last){
             scope.$emit('LastBrick');
         }
