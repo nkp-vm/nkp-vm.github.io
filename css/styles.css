@@ -60,7 +60,7 @@ footer {
     padding-bottom: 10px;
 }
 
-.footerImage {
+.footerImage img {
     max-height: 80px !important;
 }
 
@@ -813,8 +813,9 @@ ul.dashlist li:before, ol.dashlist li:before {
         margin: 0 0 0 7%;
     }
 
-    .footerImage {
-        mmax-width: 60% !important;
+    .footerImage img {
+        max-width: 130px !important;
+        margin-bottom: 10px !important;
     }
 
 }
@@ -879,6 +880,11 @@ ul.dashlist li:before, ol.dashlist li:before {
     .gfooter img {
         width: 50%;
         height: auto;
+    }
+
+    .footerImage img {
+        max-width: 130px !important;
+        margin-bottom: 10px !important;
     }
 
 }
