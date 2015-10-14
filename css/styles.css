@@ -64,6 +64,24 @@ footer {
     max-height: 80px !important;
 }
 
+
+md-toast {
+    min-width: 100% !important;
+    width: 100% !important;
+}
+
+md-toast span {
+    margin: 10px !important;
+}
+
+md-toast.md-left {
+    left: 0px !important;
+}
+
+md-toast.md-bottom {
+    bottom: 0px !important;
+}
+
 /*
 p {
     font-size: 1.25em;
