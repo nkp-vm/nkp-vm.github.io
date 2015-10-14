@@ -180,6 +180,7 @@ GApp.controller('IndexCtrl', ['$scope', '$translate', '$mdSidenav', '$location',
         var toast = $mdToast.simple()
             .content('This site is best viewed on Chrome, Firefox or Opera. You are currently using a different browser.')
             .action('OK')
+            .hideDelay(false)
             .highlightAction(false);
         $mdToast.show(toast).then(function(response) {
             if ( response == 'ok' ) {
