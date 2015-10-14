@@ -55,7 +55,7 @@ footer {
 }
 
 footer {
-    background-color: #222;
+    background-color: #000000;
     padding-top: 35px;
     padding-bottom: 10px;
 }
@@ -683,7 +683,7 @@ ul.dashlist li:before, ol.dashlist li:before {
 }
 .quotebox {
     background-color: #FFFFFF;
-    padding: 0 20% 0 8%;
+    padding: 0;
 }
 .quotebox-quote {
     font-family:"HelveticaNeueW01-75Bold", "Arial", sans-serif;
@@ -871,6 +871,10 @@ ul.dashlist li:before, ol.dashlist li:before {
         height: auto;
     }
 
+}
+
+.hmsbtn {
+    background-color: #666666 !important;
 }
 
 .free-wall {
