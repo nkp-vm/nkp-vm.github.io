@@ -59,6 +59,11 @@ footer {
     padding-top: 35px;
     padding-bottom: 10px;
 }
+
+.footerImage {
+    max-height: 80px !important;
+}
+
 /*
 p {
     font-size: 1.25em;
@@ -807,6 +812,11 @@ ul.dashlist li:before, ol.dashlist li:before {
     .quotebox {
         margin: 0 0 0 7%;
     }
+
+    .footerImage {
+        mmax-width: 60% !important;
+    }
+
 }
 
 
