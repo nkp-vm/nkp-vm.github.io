@@ -1,11 +1,11 @@
 <div class="timeline-textbox" layout="column" layout-align="start start">
 
-        <img class="tt-bg-image" src="views/content/img/timeline/{{bgImage}}">
+        <img class="tt-bg-image" ng-src="views/content/img/timeline/{{bgImage}}">
         <div class="tt-tint-colour" ng-style="{opacity: 0.8, backgroundColor: bgColour}"></div>
 
     <div class="tt-text">
         <h2>{{datePlace}}</h2>
-        <img class="widget-icon" src="views/icons/body/greybox/quotation-white.svg" ng-show="boxType==='quote'">
+        <img class="widget-icon" ng-src="views/icons/body/greybox/quotation-white.svg" ng-show="boxType==='quote'">
         <h3>{{titleText}}</h3>
         <span ng-show="boxType==='quote'">{{captionText}}</span>
     </div>
