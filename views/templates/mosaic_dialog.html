@@ -1,13 +1,13 @@
 <md-dialog aria-label="">
     <md-content ng-click="closeDialog()">
         <div layout="row" hide-sm hide-md>
-            <img src="{{url}}.jpeg" width="100%" aria-label="">
-            <img src="{{url}}.jpeg" width="100%" aria-label="">
+            <img ng-src="{{url+'.jpeg'}}" width="100%" aria-label="">
+            <img ng-src="{{ url +'_1.jpeg'}}"  err-src="{{url+'.jpeg'}}" width="100%" aria-label="">
         </div>
 
         <div layout="column" hide-gt-md>
-            <img src="{{url}}.jpeg" width="100%" aria-label="">
-            <img src="{{url}}.jpeg" width="100%" aria-label="">
+            <img ng-src="{{url+'.jpeg'}}" width="100%" aria-label="">
+            <img ng-src="{{ url +'_1.jpeg'}}"  err-src="{{url+'.jpeg'}}" width="100%" aria-label="">
         </div>
     </md-content>
 </md-dialog>
