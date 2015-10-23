@@ -13,9 +13,9 @@
   "ARIA_MENU": "åpent eller lukk meny",
   "SIDEMENUITEM_SELECTED": "This menuitem is currently selected",
   "intro" : "Intro",
-  "context" : "Context",
-  "timeline" : "Timeline",
-  "collection" : "Collection",
+  "context" : "Kontekst",
+  "timeline" : "Tidslinje",
+  "collection" : "Kolleksjon",
   "provenance" : "Provenance",
   "archival_process" : "Archival Process",
   "about" : "About"

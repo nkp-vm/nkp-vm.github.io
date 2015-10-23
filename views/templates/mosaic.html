@@ -1,5 +1,5 @@
 <div id="freewall" class="free-wall">
     <div class="brick" ng-repeat="tile in tiles" repeat-brick ng-click="zoomBrick(tile, $event)">
-        <img src="{{tile.src}}.jpeg" width="100%">
+        <img ng-src="{{tile.src}}.jpeg" width="100%">
     </div>
 </div>
