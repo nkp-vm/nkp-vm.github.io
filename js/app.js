@@ -145,7 +145,7 @@ GApp.config(['$httpProvider', function($httpProvider) {
  * @description
  * Controller for basic site functionality. Takes care of common functions such as menu and language switching.
  */
-GApp.controller('IndexCtrl', ['$scope', '$translate', '$mdSidenav', '$location', '$routeParams', '$timeout', '$window', 'smoothScroll', 'DataService', 'CONSTANTS', '$mdToast', function($scope, $translate, $mdSidenav, $location, $routeParams, $timeout, $window, smoothScroll, DataService, CONSTANTS, $mdToast) {
+GApp.controller('IndexCtrl', ['$scope', '$translate', '$mdSidenav', '$location', '$routeParams', '$timeout', '$window', 'smoothScroll', 'DataService', 'CONSTANTS', '$mdToast', '$cookies', function($scope, $translate, $mdSidenav, $location, $routeParams, $timeout, $window, smoothScroll, DataService, CONSTANTS, $mdToast, $cookies) {
     $scope.modules = CONSTANTS.MODULE_NAME_ARRAY;
     $scope.currentLanguage = 'en';
     $scope.dymanicTheme = 'default';
@@ -176,18 +176,23 @@ GApp.controller('IndexCtrl', ['$scope', '$translate', '$mdSidenav', '$location',
 
     //detect whether client uses Chrome or Firefox, and display a gentle message if not
     var userAgent = $window.navigator.userAgent;
-    if(userAgent.indexOf('Chrome') == -1 && userAgent.indexOf('Firefox') == -1 && userAgent.indexOf('Opera') == -1) {
-        var toast = $mdToast.simple()
-            .content('This site is best viewed on Chrome, Firefox or Opera. You are currently using a different browser.')
-            .action('OK')
-            .hideDelay(false)
-            .highlightAction(false);
-        $mdToast.show(toast).then(function(response) {
-            if ( response == 'ok' ) {
+    var userAgentViewed = $cookies.get('userAgentViewed');
 
-            }
-        });
+    if(userAgent.indexOf('Chrome') == -1 && userAgent.indexOf('Firefox') == -1 && userAgent.indexOf('Opera') == -1) {
+        if(userAgentViewed !== "true") {
+            var toast = $mdToast.simple()
+                .content('This site is best viewed on Chrome, Firefox or Opera. You are currently using a different browser.')
+                .action('OK')
+                .hideDelay(false)
+                .highlightAction(false);
+            $mdToast.show(toast).then(function(response) {
+                if ( response === 'ok' ) {
+                    $cookies.put('userAgentViewed', true);
+                }
+            });
+        }
     }
+
 
 }]);
 

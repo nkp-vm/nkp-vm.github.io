@@ -379,7 +379,7 @@ GDirectives.directive("mosaic", ['$mdDialog', function($mdDialog) {
         function buildGridModel(tileTmpl) {
             var it, results = [ ];
 
-            for (var j=1; j<11; j++) {
+            for (var j=1; j<13; j++) {
                 it = angular.extend({},tileTmpl);
                 it.src  = it.src + 'image'+j;
                 it.title = it.title + (j);

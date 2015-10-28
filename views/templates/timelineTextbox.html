@@ -3,7 +3,7 @@
         <img class="tt-bg-image" ng-src="views/content/img/timeline/{{bgImage}}">
         <div class="tt-tint-colour" ng-style="{opacity: 0.8, backgroundColor: bgColour}"></div>
 
-    <div class="tt-text">
+    <div ng-class="boxType==='quote' ? 'tt-text-quote' : 'tt-text'">
         <h2>{{datePlace}}</h2>
         <img class="widget-icon" ng-src="views/icons/body/greybox/quotation-white.svg" ng-show="boxType==='quote'">
         <h3>{{titleText}}</h3>
