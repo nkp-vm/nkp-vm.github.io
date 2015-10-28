@@ -3,15 +3,16 @@
   "version": "0.1.0",
   "dependencies": {
     "angular": "1.4.x",
-    "angular-route": "",
-    "angular-sanitize": "",
     "angular-animate": "",
     "angular-aria": "1.4.x",
+    "angular-cookies": "~1.4.7",
     "angular-material": "0.11.x",
+    "angular-route": "",
+    "angular-sanitize": "",
+    "angular-smooth-scroll": "ngSmoothScroll#~1.7.1",
     "angular-translate": "2.8.x",
     "angular-translate-loader-static-files": "~2.8.x",
     "angular-translate-storage-local": "",
-    "ng-device-detector": "~1.1.8",
-    "angular-smooth-scroll": "ngSmoothScroll#~1.7.1"
+    "ng-device-detector": "~1.1.8"
   }
 }
