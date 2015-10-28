@@ -1,6 +1,6 @@
 <div class="timeline-textbox" layout="column" layout-align="start start">
 
-        <img class="tt-bg-image" ng-src="views/content/img/timeline/{{bgImage}}">
+        <img ng-if="bgImage !== ''" class="tt-bg-image" ng-src="views/content/img/timeline/{{bgImage}}" >
         <div class="tt-tint-colour" ng-style="{opacity: 0.8, backgroundColor: bgColour}"></div>
 
     <div ng-class="boxType==='quote' ? 'tt-text-quote' : 'tt-text'">
