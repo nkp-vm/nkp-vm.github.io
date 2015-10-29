@@ -340,9 +340,10 @@ md-card {
     margin: 4px 6px;
 }
 md-sidenav {
-    width: 175px;
+    width: 250px;
     min-width: 100px;
     max-height: 800px;
+    overflow: hidden;
 }
 md-sidenav, md-sidenav md-content.md-main-theme, md-sidenav md-content md-list-item {
     background-color: #525454;
