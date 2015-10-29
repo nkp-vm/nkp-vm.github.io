@@ -849,6 +849,11 @@ ul.dashlist li:before, ol.dashlist li:before {
         opacity: .8 !important;
     }
 
+    .mosaicDialogImg {
+        width: 100% !important;
+        height: auto !important;
+    }
+
 }
 
 
@@ -940,16 +945,6 @@ ul.dashlist li:before, ol.dashlist li:before {
 
 md-dialog {
     cursor: pointer !important;
-    min-width: auto !important;
-    max-width: auto !important;
-    width: auto;
-    min-height: auto !important;
-    max-height: auto !important;
-    height: auto;
     background: transparent !important;
     border-radius: 0;
-}
-
-md-dialog md-content {
-    background: transparent !important;
 }
