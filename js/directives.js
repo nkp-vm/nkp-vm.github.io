@@ -325,9 +325,11 @@ GDirectives.directive('errSrc', function() {
  * @description
  * Mosaic block
  */
-GDirectives.directive("mosaic", ['$mdDialog', function($mdDialog) {
+GDirectives.directive("mosaic", ['$mdDialog','$http', function($mdDialog, $http) {
 
     var linker = function(scope, elem, attr) {
+
+        scope.tiles = [];
 
         var wall;
         scope.$on('LastBrick', function(event){
@@ -346,19 +348,19 @@ GDirectives.directive("mosaic", ['$mdDialog', function($mdDialog) {
             });
         });
 
-        scope.tiles = buildGridModel({
+        /*scope.tiles = buildGridModel({
             src : "views/content/img/mosaic/exp/",
             title: "Test Title ",
             background: "",
             detail: false
-        });
+        });*/
 
         scope.zoomBrick = function(tile, ev) {
 
             $mdDialog.show({
                 templateUrl: 'views/templates/mosaic_dialog.html',
-                controller: function MosaicDialogController($scope, $mdDialog, url) {
-                    $scope.url = url;
+                controller: function MosaicDialogController($scope, $mdDialog, tile) {
+                    $scope.tile = tile;
 
                     $scope.closeDialog = function() {
                         $mdDialog.hide();
@@ -368,27 +370,26 @@ GDirectives.directive("mosaic", ['$mdDialog', function($mdDialog) {
                 escapeToClose: true,
                 targetEvent: ev,
                 locals: {
-                    url: tile.src
+                    tile: tile
                 }
             });
 
         };
 
-        // This generates image links based on the above model
-        // Source for 'large' and 'context view' detail images are determined by the same image root + '_640.JPG' or otherwise
-        function buildGridModel(tileTmpl) {
-            var it, results = [ ];
 
-            for (var j=1; j<13; j++) {
-                it = angular.extend({},tileTmpl);
-                it.src  = it.src + 'image'+j;
-                it.title = it.title + (j);
-                it.span  = { row : 1, col : 1 };
-                it.ind = j;
-                results.push(it);
-            }
-            return results;
+        function buildGridModel() {
+            var abspath = 'views/content/img/mosaic/exp';
+
+            $http.get(abspath+'/init.json').then(function(res) {
+                res.data.forEach(function (image) {
+                    image.src = abspath+"/"+image.src;
+                    image.src_alt = (image.src).substring(0, image.src.length-4)+'_1.jpg';
+                    scope.tiles.push(image);
+                });
+            });
         }
+
+        buildGridModel();
     };
     return {
         templateUrl: 'views/templates/mosaic.html',
