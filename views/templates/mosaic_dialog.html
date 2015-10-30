@@ -1,13 +1,13 @@
-<md-dialog aria-label="">
-    <div ng-click="closeDialog()" flex layout>
+<md-dialog aria-label="" class="mosaicDialog">
+    <md-content ng-click="closeDialog()">
         <div layout="row" hide-sm hide-md>
             <img class="mosaicDialogImg" ng-src="{{tile.src}}" aria-label="">
             <img class="mosaicDialogImg" ng-src="{{tile.src_alt}}" err-src="{{url+'.jpg'}}" aria-label="">
         </div>
 
-        <div layout="column" hide-gt-md>
+        <div layout="column" hide-gt-md style="width: 100%;">
             <img class="mosaicDialogImg" ng-src="{{tile.src}}" aria-label="">
             <img class="mosaicDialogImg" ng-src="{{tile.src_alt}}" err-src="{{tile.src}}" aria-label="">
         </div>
-    </div>
+    </md-content>
 </md-dialog>

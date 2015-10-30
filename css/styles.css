@@ -855,6 +855,9 @@ ul.dashlist li:before, ol.dashlist li:before {
         height: auto !important;
     }
 
+    .mosaicDialog md-content {
+        background: transparent !important;
+    }
 }
 
 
@@ -944,9 +947,14 @@ ul.dashlist li:before, ol.dashlist li:before {
     display: block;
 }
 
-md-dialog {
+.mosaicDialog {
     cursor: pointer !important;
     background: transparent !important;
     border-radius: 0;
     min-height: 60% !important;
+    box-shadow: none !important;
+}
+
+.mosaicDialog md-content {
+    background: transparent !important;
 }
