@@ -175,7 +175,7 @@ GApp.controller('IndexCtrl', ['$scope', '$translate', '$mdSidenav', '$location',
 
 
     //detect whether client uses Chrome or Firefox, and display a gentle message if not
-    var userAgent = $window.navigator.userAgent;
+    /*var userAgent = $window.navigator.userAgent;
     var userAgentViewed = $cookies.get('userAgentViewed');
 
     if(userAgent.indexOf('Chrome') == -1 && userAgent.indexOf('Firefox') == -1 && userAgent.indexOf('Opera') == -1) {
@@ -191,7 +191,7 @@ GApp.controller('IndexCtrl', ['$scope', '$translate', '$mdSidenav', '$location',
                 }
             });
         }
-    }
+    }*/
 
 
 }]);
