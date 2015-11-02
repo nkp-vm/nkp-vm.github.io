@@ -652,7 +652,7 @@ GDirectives.directive("quotebox", [function() {
  */
 GDirectives.directive("imageAndCaption", [function() {
     return {
-        template: '<div class="image-and-caption"><img ng-src="{{imageSrc}}"><p>{{captionText}}</p></div>',
+        template: '<div class="image-and-caption"><img ng-src="views/content/img/{{imageSrc}}"><p>{{captionText}}</p></div>',
         restrict: 'E',
         transclude : true,
         scope : {
