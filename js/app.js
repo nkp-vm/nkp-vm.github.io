@@ -40,7 +40,7 @@ GApp.constant("CONSTANTS", {
     // Variables
     CROP_MIN_WIDTH : 1281,
     GIF_MAX_WIDTH : 768,
-    MODULE_NAME_ARRAY : ['intro', 'context', 'timeline', 'collection', 'provenance', 'archival_process', 'about']
+    MODULE_NAME_ARRAY : ['intro', 'context', 'timeline', 'collection', 'provenance', 'process', 'about']
 });
 
 /* --------------  CONFIGURATION ---------------- */
