@@ -197,13 +197,14 @@ GDirectives.directive("sectionBox", ['$window', '$animate', 'smoothScroll', '$ro
             }
             // Otherwise play the video
             else if(scope.videoSrc !== "") {
-                scope.showVideo = true;
                 if(playing) {
                     video.pause();
                     video.currentTime = 0;
                     playing = false;
+                    scope.showVideo = false;
                 }
                 else {
+                    scope.showVideo = true;
                     video.play();
                     playing = true;
                 }
