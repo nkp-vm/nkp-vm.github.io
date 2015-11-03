@@ -378,7 +378,7 @@ GDirectives.directive("mosaic", ['$mdDialog','$http', function($mdDialog, $http)
 
 
         function buildGridModel() {
-            var abspath = 'views/content/img/mosaic/exp';
+            var abspath = 'views/content/img/mosaic';
 
             $http.get(abspath+'/init.json').then(function(res) {
                 res.data.forEach(function (image) {
