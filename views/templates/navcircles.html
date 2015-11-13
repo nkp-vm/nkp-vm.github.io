@@ -1,0 +1,10 @@
+<div class="navCirclesContainer">
+    <ol>
+        <li ng-repeat="item in navlist" ng-click="seekToAnchor(item._id)">
+
+                <div class="navCircle" ng-class="{active: item.active}"></div>
+                <span>{{item._id}}</span>
+
+        </li>
+    </ol>
+</div>

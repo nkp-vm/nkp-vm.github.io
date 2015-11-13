@@ -796,6 +796,63 @@ ul.dashlist li:before, ol.dashlist li:before {
 
 /* iPhone, etc portrait ---- */
 
+
+/* -------  Nav Circles --------------------- */
+
+ol {
+    -webkit-margin-before: 0;
+    -webkit-margin-after: 0;
+    -webkit-padding-start: 0;
+    list-style: none;
+}
+
+.navCirclesContainer {
+    position: fixed;
+    top: 30px;
+    left: 15px;
+}
+
+.navCircle {
+    border: 1px solid #000000;
+    border-radius: 50%;
+    display: inline-block;
+    height: 8px;
+    opacity: 0.75;
+    -webkit-transition: opacity 0.3s ease-in-out;
+    width: 8px;
+    background: #FFF;
+}
+
+.navCirclesContainer li span {
+    display: none;
+    color: #FFF;
+    /*font-family: Theinhardt-Medium, sans-serif;*/
+    font-size: 0.75em;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    padding-left: 0.5em;
+}
+
+.navCirclesContainer li:hover .navCircle {
+    opacity: 1;
+    cursor: hand;
+}
+
+.navCirclesContainer li:hover span {
+    display: inline-block;
+    cursor: hand;
+}
+
+.navCircle.active {
+    background: #00CC00;
+}
+
+.navCirclesContainer li:focus {
+    outline: none;
+}
+
+/* -------  Media --------------------- */
+
 @media only screen and (max-width: 960px) {
 
     .topQuote {

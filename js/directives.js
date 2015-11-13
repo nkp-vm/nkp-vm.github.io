@@ -40,7 +40,7 @@ GDirectives.directive('ngEnter', ['$timeout', function ($timeout) {
  *          <section-box></section-box>
  *      </pre>
  */
-GDirectives.directive("sectionBox", ['$window', '$animate', 'smoothScroll', '$route', '$sce', '$timeout', 'CONSTANTS', function($window, $animate, smoothScroll, $route, $sce, $timeout, CONSTANTS){
+GDirectives.directive("sectionBox", ['$window', '$animate', '$rootScope', 'smoothScroll', '$route', '$sce', '$timeout', 'CONSTANTS', 'NavListing', function($window, $animate, $rootScope, smoothScroll, $route, $sce, $timeout, CONSTANTS, NavListing){
     var linker = function(scope, element, attrs) {
         var video;
         var notPlayed = true;
@@ -61,7 +61,6 @@ GDirectives.directive("sectionBox", ['$window', '$animate', 'smoothScroll', '$ro
         if (typeof scope.timelineMode === "undefined") { scope.timelineMode = false;}
         if(scope.timelineMode === "true") { scope.timelineMode = true; }
 
-
         scope.slideId = attrs.id+'_slide';
         scope.showVideo = false;
         scope.noPreloadGifSrcPath = imagePath + scope.posterSrc;
@@ -70,6 +69,17 @@ GDirectives.directive("sectionBox", ['$window', '$animate', 'smoothScroll', '$ro
         scope.detailActive = false;
         scope.includeSrcPath = CONSTANTS.TOP_LEVEL_MODULE_PATH + $route.current.params.language + '/' + attrs.id + '.html';
         scope.slideOpen = false;
+
+        function reportPosition() {
+            NavListing.setNavItem({
+                _id: attrs.id,
+                offset: element.prop('offsetTop')
+            });
+        }
+        scope.$on('reportPositions', function(e){
+            reportPosition();
+        });
+        reportPosition();
 
         /* ----   Experimental code for timeline sticky control - don't delete! -----------  */
 /*
@@ -131,6 +141,7 @@ GDirectives.directive("sectionBox", ['$window', '$animate', 'smoothScroll', '$ro
                     if(scope.videoSrc !== "") {
                         video.style.height = '0';   // Video height interferes with slide closed - must set it's height also..
                     }
+                    $rootScope.$broadcast('reportPositions');
                 }, 10);
             }
             else {                                  // OPENING
@@ -147,6 +158,7 @@ GDirectives.directive("sectionBox", ['$window', '$animate', 'smoothScroll', '$ro
                     var rcontentHeight = rcontent.offsetHeight;
                     aTarget.removeClass('notransition');
                     scope.slideOpen = true;
+                    $rootScope.$broadcast('reportPositions');
                 }, 2100);
             }
             scope.detailActive = !scope.detailActive;
@@ -210,22 +222,11 @@ GDirectives.directive("sectionBox", ['$window', '$animate', 'smoothScroll', '$ro
                 }
             }
         };
-        scope.bricks = [];
         // Setup on initial creation
         $timeout(function timeout() {
             pickLanguage();
             video = element.find('video')[0];
-            getBricks();
         });
-
-        function getBricks() {
-            var i=1;
-            while(i< 61) {
-                var b = { src: 'views/content/img/mosaic/image0'+i+'.png' }
-                scope.bricks.push(b);
-                i++;
-            }
-        }
     };
     return {
         restrict: 'A',
@@ -487,6 +488,51 @@ GDirectives.directive("mosaic", ['$http', '$window', '$timeout', function($http,
         link: linker
     }
 }]);*/
+
+/**
+ * @ngdoc directive
+ * @name navCircles
+ * @restrict A
+ * @description
+ * Add this attribute to make 'navCircles' element.
+ *  * count:   Number of circles to display
+ *  * title:   Title of the item
+ *  * image-src:   Link to image
+ *  * caption:   caption text
+ * <pre><div timelinebox date-place="June 1970" title="test 1" image-src="views/content/img/timeline/..." caption="caption text">Detailed text about the item</div></pre>
+ */
+GDirectives.directive("navCircles", ['$document', '$window', 'NavListing', function($document, $window, NavListing) {
+    var linker = function(scope, elem, attr) {
+        var scrollPosition = 0, activeIndex = 0;
+        scope.navlist = NavListing.navList;
+
+        // Set up tracking of page scroll for nav circles. Wait until page is processed to find offsets.
+        var navScrollHandler = function() {
+            scrollPosition = $window.pageYOffset;
+            activeIndex = 0;
+            for (var c = 0; c < scope.navlist.length; c++) {
+                if (scrollPosition >= scope.navlist[c].offset-200) {
+                    activeIndex = c;
+                }
+                scope.navlist[c].active = false;
+            }
+            scope.navlist[activeIndex].active = true;
+            scope.$apply();
+        };
+
+        $document.ready(function () {
+            scope.navlist = NavListing.navList;
+            angular.element($window).bind('scroll', navScrollHandler);
+        });
+
+    };
+    return {
+        templateUrl: 'views/templates/navcircles.html',
+        restrict: 'A',
+        transclude : true,
+        link: linker
+    };
+}]);
 
 /**
  * @ngdoc directive

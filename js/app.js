@@ -43,6 +43,29 @@ GApp.constant("CONSTANTS", {
     MODULE_NAME_ARRAY : ['intro', 'context', 'timeline', 'collection', 'provenance', 'process', 'about']
 });
 
+
+/* --------------  SERVICES ---------------- */
+
+GApp.factory('NavListing', ['CONSTANTS', function(CONSTANTS) {
+    var navList = [];
+    // Set up the initial array by the preset menu items
+    for(var c = 0; c < CONSTANTS.MODULE_NAME_ARRAY.length; c++) {
+        navList.push({_id: CONSTANTS.MODULE_NAME_ARRAY[c], active: false, offset: 0});
+    }
+
+    return {
+        // Modify an offset on an existing menu item
+        setNavItem : function(item) {
+            var i = CONSTANTS.MODULE_NAME_ARRAY.indexOf(item._id);
+            if(i > -1) {
+                // Set offset for the top of this section
+                navList[i].offset = item.offset;
+            }
+        },
+        navList : navList
+    }
+}]);
+
 /* --------------  CONFIGURATION ---------------- */
 
 // Routes are calculated from the module number and current language
@@ -145,11 +168,12 @@ GApp.config(['$httpProvider', function($httpProvider) {
  * @description
  * Controller for basic site functionality. Takes care of common functions such as menu and language switching.
  */
-GApp.controller('IndexCtrl', ['$scope', '$translate', '$mdSidenav', '$location', '$routeParams', '$timeout', '$window', 'smoothScroll', 'DataService', 'CONSTANTS', '$mdToast', '$cookies', function($scope, $translate, $mdSidenav, $location, $routeParams, $timeout, $window, smoothScroll, DataService, CONSTANTS, $mdToast, $cookies) {
+GApp.controller('IndexCtrl', ['$scope', '$translate', '$mdSidenav', '$location', '$document', '$routeParams', '$timeout', '$window', 'smoothScroll', 'DataService', 'CONSTANTS', '$mdToast', '$cookies', 'NavListing', function($scope, $translate, $mdSidenav, $location, $document, $routeParams, $timeout, $window, smoothScroll, DataService, CONSTANTS, $mdToast, $cookies, NavListing) {
     $scope.modules = CONSTANTS.MODULE_NAME_ARRAY;
     $scope.currentLanguage = 'en';
     $scope.dymanicTheme = 'default';
     $scope.currentModule = "";
+    var scrollPosition = 0;
 
     // Open and close menu can be chained to with '.then(function(){})'
     $scope.openMenu = function () {
@@ -172,6 +196,7 @@ GApp.controller('IndexCtrl', ['$scope', '$translate', '$mdSidenav', '$location',
             smoothScroll(sElement, {duration: 500});
         });
     };
+
 
 
     //detect whether client uses Chrome or Firefox, and display a gentle message if not
