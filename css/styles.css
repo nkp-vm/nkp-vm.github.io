@@ -853,6 +853,28 @@ ol {
 
 /* -------  Media --------------------- */
 
+@media only screen and (max-width: 600px) {
+    .floating-menu {
+        margin-right: 50px;
+        margin-top: 12px;
+    }
+    .md-button.md-icon-button {
+        opacity: 0.5;
+    }
+    .stickyHamburger {
+        right: 0px;
+        top: 10px;
+        position: fixed;
+        z-index: 1000;
+        background-color: white;
+    }
+    .stickyHamburger md-icon {
+        opacity: 1;
+        color: black;
+    }
+}
+
+
 @media only screen and (max-width: 960px) {
 
     .topQuote {
