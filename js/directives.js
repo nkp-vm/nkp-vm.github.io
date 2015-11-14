@@ -50,6 +50,7 @@ GDirectives.directive("sectionBox", ['$window', '$animate', '$rootScope', 'smoot
 
         // Sticky Controller vars
         var stickyBox = angular.element(element[0].querySelector('.stickytime'));
+        var presenterHeight = angular.element(element[0].querySelector('.presenter')).prop('offsetHeight');
         var yScrollOffset = 0;
         var contentBottomDistanceFromTop = 0;
         var contentDistanceFromTop = 0;
@@ -69,20 +70,33 @@ GDirectives.directive("sectionBox", ['$window', '$animate', '$rootScope', 'smoot
         scope.detailActive = false;
         scope.includeSrcPath = CONSTANTS.TOP_LEVEL_MODULE_PATH + $route.current.params.language + '/' + attrs.id + '.html';
         scope.slideOpen = false;
+        var timeIndex = 0;
+
+
+        /* -----    This even driven code updates a factory with the section's current offset,
+                    triggered upon open / close ----- */
 
         function reportPosition() {
+            contentDistanceFromTop = element.prop('offsetTop') + presenterHeight;
+            contentBottomDistanceFromTop = element.prop('offsetTop') + element.prop('offsetHeight') - stickyBox.prop('offsetHeight');
+
             NavListing.setNavItem({
                 _id: attrs.id,
-                offset: element.prop('offsetTop')
+                offset: element.prop('offsetTop'),
+                presenterHeight: presenterHeight
             });
+
         }
         scope.$on('reportPositions', function(e){
             reportPosition();
+            $timeout(function() {
+                $rootScope.$broadcast('reportTimelinePositions');
+            }, 2000);
         });
         reportPosition();
 
-        /* ----   Experimental code for timeline sticky control - don't delete! -----------  */
-/*
+        /* ----  Timeline sticky control -----------  */
+
         scope.stickyNation = {
             czech: true,
             norsk: false,
@@ -95,25 +109,34 @@ GDirectives.directive("sectionBox", ['$window', '$animate', '$rootScope', 'smoot
         };
 
         var stickyTimelineHandler = function() {
+            scope.timelist = NavListing.timeList;
+            timeIndex = 0;
             yScrollOffset = $window.pageYOffset;
-            contentDistanceFromTop = element.prop('offsetTop') + angular.element(element[0].querySelector('.presenter')).prop('offsetHeight');
-            contentBottomDistanceFromTop = element.prop('offsetTop') + element.prop('offsetHeight');
             if(yScrollOffset >= contentDistanceFromTop && yScrollOffset < contentBottomDistanceFromTop) {
                 stickyBox.addClass('sticky-fixed');
             }
             else {
                 stickyBox.removeClass('sticky-fixed');
             }
+            for (var d = 0; d < scope.timelist.length; d++) {
+                if (yScrollOffset >= scope.timelist[d].offset) {
+                    timeIndex = d;
+                }
+                scope.timelist[d].active = false;
+            }
+            scope.timelist[timeIndex].active = true;
         };
         function activateStickyTimeline() {
             angular.element($window).bind('scroll', stickyTimelineHandler);
+            NavListing.timelineActive = true;
             //scope.$apply();
         }
         function  deactivateStickyTimeline() {
             angular.element($window).unbind('scroll',stickyTimelineHandler);
+            NavListing.timelineActive = false;
             //scope.$apply();
         }
-*/
+
         /* ------------------------------  */
 
         // Controls open and close of the sliding section in this directive
@@ -125,7 +148,9 @@ GDirectives.directive("sectionBox", ['$window', '$animate', '$rootScope', 'smoot
             var contentHeight = content.offsetHeight+'px';
 
             if(scope.detailActive) {                // CLOSING
-  //              if (scope.timelineMode) { deactivateStickyTimeline(); }
+                if (scope.timelineMode) {
+                    deactivateStickyTimeline();
+                }
 
                 // The CSS 'height: auto' property cannot be animated with CSS transitions. Only actual pixel values can be.
                 // However 'height: auto' should be applied to affect proper page sizing when the content increases height.
@@ -145,7 +170,9 @@ GDirectives.directive("sectionBox", ['$window', '$animate', '$rootScope', 'smoot
                 }, 10);
             }
             else {                                  // OPENING
-  //              if (scope.timelineMode) { activateStickyTimeline(); }
+                if (scope.timelineMode) {
+                    activateStickyTimeline();
+                }
 
                 if(scope.videoSrc !== "") {
                     video.style.height = 'auto';
@@ -516,6 +543,7 @@ GDirectives.directive("navCircles", ['$document', '$window', 'NavListing', funct
                 }
                 scope.navlist[c].active = false;
             }
+
             scope.navlist[activeIndex].active = true;
             scope.$apply();
         };
@@ -546,12 +574,30 @@ GDirectives.directive("navCircles", ['$document', '$window', 'NavListing', funct
  *  * caption:   caption text
  * <pre><div timelinebox date-place="June 1970" title="test 1" image-src="views/content/img/timeline/..." caption="caption text">Detailed text about the item</div></pre>
  */
-GDirectives.directive("timelinebox", [function() {
-    var linker = function(scope,elem,attr) {
+GDirectives.directive("timelinebox", ['NavListing', function(NavListing) {
+    var linker = function(scope,element,attrs) {
+        var presenterHeight = element.prop('offsetHeight');
+        if (typeof scope.bgColour === "undefined") { scope.bgColour = ""; }
+        if (typeof scope.bgImage === "undefined") { scope.bgImage = ""; }
 
+        function reportPosition() {
+            var index = parseInt(attrs.id.substring(9));
+            NavListing.setTimeItem(
+                index,
+                {
+                    text: scope.datePlace,
+                    offset: element.prop('offsetTop'),
+                    height: presenterHeight
+                }
+            );
+        }
+        scope.$on('reportTimelinePositions', function(e) {
+            reportPosition();
+        });
+        reportPosition();
     };
     return {
-        templateUrl: 'views/templates/timelineItem.html',
+        templateUrl: 'views/templates/timelinebox.html',
         restrict: 'A',
         transclude : true,
         link: linker,
@@ -561,7 +607,8 @@ GDirectives.directive("timelinebox", [function() {
             imageSrc: '@',
             captionText: '@',
             bgColour: '@',
-            catColour: '@'
+            catColour: '@',
+            bgImage: '@'
         }
     };
 }]);
@@ -581,6 +628,7 @@ GDirectives.directive("timelinebox", [function() {
  *  * bg-image: background image
  * <pre><div timeline-textbox box-type="quote" bg-colour="#226666" bg-image="image1.jpg" date-place="June 1970" title-text="Sample title" caption-text="caption text"></div></pre>
  */
+/*
 GDirectives.directive("timelineTextbox", [function() {
     var linker = function(scope,elem,attr) {
 
@@ -600,6 +648,7 @@ GDirectives.directive("timelineTextbox", [function() {
         }
     };
 }]);
+*/
 
 /**
  * @ngdoc directive

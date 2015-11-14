@@ -40,7 +40,8 @@ GApp.constant("CONSTANTS", {
     // Variables
     CROP_MIN_WIDTH : 1281,
     GIF_MAX_WIDTH : 768,
-    MODULE_NAME_ARRAY : ['intro', 'context', 'timeline', 'collection', 'provenance', 'process', 'about']
+    MODULE_NAME_ARRAY : ['intro', 'context', 'timeline', 'collection', 'provenance', 'process', 'about'],
+    TIMELINE_ITEMS : 17
 });
 
 
@@ -48,9 +49,16 @@ GApp.constant("CONSTANTS", {
 
 GApp.factory('NavListing', ['CONSTANTS', function(CONSTANTS) {
     var navList = [];
+
+    var timelineStart = 0;
+    var timeList = [];
+    var timelineActive = false;
     // Set up the initial array by the preset menu items
     for(var c = 0; c < CONSTANTS.MODULE_NAME_ARRAY.length; c++) {
-        navList.push({_id: CONSTANTS.MODULE_NAME_ARRAY[c], active: false, offset: 0});
+        navList.push({_id: CONSTANTS.MODULE_NAME_ARRAY[c], active: false, offset: 0, presenterHeight: 0});
+    }
+    for(var d = 0; d < CONSTANTS.TIMELINE_ITEMS; d++) {
+        timeList.push({text: "", active: false, offset: 0, height: 0});
     }
 
     return {
@@ -61,8 +69,18 @@ GApp.factory('NavListing', ['CONSTANTS', function(CONSTANTS) {
                 // Set offset for the top of this section
                 navList[i].offset = item.offset;
             }
+            if(item._id === 'timeline') {
+                timelineStart = navList[CONSTANTS.MODULE_NAME_ARRAY.indexOf(item._id)].offset + item.presenterHeight;
+            }
         },
-        navList : navList
+        setTimeItem : function(index, item) {
+            timeList[index-1].offset = item.offset + timelineStart - 60;
+            timeList[index-1].text = item.text;
+            timeList[index-1].height = item.height;
+        },
+        navList : navList,
+        timeList : timeList,
+        timelineActive : timelineActive
     }
 }]);
 

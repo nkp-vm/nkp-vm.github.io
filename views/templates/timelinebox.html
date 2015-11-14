@@ -1,0 +1,29 @@
+<div class="timeline" ng-style="{ backgroundColor: bgColour !== '' ? bgColour : 'white' }">
+
+    <div class="timeline-background" ng-if="bgImage !== '' && bgColour !== ''" hide show-gt-md>
+        <img class="tt-bg-image" ng-src="views/content/img/timeline/{{bgImage}}">
+        <div class="tt-tint-colour" ng-style="{opacity: 0.8, backgroundColor: bgColour}"></div>
+    </div>
+
+    <div class="timeline-container">
+        <div style="width: 50%;" hide show-gt-md>
+            <h2 ng-style="{color: catColour}">{{datePlace}}</h2>   <!-- Date - place -->
+            <h3>{{title}}</h3>     <!-- Title -->
+        </div>
+        <div style="width: 100%;" hide-gt-md>
+            <h2 ng-style="{color: catColour}">{{datePlace}}</h2>   <!-- Date - place -->
+            <h3>{{title}}</h3>     <!-- Title -->
+        </div>
+        <div class="timeline-content">
+            <div class="image-and-caption" hide-gt-md>
+                <img ng-if="imageSrc !== ''" ng-src="views/content/img/timeline/{{imageSrc}}" >     <!-- Image source -->
+                <p ng-if="captionText !== ''" >{{captionText}}</p>
+            </div>
+            <ng-transclude></ng-transclude>
+            <div class="image-and-caption"  hide show-gt-md>
+                <img ng-if="imageSrc !== ''" ng-src="views/content/img/timeline/{{imageSrc}}" >
+                <p ng-if="captionText !== ''" >{{captionText}}</p>
+            </div>
+        </div>
+    </div>
+</div>
