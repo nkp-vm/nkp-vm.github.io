@@ -41,7 +41,8 @@ GApp.constant("CONSTANTS", {
     CROP_MIN_WIDTH : 1281,
     GIF_MAX_WIDTH : 768,
     MODULE_NAME_ARRAY : ['intro', 'context', 'timeline', 'collection', 'provenance', 'process', 'about'],
-    TIMELINE_ITEMS : 17
+    TIMELINE_ITEMS : 17,
+    TIMELINE_SCALE: 4
 });
 
 
@@ -58,7 +59,7 @@ GApp.factory('NavListing', ['CONSTANTS', function(CONSTANTS) {
         navList.push({_id: CONSTANTS.MODULE_NAME_ARRAY[c], active: false, offset: 0, presenterHeight: 0});
     }
     for(var d = 0; d < CONSTANTS.TIMELINE_ITEMS; d++) {
-        timeList.push({text: "", active: false, offset: 0, height: 0});
+        timeList.push({text: "", active: false, hover_active: false, offset: 0, height: 0, x: 0});
     }
 
     return {
@@ -74,9 +75,11 @@ GApp.factory('NavListing', ['CONSTANTS', function(CONSTANTS) {
             }
         },
         setTimeItem : function(index, item) {
-            timeList[index-1].offset = item.offset + timelineStart - 60;
+            timeList[index-1].offset = item.offset + timelineStart - 200;
             timeList[index-1].text = item.text;
             timeList[index-1].height = item.height;
+            timeList[index-1].x = item.x;
+            timeList[index-1]._id = item._id;
         },
         navList : navList,
         timeList : timeList,

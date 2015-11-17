@@ -137,6 +137,14 @@ GDirectives.directive("sectionBox", ['$window', '$animate', '$rootScope', 'smoot
             //scope.$apply();
         }
 
+        scope.seekToAnchor = function(elementId) {
+            var options = {
+                duration: 500,
+                offset: 80
+            };
+            var sElement = document.getElementById(elementId);
+            smoothScroll(sElement, options);
+        };
         /* ------------------------------  */
 
         // Controls open and close of the sliding section in this directive
@@ -585,9 +593,11 @@ GDirectives.directive("timelinebox", ['NavListing', function(NavListing) {
             NavListing.setTimeItem(
                 index,
                 {
-                    text: scope.datePlace,
+                    text: scope.tlText,
                     offset: element.prop('offsetTop'),
-                    height: presenterHeight
+                    height: presenterHeight,
+                    x: scope.tlX,
+                    _id: attrs.id
                 }
             );
         }
@@ -608,7 +618,9 @@ GDirectives.directive("timelinebox", ['NavListing', function(NavListing) {
             captionText: '@',
             bgColour: '@',
             catColour: '@',
-            bgImage: '@'
+            bgImage: '@',
+            tlText: '@',
+            tlX: '@'
         }
     };
 }]);
