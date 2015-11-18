@@ -587,11 +587,11 @@ GDirectives.directive("timelinebox", ['NavListing', function(NavListing) {
         var presenterHeight = element.prop('offsetHeight');
         if (typeof scope.bgColour === "undefined") { scope.bgColour = ""; }
         if (typeof scope.bgImage === "undefined") { scope.bgImage = ""; }
+        scope.myIndex = parseInt(attrs.id.substring(9));
 
         function reportPosition() {
-            var index = parseInt(attrs.id.substring(9));
             NavListing.setTimeItem(
-                index,
+                scope.myIndex,
                 {
                     text: scope.tlText,
                     offset: element.prop('offsetTop'),

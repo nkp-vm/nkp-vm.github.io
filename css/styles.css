@@ -5,7 +5,7 @@ redistribute, convert, modify or reverse engineer this font software. Please con
 with any questions regarding Web Fonts:  http://www.linotype.com
 */
 
-@import url("https://fast.fonts.net/lt/1.css?apiType=css&c=8010e9df-a2fb-426b-85a4-d4dfe84d4c1e&fontids=673365,673377,692680,692692,692716");
+/*@import url("https://fast.fonts.net/lt/1.css?apiType=css&c=8010e9df-a2fb-426b-85a4-d4dfe84d4c1e&fontids=673365,673377,692680,692692,692716");*/
 @font-face{
     font-family:"HelveticaNeueW01-UltLt";
     src:url("../Fonts/673365/41774233-b9da-44be-b252-6a7b612fb1c7.eot?#iefix");
@@ -566,12 +566,13 @@ ul.dashlist li:before, ol.dashlist li:before {
 /* --------- Directives ------*/
 .timeline {
     position: relative;
-    overflow: hidden;
+    /*overflow: hidden;*/
 }
 .timeline-background {
     z-index: 1;
     position: absolute;
     width: 100%;
+    height: 100%;
 }
 .timeline-container {
     position: relative;
@@ -607,6 +608,13 @@ ul.dashlist li:before, ol.dashlist li:before {
 .timeline-content p {
     margin: 0;
     padding: 0;
+}
+.timeline-dot {
+    position: absolute;
+    width: 20px;
+    z-index: 1000;
+    top: -60px;
+    left: 30px;
 }
 .sliding-box {
     position: relative;
@@ -712,6 +720,8 @@ div.timeline-nav-item:hover div.timeline-nav-item-text {
 }
 .timeline .tt-bg-image {
     width: 100%;
+    height: 100%;
+    overflow: hidden;
 }
 .timeline .tt-tint-colour {
     position: absolute;
@@ -932,6 +942,9 @@ ol {
         opacity: 1;
         color: black;
     }
+    .timeline-dot {
+        display: none;
+    }
 }
 
 
@@ -996,6 +1009,13 @@ ol {
 
     .mosaicDialog md-content {
         background: transparent !important;
+    }
+    .timeline-dot {
+        position: absolute;
+        width: 10px;
+        z-index: 1000;
+        top: -30px;
+        left: 20px;
     }
 }
 

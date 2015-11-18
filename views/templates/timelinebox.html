@@ -1,9 +1,13 @@
 <div class="timeline" ng-style="{ backgroundColor: bgColour !== '' ? bgColour : 'white' }">
 
     <div class="timeline-background" ng-if="bgImage !== '' && bgColour !== ''" hide show-gt-md>
-        <img class="tt-bg-image" ng-src="views/content/img/timeline/{{bgImage}}">
+        <div class="tt-bg-image">
+            <img ng-src="views/content/img/timeline/{{bgImage}}">
+        </div>
         <div class="tt-tint-colour" ng-style="{opacity: 0.8, backgroundColor: bgColour}"></div>
     </div>
+
+    <img ng-if="myIndex != 1" class="timeline-dot" src="views/content/img/timeline/timeline_dot.svg"/>
 
     <div class="timeline-container">
         <div style="width: 50%;" hide show-gt-md>
