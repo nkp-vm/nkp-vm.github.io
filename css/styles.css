@@ -616,20 +616,23 @@ ul.dashlist li:before, ol.dashlist li:before {
     top: -60px;
     left: 30px;
 }
+
 .sliding-box {
     position: relative;
 }
 .stickytime {
     position: relative;
-    width: 100%;
     max-width: 1280px;
     z-index: 100;
     background: rgba(100, 100, 100, 0.6);
     height: 35px;
-    padding: 5px;
+    padding: 5px 7% 5px 7%;
 }
 .timeline-nav-item {
     position: absolute;
+}
+.timeline-nav-item:focus {
+    outline: none;
 }
 
 div.timeline-nav-item .timeline-nav-item-text {

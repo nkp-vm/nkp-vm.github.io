@@ -50,7 +50,8 @@ GDirectives.directive("sectionBox", ['$window', '$animate', '$rootScope', 'smoot
 
         // Sticky Controller vars
         var stickyBox = angular.element(element[0].querySelector('.stickytime'));
-        var presenterHeight = angular.element(element[0].querySelector('.presenter')).prop('offsetHeight');
+        var presenter = angular.element(element[0].querySelector('.presenter'));
+        var presenterHeight = presenter.prop('offsetHeight');
         var yScrollOffset = 0;
         var contentBottomDistanceFromTop = 0;
         var contentDistanceFromTop = 0;
@@ -62,6 +63,7 @@ GDirectives.directive("sectionBox", ['$window', '$animate', '$rootScope', 'smoot
         if (typeof scope.timelineMode === "undefined") { scope.timelineMode = false;}
         if(scope.timelineMode === "true") { scope.timelineMode = true; }
 
+        scope.presenterWidth = Math.floor(parseInt(presenter.prop('offsetWidth'))*0.86);
         scope.slideId = attrs.id+'_slide';
         scope.showVideo = false;
         scope.noPreloadGifSrcPath = imagePath + scope.posterSrc;
