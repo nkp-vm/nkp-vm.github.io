@@ -7,7 +7,7 @@
     </div>
     <!-- This div will slide open: -->
     <div id="{{slideId}}" class="sliding-box">
-        <p tabindex="-1" aria-hidden="true" class="captiontext" ng-show="captionText">{{captionText}}</p>
+        <p tabindex="-1" aria-hidden="true" class="captiontext" ng-show="captionText" ng-bind-html="captionText"></p>
 
         <!-- This is the sticky timeline controller which shows only if we are in the timeline section -->
 
@@ -17,9 +17,13 @@
                 https://github.com/Venturocket/angular-slider
         -->
 
+        <!-- Ken Burns effect without jQuery:
+                http://codepen.io/peterwestendorp/pen/LbiwD
+        -->
+        <div class="stickytime-gapfiller" ng-style="{height: stickyIsStuck ? '120px' : '0'}"></div>
         <div class="stickytime" ng-show="timelineMode">
             <div style="position: relative;" ng-style="{'width' : presenterWidth+'px'}">
-
+                    <div class="timeline-nav-line"></div>
                     <div layout="column" ng-repeat="item in timelist" class="timeline-nav-item" ng-style="{'left': +item.x+'%'}" ng-click="seekToAnchor(item._id)" ng-mouseover="item.hover_active = true" ng-mouseleave="item.hover_active = false">
                         <div class="navCircle" ng-class="{active: item.active}"></div>
                         <div class="timeline-nav-item-text" ng-style="{'display' : item.active || item.hover_active ? 'inline-block' : 'none'}">

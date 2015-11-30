@@ -63,7 +63,7 @@ GDirectives.directive("sectionBox", ['$window', '$animate', '$rootScope', 'smoot
         if (typeof scope.timelineMode === "undefined") { scope.timelineMode = false;}
         if(scope.timelineMode === "true") { scope.timelineMode = true; }
 
-        scope.presenterWidth = Math.floor(parseInt(presenter.prop('offsetWidth'))*0.86);
+        scope.presenterWidth = Math.floor(parseInt(presenter.prop('offsetWidth'))*0.86);  // 0.86 accounts for margins
         scope.slideId = attrs.id+'_slide';
         scope.showVideo = false;
         scope.noPreloadGifSrcPath = imagePath + scope.posterSrc;
@@ -72,10 +72,11 @@ GDirectives.directive("sectionBox", ['$window', '$animate', '$rootScope', 'smoot
         scope.detailActive = false;
         scope.includeSrcPath = CONSTANTS.TOP_LEVEL_MODULE_PATH + $route.current.params.language + '/' + attrs.id + '.html';
         scope.slideOpen = false;
+        scope.stickyIsStuck = false;
         var timeIndex = 0;
 
 
-        /* -----    This even driven code updates a factory with the section's current offset,
+        /* -----    This event driven code updates a factory with the section's current offset,
                     triggered upon open / close ----- */
 
         function reportPosition() {
@@ -116,9 +117,11 @@ GDirectives.directive("sectionBox", ['$window', '$animate', '$rootScope', 'smoot
             yScrollOffset = $window.pageYOffset;
             if(yScrollOffset >= contentDistanceFromTop && yScrollOffset < contentBottomDistanceFromTop) {
                 stickyBox.addClass('sticky-fixed');
+                scope.stickyIsStuck = true;
             }
             else {
                 stickyBox.removeClass('sticky-fixed');
+                scope.stickyIsStuck = false;
             }
             for (var d = 0; d < scope.timelist.length; d++) {
                 if (yScrollOffset >= scope.timelist[d].offset) {
@@ -161,6 +164,9 @@ GDirectives.directive("sectionBox", ['$window', '$animate', '$rootScope', 'smoot
                 if (scope.timelineMode) {
                     deactivateStickyTimeline();
                 }
+                $timeout(function () {
+                    smoothScroll(element[0], {duration: 500});
+                }, 100);
 
                 // The CSS 'height: auto' property cannot be animated with CSS transitions. Only actual pixel values can be.
                 // However 'height: auto' should be applied to affect proper page sizing when the content increases height.
@@ -196,6 +202,9 @@ GDirectives.directive("sectionBox", ['$window', '$animate', '$rootScope', 'smoot
                     aTarget.removeClass('notransition');
                     scope.slideOpen = true;
                     $rootScope.$broadcast('reportPositions');
+                    if(scope.timelineMode) {        // Process in case of no scroll, to show the dots
+                        stickyTimelineHandler();
+                    }
                 }, 2100);
             }
             scope.detailActive = !scope.detailActive;
@@ -229,9 +238,10 @@ GDirectives.directive("sectionBox", ['$window', '$animate', '$rootScope', 'smoot
             scope.slideToggle();
             // If this is the first play, scroll to me and open the sliding section
             if(notPlayed) {
-                $timeout(function () {
+                /*$timeout(function () {
                     smoothScroll(element[0], {duration: 500});
                 }, 100);
+                */
             }
             // Play the GIF if we are on mobile phone
             if(scope.gifSrc !== "" && scope.forceIphoneVideo === "false" && $window.innerWidth < CONSTANTS.GIF_MAX_WIDTH) {
