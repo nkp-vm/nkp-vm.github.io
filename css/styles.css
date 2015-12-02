@@ -951,11 +951,12 @@ ol {
 .navCirclesContainer li:hover .navCircle {
     opacity: 1;
     cursor: pointer;
+    background: #000;
 }
 
 .navCirclesContainer li:hover span {
     display: inline-block;
-    color: #000;
+    color: #BBB;
     font-weight: bold;
 }
 
