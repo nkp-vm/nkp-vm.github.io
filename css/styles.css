@@ -975,6 +975,17 @@ ol {
     .md-button.md-icon-button {
         opacity: 0.5;
     }
+    .sectionDetail {
+        padding: 50px 7% 50px 7%;
+        -webkit-column-count: 1; /* Chrome, Safari, Opera */
+        -moz-column-count: 1; /* Firefox */
+        column-count: 1;
+    }
+    .timeline-content {
+        -webkit-column-count: 1; /* Chrome, Safari, Opera */
+        -moz-column-count: 1; /* Firefox */
+        column-count: 1;
+    }
     .stickyHamburger {
         right: 0px;
         top: 10px;
@@ -1006,7 +1017,6 @@ ol {
         font-size: 12vmin;
         line-height: 12vmin;
     }
-
     .sectionDetail {
         padding: 50px 7% 50px 7%;
         -webkit-column-count: 1; /* Chrome, Safari, Opera */
@@ -1135,6 +1145,9 @@ ol {
     }
     .sectionDetail {
         padding: 50px 7% 50px 7%;
+        -webkit-column-count: 2; /* Chrome, Safari, Opera */
+        -moz-column-count: 2; /* Firefox */
+        column-count: 2;
     }
     .subSection {
         padding: 50px 0 50px 0;
