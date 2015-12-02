@@ -55,6 +55,7 @@ GDirectives.directive("sectionBox", ['$window', '$animate', '$rootScope', 'smoot
         var yScrollOffset = 0;
         var contentBottomDistanceFromTop = 0;
         var contentDistanceFromTop = 0;
+        var stickyBoxHeight = 0;
 
         if (typeof scope.videosrc === "undefined") { scope.videosrc = ""; }
         if (typeof scope.posterSrc === "undefined") { scope.posterSrc = ""; }
@@ -64,6 +65,7 @@ GDirectives.directive("sectionBox", ['$window', '$animate', '$rootScope', 'smoot
         if(scope.timelineMode === "true") { scope.timelineMode = true; }
 
         scope.presenterWidth = Math.floor(parseInt(presenter.prop('offsetWidth'))*0.86);  // 0.86 accounts for margins
+        stickyBoxHeight = scope.timelineMode ? stickyBox.prop('offsetHeight') : 0;
         scope.slideId = attrs.id+'_slide';
         scope.showVideo = false;
         scope.noPreloadGifSrcPath = imagePath + scope.posterSrc;
@@ -80,12 +82,14 @@ GDirectives.directive("sectionBox", ['$window', '$animate', '$rootScope', 'smoot
                     triggered upon open / close ----- */
 
         function reportPosition() {
-            contentDistanceFromTop = element.prop('offsetTop') + presenterHeight;
-            contentBottomDistanceFromTop = element.prop('offsetTop') + element.prop('offsetHeight') - stickyBox.prop('offsetHeight');
+            var ot = element.prop('offsetTop');
+            var oh = element.prop('offsetHeight');
+            contentDistanceFromTop = ot + presenterHeight;
+            contentBottomDistanceFromTop = ot + oh - stickyBoxHeight;
 
             NavListing.setNavItem({
                 _id: attrs.id,
-                offset: element.prop('offsetTop'),
+                offset: ot,
                 presenterHeight: presenterHeight
             });
 
@@ -143,9 +147,12 @@ GDirectives.directive("sectionBox", ['$window', '$animate', '$rootScope', 'smoot
         }
 
         scope.seekToAnchor = function(elementId) {
+            if(elementId === '') {
+                elementId = 'content';
+            }
             var options = {
                 duration: 500,
-                offset: 80
+                offset: 120
             };
             var sElement = document.getElementById(elementId);
             smoothScroll(sElement, options);
@@ -558,7 +565,7 @@ GDirectives.directive("navCircles", ['$document', '$window', 'NavListing', funct
             scrollPosition = $window.pageYOffset;
             activeIndex = 0;
             for (var c = 0; c < scope.navlist.length; c++) {
-                if (scrollPosition >= scope.navlist[c].offset-200) {
+                if (scrollPosition >= scope.navlist[c].offset) {
                     activeIndex = c;
                 }
                 scope.navlist[c].active = false;
@@ -625,7 +632,7 @@ GDirectives.directive("timelinebox", ['NavListing', function(NavListing) {
         link: linker,
         scope: {
             datePlace: '@',
-            title: '@',
+            tlTitle: '@',
             imageSrc: '@',
             captionText: '@',
             bgColour: '@',

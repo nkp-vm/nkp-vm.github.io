@@ -58,6 +58,7 @@ GApp.factory('NavListing', ['CONSTANTS', function(CONSTANTS) {
     for(var c = 0; c < CONSTANTS.MODULE_NAME_ARRAY.length; c++) {
         navList.push({_id: CONSTANTS.MODULE_NAME_ARRAY[c], active: false, offset: 0, presenterHeight: 0});
     }
+    navList[0].active = true;
     for(var d = 0; d < CONSTANTS.TIMELINE_ITEMS; d++) {
         timeList.push({text: "", active: false, hover_active: false, offset: 0, height: 0, x: 0});
     }
@@ -212,6 +213,9 @@ GApp.controller('IndexCtrl', ['$scope', '$translate', '$mdSidenav', '$location',
         $location.path('/overview/'+$scope.currentLanguage);
     };
     $scope.seekToAnchor = function(elementId) {
+        if(elementId === '') {
+            elementId = 'content';  // Scroll to top
+        }
         $scope.closeMenu().then(function() {
             var sElement = document.getElementById(elementId);
             smoothScroll(sElement, {duration: 500});

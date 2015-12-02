@@ -12,11 +12,11 @@
     <div class="timeline-container">
         <div style="width: 50%;" hide show-gt-md>
             <h2 ng-style="{color: catColour}">{{datePlace}}</h2>   <!-- Date - place -->
-            <h3>{{title}}</h3>     <!-- Title -->
+            <h3>{{tlTitle}}</h3>     <!-- Title -->
         </div>
         <div style="width: 100%;" hide-gt-md>
             <h2 ng-style="{color: catColour}">{{datePlace}}</h2>   <!-- Date - place -->
-            <h3>{{title}}</h3>     <!-- Title -->
+            <h3>{{tlTitle}}</h3>     <!-- Title -->
         </div>
         <div class="timeline-content">
             <div class="image-and-caption" hide-gt-md>
@@ -24,7 +24,7 @@
                 <p ng-if="captionText !== ''" >{{captionText}}</p>
             </div>
             <ng-transclude></ng-transclude>
-            <div class="image-and-caption"  hide show-gt-md>
+            <div class="image-and-caption" ng-hide="bgImage !== ''"  hide show-gt-md>
                 <img ng-if="imageSrc !== ''" ng-src="views/content/img/timeline/{{imageSrc}}" >
                 <p ng-if="captionText !== ''" >{{captionText}}</p>
             </div>

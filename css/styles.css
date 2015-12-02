@@ -332,9 +332,7 @@ md-card {
 .md-button {
    /* min-width: 60px; */
 }
-#toggleMenu.md-button {
-    /*line-height: 0;*/
-}
+
 .md-button {
     min-width: 60px;
     margin: 4px 6px;
@@ -368,6 +366,9 @@ md-sidenav md-content md-list-item a {
     font-size: 1em;
     letter-spacing: 1px;
     text-decoration: none;
+}
+md-sidenav md-content md-list-item span {
+    font-family:"HelveticaNeueW01-UltLt", "Arial Narrow", sans-serif;
 }
 md-sidenav md-input-container.md-main-theme label {
     color: white;
@@ -562,6 +563,9 @@ ul.dashlist li:before, ol.dashlist li:before {
 .sectionDetail_closed {
     padding: 0;
 }
+.subSectionBox {
+    margin: 0 7%;
+}
 
 /* --------- Directives ------*/
 .timeline {
@@ -639,7 +643,7 @@ ul.dashlist li:before, ol.dashlist li:before {
 .timeline-nav-line {
     width: 100%;
     position: absolute;
-    border-top: solid black 1px;
+    border-top: solid #999 1px;
     margin-top: 5px;
 }
 .timeline-nav-item:focus {
@@ -650,7 +654,7 @@ div.timeline-nav-item .timeline-nav-item-text {
     margin-top: 5px;
     display: none;
     color: #FFF;
-    font-family:"HelveticaNeueW01-Thin", "Arial Narrow", sans-serif;
+    font-family:"HelveticaNeueW01-UltLt", "Arial Narrow", sans-serif;
     font-size: 1em;
     font-weight: bold;
     letter-spacing: 1px;
@@ -660,14 +664,17 @@ div.timeline-nav-item .timeline-nav-item-text {
 .timeline-nav-item .navCircle {
     /*margin-left: 16px;*/
 }
-
+.timeline-nav-item .navCircle .active {
+    color: #999;
+}
 .timeline-nav-item-text span {
     background-color: #999;
+    padding: 2px;
 }
 
 div.timeline-nav-item:hover div.timeline-nav-item-text {
     display: inline-block;
-    cursor: hand;
+    cursor: pointer;
     font-weight: bold;
 }
 
@@ -677,18 +684,17 @@ div.timeline-nav-item:hover div.timeline-nav-item-text {
 }
 
 .triangle-up {
-    margin-left: 10px;
+    margin-left: 7px;
     width: 0;
     height: 0;
-    border-left: 5px solid transparent;
-    border-right: 5px solid transparent;
-    border-bottom: 5px solid #999;
+    border-left: 8px solid transparent;
+    border-right: 8px solid transparent;
+    border-bottom: 8px solid #999;
 }
 
 .sectionBox {
     color: white;
     position: relative;
-    cursor: pointer;
 }
 
 .sectionBox .overlaytext {
@@ -698,6 +704,7 @@ div.timeline-nav-item:hover div.timeline-nav-item-text {
 }
 .sectionBox .presenter {
     position: relative;
+    cursor: pointer;
 }
 .sectionBox .presenter .visuals {
     width: 100%;
@@ -890,12 +897,13 @@ ol {
 .navCirclesContainer {
     z-index: 1000;
     position: fixed;
-    top: 30px;
-    left: 15px;
+    top: 50px;
+    right: 25px;
+    width: 150px;
 }
 
 .navCircle {
-    border: 1px solid #999;
+    border: 1px solid #000;
     border-radius: 50%;
     display: inline-block;
     height: 8px;
@@ -903,33 +911,55 @@ ol {
     -webkit-transition: opacity 0.3s ease-in-out;
     width: 8px;
     background: #FFF;
+    cursor: pointer;
+}
+
+.navCirclesContainer .navCircle {
+    opacity: 0.5;
+}
+.navCirclesContainer .navCircle.active {
+    background: #000;
+    opacity: 1;
+}
+
+.timeline-nav-item .navCircle {
+    border: 1px solid #999;
+}
+.timeline-nav-item .navCircle.active {
+    background: #999;
+    opacity: 1;
+}
+
+.navCirclesContainer li {
+    height: 30px;
 }
 
 .navCirclesContainer li span {
     display: none;
     color: #FFF;
-    /*font-family: Theinhardt-Medium, sans-serif;*/
-    font-size: 0.75em;
+    font-family:"HelveticaNeueW01-UltLt", "Arial Narrow", sans-serif;
+    font-size: 14px;
     letter-spacing: 1px;
-    text-transform: uppercase;
+    text-transform: capitalize;
     padding-left: 0.5em;
+    margin-right: 5px;
+}
+.navCirclesContainer li span:hover {
+    cursor: pointer;
 }
 
 .navCirclesContainer li:hover .navCircle {
     opacity: 1;
-    cursor: hand;
+    cursor: pointer;
 }
 
 .navCirclesContainer li:hover span {
     display: inline-block;
-    cursor: hand;
-    color: #999;
+    color: #000;
     font-weight: bold;
 }
 
-.navCircle.active {
-    background: #999;
-}
+
 
 .navCirclesContainer li:focus {
     outline: none;
@@ -949,8 +979,8 @@ ol {
         right: 0px;
         top: 10px;
         position: fixed;
-        z-index: 1000;
-        background-color: white;
+        z-index: 50;
+        /*background-color: white;*/
     }
     .stickyHamburger md-icon {
         opacity: 1;
@@ -959,11 +989,19 @@ ol {
     .timeline-dot {
         display: none;
     }
+    .hide-small {
+        display: none;
+    }
+    .hide-gt-small {
+        display: block;
+    }
 }
 
 
-@media only screen and (max-width: 960px) {
-
+@media only screen and (min-width: 601px) {
+    .floating-menu {
+        margin-right: 8px;
+    }
     .topQuote {
         font-size: 12vmin;
         line-height: 12vmin;
@@ -975,8 +1013,14 @@ ol {
         -moz-column-count: 1; /* Firefox */
         column-count: 1;
     }
+    .subSection {
+        padding: 50px 0 50px 0;
+    }
     .captiontext {
         padding: 0 7% 0 7%;
+    }
+    .subSectionBox .sliding-box .captiontext {
+        padding: 0;
     }
     .timeline-content {
         -webkit-column-count: 1; /* Chrome, Safari, Opera */
@@ -986,6 +1030,12 @@ ol {
     .sectionBox .overlaytext {
         bottom: 20px;
         left: 7%;
+        font-size: 5vmin;
+        font-family:"HelveticaNeueW01-45Ligh", "Arial Narrow", sans-serif;
+    }
+    .subSectionBox .overlaytext {
+        bottom: 15px;
+        left: 1%;
         font-size: 5vmin;
         font-family:"HelveticaNeueW01-45Ligh", "Arial Narrow", sans-serif;
     }
@@ -1064,7 +1114,9 @@ ol {
 /* Laptops, Desktops, etc ---- */
 
 @media only screen and (min-width: 961px) {
-
+    .floating-menu {
+        margin-right: 8px;
+    }
     .topQuote {
         font-size: 14vmin;
         line-height: 14vmin;
@@ -1075,11 +1127,23 @@ ol {
         font-size: 5vmin;
         font-family:"HelveticaNeueW01-45Ligh", "Arial Narrow", sans-serif;
     }
+    .subSectionBox .overlaytext {
+        bottom: 15px;
+        left: 1%;
+        font-size: 5vmin;
+        font-family:"HelveticaNeueW01-45Ligh", "Arial Narrow", sans-serif;
+    }
     .sectionDetail {
         padding: 50px 7% 50px 7%;
     }
+    .subSection {
+        padding: 50px 0 50px 0;
+    }
     .captiontext {
         padding: 0 7% 0 7%;
+    }
+    .subSectionBox .sliding-box .captiontext {
+        padding: 0;
     }
     .hide-small {
         display: block;
