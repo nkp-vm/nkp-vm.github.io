@@ -281,7 +281,6 @@ GDirectives.directive("sectionBox", ['$window', '$animate', '$rootScope', 'smoot
             video = element.find('video')[0];
             $timeout(function () {
                 reportPosition();
-
             }, 1000)
         });
     };
