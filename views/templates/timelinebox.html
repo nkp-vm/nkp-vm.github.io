@@ -1,6 +1,6 @@
 <div class="timeline" ng-style="{ backgroundColor: bgColour !== '' ? bgColour : 'white' }">
 
-    <div class="timeline-background" ng-if="bgImage !== '' && bgColour !== ''" hide show-gt-md>
+    <div class="timeline-background" ng-if="bgImage !== '' && bgColour !== ''" hide show-gt-lg>
         <div class="tt-bg-image">
             <img ng-src="views/content/img/timeline/{{bgImage}}">
         </div>
@@ -10,21 +10,21 @@
     <img ng-if="myIndex != 1" class="timeline-dot" src="views/content/img/timeline/timeline_dot.svg"/>
 
     <div class="timeline-container">
-        <div style="width: 50%;" hide show-gt-md>
+        <div style="width: 50%;" hide show-gt-lg>
             <h2 ng-style="{color: catColour}">{{datePlace}}</h2>   <!-- Date - place -->
             <h3>{{tlTitle}}</h3>     <!-- Title -->
         </div>
-        <div style="width: 100%;" hide-gt-md>
+        <div style="width: 100%;" hide-gt-lg>
             <h2 ng-style="{color: catColour}">{{datePlace}}</h2>   <!-- Date - place -->
             <h3>{{tlTitle}}</h3>     <!-- Title -->
         </div>
         <div class="timeline-content">
-            <div class="image-and-caption" hide-gt-md>
+            <div class="image-and-caption" hide-gt-lg>
                 <img ng-if="imageSrc !== ''" ng-src="views/content/img/timeline/{{imageSrc}}" >     <!-- Image source -->
                 <p ng-if="captionText !== ''" >{{captionText}}</p>
             </div>
             <ng-transclude></ng-transclude>
-            <div class="image-and-caption" ng-hide="bgImage !== ''"  hide show-gt-md>
+            <div class="image-and-caption" ng-hide="bgImage !== ''"  hide show-gt-lg>
                 <img ng-if="imageSrc !== ''" ng-src="views/content/img/timeline/{{imageSrc}}" >
                 <p ng-if="captionText !== ''" >{{captionText}}</p>
             </div>
