@@ -63,8 +63,10 @@ GDirectives.directive("sectionBox", ['$window', '$animate', '$rootScope', 'smoot
         if (typeof scope.gifSrc === "undefined") { scope.gifSrc = ""; }
         if (typeof scope.captionText === "undefined") { scope.captionText = "";}
         if (typeof scope.timelineMode === "undefined") { scope.timelineMode = false;}
+        if (typeof scope.mosaicMode === "undefined") { scope.mosaicMode = false;}
         if(scope.timelineMode === "true") { scope.timelineMode = true; }
 
+        scope.showMosaic = false;
         scope.presenterWidth = Math.floor(parseInt(presenter.prop('offsetWidth'))*0.86);  // 0.86 accounts for margins
         stickyBoxHeight = scope.timelineMode ? stickyBox.prop('offsetHeight') : 0;
         scope.slideId = attrs.id+'_slide';
@@ -212,6 +214,9 @@ GDirectives.directive("sectionBox", ['$window', '$animate', '$rootScope', 'smoot
                     if(scope.timelineMode) {        // Process in case of no scroll, to show the dots
                         stickyTimelineHandler();
                     }
+                    if(scope.mosaicMode === "true") {
+                        scope.showMosaic = true;
+                    }
                 }, 2100);
             }
             scope.detailActive = !scope.detailActive;
@@ -301,7 +306,8 @@ GDirectives.directive("sectionBox", ['$window', '$animate', '$rootScope', 'smoot
             captionText: '@',
             icon: '@',
             forceIphoneVideo: '@',
-            timelineMode: '@'
+            timelineMode: '@',
+            mosaicMode: '@'
         },
         link: linker,
         templateUrl: 'views/templates/sectionbox.html'
