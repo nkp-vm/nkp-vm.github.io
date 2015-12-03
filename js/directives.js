@@ -100,7 +100,6 @@ GDirectives.directive("sectionBox", ['$window', '$animate', '$rootScope', 'smoot
                 $rootScope.$broadcast('reportTimelinePositions');
             }, 2000);
         });
-        reportPosition();
 
         /* ----  Timeline sticky control -----------  */
 
@@ -280,6 +279,9 @@ GDirectives.directive("sectionBox", ['$window', '$animate', '$rootScope', 'smoot
         $timeout(function timeout() {
             pickLanguage();
             video = element.find('video')[0];
+            $timeout(function () {
+                reportPosition();
+            }, 1000)
         });
     };
     return {

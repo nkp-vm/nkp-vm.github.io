@@ -20,8 +20,8 @@
         <!-- Ken Burns effect without jQuery:
                 http://codepen.io/peterwestendorp/pen/LbiwD
         -->
-        <div class="stickytime-gapfiller" hide show-gt-sm ng-style="{height: stickyIsStuck ? '120px' : '0'}"></div>
-        <div class="stickytime" ng-show="timelineMode" hide show-gt-sm>
+        <div class="stickytime-gapfiller" hide show-gt-lg ng-style="{height: stickyIsStuck ? '120px' : '0'}"></div>
+        <div class="stickytime" ng-show="timelineMode" hide show-gt-lg>
             <div style="position: relative;" ng-style="{'width' : presenterWidth+'px'}">
                     <div class="timeline-nav-line"></div>
                     <div layout="column" ng-repeat="item in timelist" class="timeline-nav-item" ng-style="{'left': +item.x+'%'}" ng-click="seekToAnchor(item._id)" ng-mouseover="item.hover_active = true" ng-mouseleave="item.hover_active = false">

@@ -987,6 +987,18 @@ ol {
         -moz-column-count: 1; /* Firefox */
         column-count: 1;
     }
+    .sectionBox .overlaytext {
+        bottom: 20px;
+        left: 5%;
+        font-size: 5vmin;
+        font-family:"HelveticaNeueW01-45Ligh", "Arial Narrow", sans-serif;
+    }
+    .subSectionBox .overlaytext {
+        bottom: 5px;
+        left: 5px;
+        font-size: 5vmin;
+        font-family:"HelveticaNeueW01-45Ligh", "Arial Narrow", sans-serif;
+    }
     .stickyHamburger {
         right: 0px;
         top: 10px;
