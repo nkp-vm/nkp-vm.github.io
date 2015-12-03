@@ -24,6 +24,19 @@
         <!-- Side Menu -->
         <div ng-include="'views/templates/sidemenu.html'"></div>
 
+        <header aria-role="banner">
+            <div>
+                <div class="topQuoteMarks" aria-hidden="true">
+                    <span>“</span>
+                </div>
+                <div class="topQuoteText">
+                    <span class="topQuote">BOOKS DISCOVERED ONCE AGAIN</span>
+
+                    <p class="topSubtitle">// VIRTUELL UTSTILLING</p>
+                </div>
+            </div>
+        </header>
+
         <!-- Site sub-pages are included dynamically here -->
         <div ng-view role="main" id="content"></div>
 

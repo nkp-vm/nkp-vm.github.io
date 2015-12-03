@@ -47,6 +47,7 @@ GDirectives.directive("sectionBox", ['$window', '$animate', '$rootScope', 'smoot
         var playing = false;
         var moduleNumber = $route.current.params.module;
         var imagePath = CONSTANTS.TOP_LEVEL_MODULE_PATH + 'img/';
+        var windowWidth = $window.innerWidth;
 
         // Sticky Controller vars
         var stickyBox = angular.element(element[0].querySelector('.stickytime'));
@@ -249,8 +250,12 @@ GDirectives.directive("sectionBox", ['$window', '$animate', '$rootScope', 'smoot
                 }, 100);
                 */
             }
+            // Show only the picture on mobile if no other sources
+            if(scope.gifSrc === "" && scope.forceIphoneVideo === "false" && windowWidth < CONSTANTS.GIF_MAX_WIDTH) {
+                // Do nothing
+            }
             // Play the GIF if we are on mobile phone
-            if(scope.gifSrc !== "" && scope.forceIphoneVideo === "false" && $window.innerWidth < CONSTANTS.GIF_MAX_WIDTH) {
+            else if(scope.gifSrc !== "" && scope.forceIphoneVideo === "false" && windowWidth < CONSTANTS.GIF_MAX_WIDTH) {
                 if(playing) {
                     scope.noPreloadGifSrcPath = imagePath + scope.posterSrc;
                     playing = false;
@@ -433,7 +438,6 @@ GDirectives.directive("mosaic", ['$mdDialog','$http', function($mdDialog, $http)
             });
 
         };
-
 
         function buildGridModel() {
             var abspath = 'views/content/img/mosaic';
