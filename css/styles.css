@@ -307,20 +307,24 @@ md-card {
 }
 .topQuoteText {
     display: inline-block;
-    width: 80%;
     margin-left: 5%;
+    width: 80%;
 }
 .topQuote {
     text-transform: uppercase;
     font-family:"HelveticaNeueW01-75Bold", "Arial", sans-serif;
     font-size: 14vmin;
     line-height: 14vmin;
+    max-width: 80vw;
 }
 .topSubtitle {
-    margin: 2vw 0 6vw 0;
+    margin-right: 0.5em;
     font-family:"HelveticaNeueW01-Thin", "Arial Narrow", sans-serif;
     font-size: 6vmin;
     letter-spacing: 1px;
+}
+.topSubtitleWithSharing {
+    margin: 2vw 0 6vw 5%;
 }
 
 
@@ -1029,6 +1033,7 @@ ol {
     .topQuote {
         font-size: 12vmin;
         line-height: 12vmin;
+        max-width: 80vw;
     }
     .sectionDetail {
         padding: 50px 7% 50px 7%;
@@ -1143,6 +1148,7 @@ ol {
     .topQuote {
         font-size: 14vmin;
         line-height: 14vmin;
+        max-width: 80vw;
     }
     .sectionBox .overlaytext {
         bottom: 20px;

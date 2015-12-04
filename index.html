@@ -7,6 +7,14 @@
     <meta charset="UTF-8">
     <meta name="apple-mobile-web-app-capable" content="yes"> <!-- This will enable full screen if the page is bookmarked to iPad desktop-->
     <meta name="viewport" content="user-scalable=no, initial-scale=1.0, maximum-scale=1.0, width=device-width">
+
+    <!-- Facebook Open Graph meta -->
+    <meta property="og:url"                content="http://nkp-vm.github.io" />
+    <meta property="og:type"               content="website" />
+    <meta property="og:title"              content="Books Discovered Once Again" />
+    <meta property="og:description"        content="Virtual Museum" />
+    <meta property="og:image"              content="http://nkp-vm.github.io/views/content/img/discoveredonceagain.jpg" />
+
     <!-- Use this to force requests to HTTPS -->
     <!--meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests"-->
     <link rel="stylesheet" type="text/css" href="bower_components/angular-material/angular-material.min.css" />
@@ -31,8 +39,18 @@
                 </div>
                 <div class="topQuoteText">
                     <span class="topQuote">BOOKS DISCOVERED ONCE AGAIN</span>
+                </div>
+                <div layout="row" class="topSubtitleWithSharing" layout-align="start center">
+                    <span fles="90" class="topSubtitle">// VIRTUELL UTSTILLING</span>
+                    <!-- Create links with this tool: http://www.sharelinkgenerator.com/ -->
 
-                    <p class="topSubtitle">// VIRTUELL UTSTILLING</p>
+                        <a href="https://www.facebook.com/sharer/sharer.php?u=nkp-vm.github.io" target="_blank">
+                            <img style="width:6vmin; margin-right: 0.5em;" src="views/img/facebook_icon.png">
+                        </a>
+                        <a href="https://twitter.com/home?status=nkp-vm.github.io" target="_blank">
+                            <img style="width:6vmin;" src="views/img/twitter_icon.png">
+                        </a>
+
                 </div>
             </div>
         </header>

@@ -250,10 +250,9 @@ GDirectives.directive("sectionBox", ['$window', '$animate', '$rootScope', 'smoot
             scope.slideToggle();
             // If this is the first play, scroll to me and open the sliding section
             if(notPlayed) {
-                /*$timeout(function () {
+                $timeout(function () {
                     smoothScroll(element[0], {duration: 500});
                 }, 100);
-                */
             }
             // Show only the picture on mobile if no other sources
             if(scope.gifSrc === "" && scope.forceIphoneVideo === "false" && windowWidth < CONSTANTS.GIF_MAX_WIDTH) {
