@@ -41,7 +41,7 @@ GApp.constant("CONSTANTS", {
     CROP_MIN_WIDTH : 1281,
     GIF_MAX_WIDTH : 768,
     MODULE_NAME_ARRAY : ['intro', 'context', 'timeline', 'collection', 'provenance', 'process', 'about'],
-    TIMELINE_ITEMS : 17,
+    TIMELINE_ITEMS : 25,
     TIMELINE_SCALE: 4
 });
 
