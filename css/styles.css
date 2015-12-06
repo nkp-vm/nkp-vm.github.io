@@ -990,6 +990,12 @@ ol {
     .subSection {
         padding: 50px 0 50px 0;
     }
+    .captiontext {
+        padding: 0 7% 0 7%;
+    }
+    .subSectionBox .captiontext {
+        padding: 0;
+    }
     .timeline-content {
         -webkit-column-count: 1; /* Chrome, Safari, Opera */
         -moz-column-count: 1; /* Firefox */
@@ -1050,6 +1056,9 @@ ol {
     }
     .captiontext {
         padding: 0 7% 0 7%;
+    }
+    .subSectionBox .captiontext {
+        padding: 0;
     }
     .subSectionBox .sliding-box .captiontext {
         padding: 0;
@@ -1172,6 +1181,9 @@ ol {
     .captiontext {
         padding: 0 7% 0 7%;
     }
+    .subSectionBox .captiontext {
+        padding: 0;
+    }
     .subSectionBox .sliding-box .captiontext {
         padding: 0;
     }
@@ -1207,11 +1219,15 @@ ol {
         -moz-column-count: 2; /* Firefox */
         column-count: 2;
     }
+    .subSection {
+        padding: 50px 0 50px 0;
+    }
     .timeline-content {
         -webkit-column-count: 2; /* Chrome, Safari, Opera */
         -moz-column-count: 2; /* Firefox */
         column-count: 2;
     }
+
 }
 
 .hmsbtn {
