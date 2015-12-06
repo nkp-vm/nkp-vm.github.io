@@ -2,7 +2,7 @@
     <ol>
         <li ng-repeat="item in navlist" ng-click="seekToAnchor(item._id)" layout="row" layout-padding layout-align="end center">
 
-            <span>{{item._id}}</span>
+            <span>{{item._id | translate}}</span>
             <div class="navCircle" ng-class="{active: item.active}"></div>
 
         </li>

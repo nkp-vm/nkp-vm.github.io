@@ -901,9 +901,9 @@ ol {
 .navCirclesContainer {
     z-index: 1000;
     position: fixed;
-    top: 50px;
+    top: 40px;
     right: 25px;
-    width: 150px;
+
 }
 
 .navCircle {
@@ -980,11 +980,15 @@ ol {
     .md-button.md-icon-button {
         opacity: 0.5;
     }
+
     .sectionDetail {
         padding: 50px 7% 50px 7%;
         -webkit-column-count: 1; /* Chrome, Safari, Opera */
         -moz-column-count: 1; /* Firefox */
         column-count: 1;
+    }
+    .subSection {
+        padding: 50px 0 50px 0;
     }
     .timeline-content {
         -webkit-column-count: 1; /* Chrome, Safari, Opera */
