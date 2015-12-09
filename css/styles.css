@@ -705,7 +705,9 @@ div.timeline-nav-item:hover div.timeline-nav-item-text .triangle-up {
     position: fixed;
 }
 
-
+.brick:hover {
+    cursor: pointer;
+}
 
 .sectionBox {
     color: white;
