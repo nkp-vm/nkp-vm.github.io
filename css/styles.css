@@ -650,6 +650,21 @@ ul.dashlist li:before, ol.dashlist li:before {
     border-top: solid #999 1px;
     margin-top: 5px;
 }
+.timeline-nav-marker {
+    width: 20px;
+    height: 30px;
+    border-left: solid #999 1px;
+    position: absolute;
+    bottom: -5px;
+
+}
+.timeline-nav-marker span {
+    display: block;
+    font-size: 0.5em;
+    color: #333;
+    margin-left: 2px;
+    font-family:"HelveticaNeueW01-75Bold", "Arial Narrow", sans-serif;
+}
 .timeline-nav-item:focus {
     outline: none;
 }
@@ -658,7 +673,7 @@ div.timeline-nav-item .timeline-nav-item-text {
     margin-top: 5px;
     display: none;
     color: #FFF;
-    font-family:"HelveticaNeueW01-UltLt", "Arial Narrow", sans-serif;
+    font-family:"HelveticaNeueW01-Thin", "Arial Narrow", sans-serif;
     font-size: 1em;
     font-weight: bold;
     letter-spacing: 1px;
@@ -670,7 +685,7 @@ div.timeline-nav-item .timeline-nav-item-text {
     height: 0;
     border-left: 8px solid transparent;
     border-right: 8px solid transparent;
-    border-bottom: 8px solid #999;
+    border-bottom: 8px solid #666;
 }
 
 
@@ -678,10 +693,10 @@ div.timeline-nav-item .timeline-nav-item-text {
     /*margin-left: 16px;*/
 }
 .timeline-nav-item .navCircle .active {
-    color: #999;
+    color: #666;
 }
 .timeline-nav-item-text span {
-    background-color: #999;
+    background-color: #666;
     padding: 2px;
 }
 
@@ -691,13 +706,13 @@ div.timeline-nav-item:hover div.timeline-nav-item-text {
     font-weight: bold;
 }
 div.timeline-nav-item:hover .navCircle {
-    background-color: #666;
+    background-color: #999;
 }
 div.timeline-nav-item:hover div.timeline-nav-item-text span {
-    background-color: #666;
+    background-color: #999;
 }
 div.timeline-nav-item:hover div.timeline-nav-item-text .triangle-up {
-    border-bottom: 8px solid #666;
+    border-bottom: 8px solid #999;
 }
 
 .sticky-fixed {
@@ -943,7 +958,7 @@ ol {
     border: 1px solid #999;
 }
 .timeline-nav-item .navCircle.active {
-    background: #999;
+    background: #666;
     opacity: 1;
 }
 

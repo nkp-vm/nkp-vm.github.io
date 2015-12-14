@@ -23,14 +23,22 @@
         <div class="stickytime-gapfiller" hide show-gt-lg ng-style="{height: stickyIsStuck ? '120px' : '0'}"></div>
         <div class="stickytime" ng-show="timelineMode" hide show-gt-lg>
             <div style="position: relative;" ng-style="{'width' : presenterWidth+'px'}">
-                    <div class="timeline-nav-line"></div>
-                    <div layout="column" ng-repeat="item in timelist" class="timeline-nav-item" ng-style="{'left': +item.x+'%'}" ng-click="seekToAnchor(item._id)" ng-mouseover="item.hover_active = true" ng-mouseleave="item.hover_active = false">
-                        <div class="navCircle" ng-class="{active: item.active}"></div>
-                        <div class="timeline-nav-item-text" ng-style="{'display' : item.active || item.hover_active ? 'inline-block' : 'none'}">
-                            <div class="triangle-up"></div>
-                            <span>{{item.text}}</span>
-                        </div>
+
+                <div class="timeline-nav-line"></div>
+                <div class="timeline-nav-marker" style="left:0;"><span>1930</span></div>
+                <div class="timeline-nav-marker" style="left:16.6%;"><span>1940</span></div>
+                <div class="timeline-nav-marker" style="left:33.3%;"><span>1950</span></div>
+                <div class="timeline-nav-marker" style="left:50%;"><span>1960</span></div>
+                <div class="timeline-nav-marker" style="left:66.6%;"><span>1970</span></div>
+                <div class="timeline-nav-marker" style="left:83.3%;"><span>1980</span></div>
+
+                <div layout="column" ng-repeat="item in timelist" class="timeline-nav-item" ng-style="{'left': +item.x+'%'}" ng-click="seekToAnchor(item._id)" ng-mouseover="item.hover_active = true" ng-mouseleave="item.hover_active = false">
+                    <div class="navCircle" ng-class="{active: item.active}"></div>
+                    <div class="timeline-nav-item-text" ng-style="{'display' : item.active || item.hover_active ? 'inline-block' : 'none'}">
+                        <div class="triangle-up"></div>
+                        <span>{{item.text}}</span>
                     </div>
+                </div>
 
             </div>
         </div>
