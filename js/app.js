@@ -222,6 +222,7 @@ GApp.controller('IndexCtrl', ['$scope', '$translate', '$mdSidenav', '$location',
         });
     };
 
+    $translate.use($routeParams.language);
 
 
     //detect whether client uses Chrome or Firefox, and display a gentle message if not
