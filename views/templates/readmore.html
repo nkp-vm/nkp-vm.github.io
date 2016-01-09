@@ -8,6 +8,9 @@
     <!-- This div will slide open: -->
     <div id="{{slideId}}" class="sliding-readmore">
         <div class="content-selector">
+            <div ng-show="imageAndCaptionVisible" class="image-and-caption">
+                <img ng-src="views/content/img/{{imageAndCaption.image}}"><p>{{imageAndCaption.caption}}</p>
+            </div>
             <br>
             <ng-transclude></ng-transclude>
         </div>

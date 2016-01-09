@@ -13,11 +13,11 @@
   "ARIA_LANGUAGE": "language toggle",
   "ARIA_MENU": "open or close menu",
   "SIDEMENUITEM_SELECTED": "This menuitem is currently selected",
-  "intro" : "Discovered once again?",
-  "context" : "Background",
+  "intro" : "What happened to the books?",
+  "context" : "Historical background",
   "timeline" : "Timeline",
-  "collection" : "Books Bearing Witness",
+  "collection" : "Books witnessing",
   "provenance" : "Provenance",
-  "process" : "Process",
+  "process" : "What we do with the books",
   "about" : "About the project"
 }

@@ -14,11 +14,11 @@
   "ARIA_LANGUAGE": "språkvekslings",
   "ARIA_MENU": "åpent eller lukk meny",
   "SIDEMENUITEM_SELECTED": "This menuitem is currently selected",
-  "intro" : "Discovered once again?",
-  "context" : "Bakgrunn",
+  "intro" : "Hva skjedde med bøkene?",
+  "context" : "Historisk bakteppe",
   "timeline" : "Tidslinje",
-  "collection" : "Bøker som vitner",
+  "collection" : "Bøkenes vitnesbyrd",
   "provenance" : "Proveniens",
-  "process" : "Prosess",
+  "process" : "Hva vi gjør med bøkene",
   "about" : "Om prosjektet"
 }

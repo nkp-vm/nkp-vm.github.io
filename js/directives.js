@@ -325,15 +325,19 @@ GDirectives.directive("readmore", ['$timeout', function($timeout) {
     var linker = function(scope, elem, attrs) {
         scope.slideId = attrs.id+'_slide';
         scope.detailActive = false;
+        scope.imageAndCaptionVisible = false;
         scope.addlowerborder = false;
         scope.iconRef = "views/icons/plussicon_wednesday.png";
         //scope.iconRef = "views/icons/body/readmore/746-plus-circle@2x.svg";
         // Controls open and close of the sliding section in this directive
+
         scope.slideToggle = function() {
             var target = document.getElementById(scope.slideId);
             var aTarget = angular.element(target);
             var content = target.querySelector('.content-selector');
             var contentHeight = content.offsetHeight+'px';
+            scope.imageAndCaptionVisible = !scope.imageAndCaptionVisible;  // Image needs to be shown before unrolling the readmore to create a smooth effect
+
             if(scope.detailActive) {
                 scope.addlowerborder = false;
                 scope.iconRef = "views/icons/plussicon_wednesday.png";
@@ -369,7 +373,8 @@ GDirectives.directive("readmore", ['$timeout', function($timeout) {
         transclude : true,
         link: linker,
         scope : {
-            title : '@'
+            title : '@',
+            imageAndCaption: '='
         }
     }
 }]);
@@ -648,6 +653,7 @@ GDirectives.directive("timelinebox", ['NavListing', function(NavListing) {
             captionText: '@',
             bgColour: '@',
             catColour: '@',
+            titleColour: '@',
             bgImage: '@',
             tlText: '@',
             tlX: '@'
