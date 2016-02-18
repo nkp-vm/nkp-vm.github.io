@@ -12,12 +12,12 @@ with any questions regarding Web Fonts:  http://www.linotype.com
     src:url("../Fonts/673365/41774233-b9da-44be-b252-6a7b612fb1c7.eot?#iefix") format("eot"),url("../Fonts/673365/9baef9a5-e2af-4838-a3bc-da9d36c0bde8.woff2") format("woff2"),url("../Fonts/673365/4bff1fbb-b4bf-4d95-9c47-efcb14384e36.woff") format("woff"),url("../Fonts/673365/7f1f2a7d-3837-4c93-b373-f03c5da3f9a1.ttf") format("truetype"),url("../Fonts/673365/d9f2752a-8d82-4cf1-b82f-109c1105be7f.svg#d9f2752a-8d82-4cf1-b82f-109c1105be7f") format("svg");
 }
 @font-face{
-    font-family:"HelveticaNeueW01-Thin";
-    src:url("../Fonts/673377/56be84de-9d60-4089-8df0-0ea6ec786b84.eot?#iefix");
-    src:url("../Fonts/673377/56be84de-9d60-4089-8df0-0ea6ec786b84.eot?#iefix") format("eot"),url("../Fonts/673377/aff68211-86bb-476d-882e-f7a3face144c.woff2") format("woff2"),url("../Fonts/673377/50d35bbc-dfd4-48f1-af16-cf058f69421d.woff") format("woff"),url("../Fonts/673377/278bef59-6be1-4800-b5ac-1f769ab47430.ttf") format("truetype"),url("../Fonts/673377/2e309b1b-08b8-477f-bc9e-7067cf0af0b3.svg#2e309b1b-08b8-477f-bc9e-7067cf0af0b3") format("svg");
+    font-family:"HelveticaNeueW02-Thin";
+    src:url("../Fonts/674411/30b6ffc3-3b64-40dd-9ff8-a3a850daf535.eot?#iefix");
+    src:url("../Fonts/674411/30b6ffc3-3b64-40dd-9ff8-a3a850daf535.eot?#iefix") format("eot"),url("../Fonts/674411/96b33a5f-d3a7-4a34-b360-76867695bb83.woff2") format("woff2"),url("../Fonts/674411/775a65da-14aa-4634-be95-6724c05fd522.woff") format("woff"),url("../Fonts/674411/988eaaa7-5565-4f65-bb17-146b650ce9e9.ttf") format("truetype"),url("../Fonts/674411/3503a1a6-91c3-4c42-8e66-2ea7b2b57541.svg#3503a1a6-91c3-4c42-8e66-2ea7b2b57541") format("svg");
 }
 @font-face{
-    font-family:"HelveticaNeueW01-45Ligh";
+    font-family:"HelveticaNeueW01-45Light";
     src:url("../Fonts/692680/ae1656aa-5f8f-4905-aed0-93e667bd6e4a.eot?#iefix");
     src:url("../Fonts/692680/ae1656aa-5f8f-4905-aed0-93e667bd6e4a.eot?#iefix") format("eot"),url("../Fonts/692680/5a13f7d1-b615-418e-bc3a-525001b9a671.woff2") format("woff2"),url("../Fonts/692680/530dee22-e3c1-4e9f-bf62-c31d510d9656.woff") format("woff"),url("../Fonts/692680/688ab72b-4deb-4e15-a088-89166978d469.ttf") format("truetype"),url("../Fonts/692680/7816f72f-f47e-4715-8cd7-960e3723846a.svg#7816f72f-f47e-4715-8cd7-960e3723846a") format("svg");
 }
@@ -121,7 +121,7 @@ p.text {
 }
 
 .floating-menu span {
-    font-family:"HelveticaNeueW01-45Ligh", "Arial Narrow", sans-serif;
+    font-family:"HelveticaNeueW02-Thin", "Arial Narrow", sans-serif;
     text-transform: capitalize;
 }
 
@@ -366,7 +366,7 @@ md-sidenav, md-sidenav md-content.md-main-theme, md-sidenav md-content md-list-i
 }
 md-sidenav md-content md-list-item a {
     color: white;
-    font-family:"HelveticaNeueW01-45Ligh", "Arial Narrow", sans-serif;
+    font-family:"HelveticaNeueW02-Thin", "Arial Narrow", sans-serif;
     font-size: 1em;
     letter-spacing: 1px;
     text-decoration: none;
@@ -433,12 +433,15 @@ md-sidenav md-input-container.md-main-theme .md-input {
 /* ---- Section Detail ---- */
 .sectionDetail {
     /*margin-top:-10px;*/
-    font-family:"HelveticaNeueW01-45Ligh", "Arial", sans-serif;
+    font-family:"HelveticaNeueW01-45Light", "Arial", sans-serif;
     color: black;
 
     -webkit-column-count: 2; /* Chrome, Safari, Opera */
     -moz-column-count: 2; /* Firefox */
     column-count: 2;
+}
+.czechfont {
+    font-family:"HelveticaNeueW01-Thin", "Arial", sans-serif;
 }
 .sectionDetail html {
     margin: auto;
@@ -502,14 +505,14 @@ ul.dashlist li:before, ol.dashlist li:before {
 
 /* -------------- Section detail is formatting for all content text ----------- */
 .sectionDetail h2 {
-    font-family:"HelveticaNeueW01-45Ligh", "Arial", sans-serif;
+    font-family:"HelveticaNeueW02-Thin", "Arial", sans-serif;
     font-size: 1.65em;
     font-weight: normal !important;
     margin: 0.33em 0 0.66em;
     line-height: 1.25em;
 }
 .sectionDetail h3 {
-    font-family:"HelveticaNeueW01-45Ligh", "Arial", sans-serif;
+    font-family:"HelveticaNeueW02-Thin", "Arial", sans-serif;
     font-size: 1.65em;
     font-weight: normal !important;
     margin: 1.2em 0 0.66em;
@@ -1033,13 +1036,13 @@ ol {
         bottom: 20px;
         left: 7%;
         font-size: 5vmin;
-        font-family:"HelveticaNeueW01-45Ligh", "Arial Narrow", sans-serif;
+        font-family:"HelveticaNeueW02-Thin", "Arial Narrow", sans-serif;
     }
     .subSectionBox .overlaytext {
         bottom: 5px;
         left: 5px;
         font-size: 5vmin;
-        font-family:"HelveticaNeueW01-45Ligh", "Arial Narrow", sans-serif;
+        font-family:"HelveticaNeueW02-Thin", "Arial Narrow", sans-serif;
     }
     .stickyHamburger {
         right: 0px;
@@ -1100,13 +1103,13 @@ ol {
         bottom: 20px;
         left: 7%;
         font-size: 5vmin;
-        font-family:"HelveticaNeueW01-45Ligh", "Arial Narrow", sans-serif;
+        font-family:"HelveticaNeueW02-Thin", "Arial Narrow", sans-serif;
     }
     .subSectionBox .overlaytext {
         bottom: 15px;
         left: 1%;
         font-size: 5vmin;
-        font-family:"HelveticaNeueW01-45Ligh", "Arial Narrow", sans-serif;
+        font-family:"HelveticaNeueW02-Thin", "Arial Narrow", sans-serif;
     }
     .hide-small {
         display: none;
@@ -1195,13 +1198,13 @@ ol {
         bottom: 20px;
         left: 7%;
         font-size: 5vmin;
-        font-family:"HelveticaNeueW01-45Ligh", "Arial Narrow", sans-serif;
+        font-family:"HelveticaNeueW02-Thin", "Arial Narrow", sans-serif;
     }
     .subSectionBox .overlaytext {
         bottom: 15px;
         left: 1%;
         font-size: 5vmin;
-        font-family:"HelveticaNeueW01-45Ligh", "Arial Narrow", sans-serif;
+        font-family:"HelveticaNeueW02-Thin", "Arial Narrow", sans-serif;
     }
     .subSection {
         padding: 50px 0 50px 0;
