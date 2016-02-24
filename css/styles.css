@@ -6,8 +6,9 @@ with any questions regarding Web Fonts:  http://www.linotype.com
 */
 
 /*@import url("https://fast.fonts.net/lt/1.css?apiType=css&c=8010e9df-a2fb-426b-85a4-d4dfe84d4c1e&fontids=673365,673377,692680,692692,692716");*/
+/*
 @font-face{
-    font-family:"HelveticaNeueW01-UltLt";
+    font-family:"HelveticaNeueW02-UltLt";
     src:url("../Fonts/673365/41774233-b9da-44be-b252-6a7b612fb1c7.eot?#iefix");
     src:url("../Fonts/673365/41774233-b9da-44be-b252-6a7b612fb1c7.eot?#iefix") format("eot"),url("../Fonts/673365/9baef9a5-e2af-4838-a3bc-da9d36c0bde8.woff2") format("woff2"),url("../Fonts/673365/4bff1fbb-b4bf-4d95-9c47-efcb14384e36.woff") format("woff"),url("../Fonts/673365/7f1f2a7d-3837-4c93-b373-f03c5da3f9a1.ttf") format("truetype"),url("../Fonts/673365/d9f2752a-8d82-4cf1-b82f-109c1105be7f.svg#d9f2752a-8d82-4cf1-b82f-109c1105be7f") format("svg");
 }
@@ -17,20 +18,48 @@ with any questions regarding Web Fonts:  http://www.linotype.com
     src:url("../Fonts/674411/30b6ffc3-3b64-40dd-9ff8-a3a850daf535.eot?#iefix") format("eot"),url("../Fonts/674411/96b33a5f-d3a7-4a34-b360-76867695bb83.woff2") format("woff2"),url("../Fonts/674411/775a65da-14aa-4634-be95-6724c05fd522.woff") format("woff"),url("../Fonts/674411/988eaaa7-5565-4f65-bb17-146b650ce9e9.ttf") format("truetype"),url("../Fonts/674411/3503a1a6-91c3-4c42-8e66-2ea7b2b57541.svg#3503a1a6-91c3-4c42-8e66-2ea7b2b57541") format("svg");
 }
 @font-face{
-    font-family:"HelveticaNeueW01-45Light";
+    font-family:"HelveticaNeueW02-45Ligh";
     src:url("../Fonts/692680/ae1656aa-5f8f-4905-aed0-93e667bd6e4a.eot?#iefix");
     src:url("../Fonts/692680/ae1656aa-5f8f-4905-aed0-93e667bd6e4a.eot?#iefix") format("eot"),url("../Fonts/692680/5a13f7d1-b615-418e-bc3a-525001b9a671.woff2") format("woff2"),url("../Fonts/692680/530dee22-e3c1-4e9f-bf62-c31d510d9656.woff") format("woff"),url("../Fonts/692680/688ab72b-4deb-4e15-a088-89166978d469.ttf") format("truetype"),url("../Fonts/692680/7816f72f-f47e-4715-8cd7-960e3723846a.svg#7816f72f-f47e-4715-8cd7-960e3723846a") format("svg");
 }
 @font-face{
-    font-family:"HelveticaNeueW01-55Roma";
+    font-family:"HelveticaNeueW02-55Roma";
     src:url("../Fonts/692692/b7693a83-b861-4aa6-85e0-9ecf676bc4d6.eot?#iefix");
     src:url("../Fonts/692692/b7693a83-b861-4aa6-85e0-9ecf676bc4d6.eot?#iefix") format("eot"),url("../Fonts/692692/b0868b4c-234e-47d3-bc59-41ab9de3c0db.woff2") format("woff2"),url("../Fonts/692692/bcf54343-d033-41ee-bbd7-2b77df3fe7ba.woff") format("woff"),url("../Fonts/692692/b0ffdcf0-26da-47fd-8485-20e4a40d4b7d.ttf") format("truetype"),url("../Fonts/692692/da09f1f1-062a-45af-86e1-2bbdb3dd94f9.svg#da09f1f1-062a-45af-86e1-2bbdb3dd94f9") format("svg");
 }
 @font-face{
-    font-family:"HelveticaNeueW01-75Bold";
+    font-family:"HelveticaNeueW02-75Bold";
     src:url("../Fonts/692716/c07fef9e-a934-42d7-92ad-69205f2b8a00.eot?#iefix");
     src:url("../Fonts/692716/c07fef9e-a934-42d7-92ad-69205f2b8a00.eot?#iefix") format("eot"),url("../Fonts/692716/3b303641-706e-4221-94c4-4fb491f4f8ef.woff2") format("woff2"),url("../Fonts/692716/14ff6081-326d-4dae-b778-d7afa66166fc.woff") format("woff"),url("../Fonts/692716/8fda1e47-19be-46c7-8d83-8d4fb35572f0.ttf") format("truetype"),url("../Fonts/692716/f751c8ae-1057-46d9-8d74-62592e002568.svg#f751c8ae-1057-46d9-8d74-62592e002568") format("svg");
 }
+*/
+
+@font-face{
+    font-family:"HelveticaNeueW02-UltLt";
+    src:url("../Fonts/674399/787ee748-9cce-45a0-910b-6b5c6e87e327.eot?#iefix");
+    src:url("../Fonts/674399/787ee748-9cce-45a0-910b-6b5c6e87e327.eot?#iefix") format("eot"),url("../Fonts/674399/b39b5378-b594-45fe-8067-fc4385d08520.woff2") format("woff2"),url("../Fonts/674399/84558c76-9f1b-44d2-ac62-d7937f43809b.woff") format("woff"),url("../Fonts/674399/411a88fe-e483-4fb8-af42-8369ebb1138d.ttf") format("truetype"),url("../Fonts/674399/6dfe33a4-0ad5-4c85-8e01-f48ecfe3c167.svg#6dfe33a4-0ad5-4c85-8e01-f48ecfe3c167") format("svg");
+}
+@font-face{
+    font-family:"HelveticaNeueW02-Thin";
+    src:url("../Fonts/674411/30b6ffc3-3b64-40dd-9ff8-a3a850daf535.eot?#iefix");
+    src:url("../Fonts/674411/30b6ffc3-3b64-40dd-9ff8-a3a850daf535.eot?#iefix") format("eot"),url("../Fonts/674411/96b33a5f-d3a7-4a34-b360-76867695bb83.woff2") format("woff2"),url("../Fonts/674411/775a65da-14aa-4634-be95-6724c05fd522.woff") format("woff"),url("../Fonts/674411/988eaaa7-5565-4f65-bb17-146b650ce9e9.ttf") format("truetype"),url("../Fonts/674411/3503a1a6-91c3-4c42-8e66-2ea7b2b57541.svg#3503a1a6-91c3-4c42-8e66-2ea7b2b57541") format("svg");
+}
+@font-face{
+    font-family:"HelveticaNeueW02-45Ligh";
+    src:url("../Fonts/694015/88fcd49a-13c7-4d0c-86b1-ad1e258bd75d.eot?#iefix");
+    src:url("../Fonts/694015/88fcd49a-13c7-4d0c-86b1-ad1e258bd75d.eot?#iefix") format("eot"),url("../Fonts/694015/7732d6de-bd05-4c17-ae43-99e9a02edf31.woff2") format("woff2"),url("../Fonts/694015/9a2e4855-380f-477f-950e-d98e8db54eac.woff") format("woff"),url("../Fonts/694015/fa82d0ee-4fbd-4cc9-bf9f-226ad1fcbae2.ttf") format("truetype"),url("../Fonts/694015/48d599a6-92b5-4d43-a4ac-8959f6971853.svg#48d599a6-92b5-4d43-a4ac-8959f6971853") format("svg");
+}
+@font-face{
+    font-family:"HelveticaNeueW02-55Roma";
+    src:url("../Fonts/694021/0b3a3fca-0fad-402b-bd38-fdcbad1ef776.eot?#iefix");
+    src:url("../Fonts/694021/0b3a3fca-0fad-402b-bd38-fdcbad1ef776.eot?#iefix") format("eot"),url("../Fonts/694021/b4cd926c-1a31-4785-b261-1db1a68c521e.woff2") format("woff2"),url("../Fonts/694021/d5af76d8-a90b-4527-b3a3-182207cc3250.woff") format("woff"),url("../Fonts/694021/1d238354-d156-4dde-89ea-4770ef04b9f9.ttf") format("truetype"),url("../Fonts/694021/b68875cb-14a9-472e-8177-0247605124d7.svg#b68875cb-14a9-472e-8177-0247605124d7") format("svg");
+}
+@font-face{
+    font-family:"HelveticaNeueW02-75Bold";
+    src:url("../Fonts/694033/db853e0e-929b-4272-b420-c946c954cf3a.eot?#iefix");
+    src:url("../Fonts/694033/db853e0e-929b-4272-b420-c946c954cf3a.eot?#iefix") format("eot"),url("../Fonts/694033/2a5cf81d-ffbe-4c76-8982-270592fb36b0.woff2") format("woff2"),url("../Fonts/694033/4a9c62ab-b359-4081-8383-a0d1cdebd111.woff") format("woff"),url("../Fonts/694033/db5f9ba6-05a4-433a-9461-0a6f257a0c3a.ttf") format("truetype"),url("../Fonts/694033/25e09910-ffc3-4fc4-b0d1-db9a95dface8.svg#25e09910-ffc3-4fc4-b0d1-db9a95dface8") format("svg");
+}
+
 
 html {
     color: white;
@@ -42,7 +71,7 @@ html * {
 section, aside { display: block; }
 
 body {
-    font-family:"HelveticaNeueW01-55Roma", Arial, sans-serif;
+    font-family:"HelveticaNeueW02-55Roma", Arial, sans-serif;
     color: black;
     background: white;
     font-size: 1em;
@@ -185,7 +214,7 @@ md-checkbox .md-icon {
     cursor: pointer;
 }
 .quizFeedback {
-    font-family:"HelveticaNeueW01-75Bold", "Arial", sans-serif;
+    font-family:"HelveticaNeueW02-75Bold", "Arial", sans-serif;
 }
 .sectionDetail .quiz p {
     margin: 0;
@@ -300,7 +329,7 @@ md-card {
     vertical-align: top;
     padding-top: 30px;
     padding-left: 40px;
-    font-family:"HelveticaNeueW01-75Bold", "Arial", sans-serif;
+    font-family:"HelveticaNeueW02-75Bold", "Arial", sans-serif;
     font-size: 200pt;
     line-height: 65pt;
     color: #24baa3;
@@ -312,7 +341,7 @@ md-card {
 }
 .topQuote {
     text-transform: uppercase;
-    font-family:"HelveticaNeueW01-75Bold", "Arial", sans-serif;
+    font-family:"HelveticaNeueW02-75Bold", "Arial", sans-serif;
     font-size: 14vmin;
     line-height: 14vmin;
     max-width: 80vw;
@@ -372,7 +401,7 @@ md-sidenav md-content md-list-item a {
     text-decoration: none;
 }
 md-sidenav md-content md-list-item span {
-    font-family:"HelveticaNeueW01-UltLt", "Arial Narrow", sans-serif;
+    font-family:"HelveticaNeueW02-UltLt", "Arial Narrow", sans-serif;
 }
 md-sidenav md-input-container.md-main-theme label {
     color: white;
@@ -386,7 +415,7 @@ md-sidenav md-input-container.md-main-theme .md-input {
 }
 #searchContainer {
     width:75%;
-    font-family:"HelveticaNeueW01-UltLt", "Arial Narrow", sans-serif;
+    font-family:"HelveticaNeueW02-UltLt", "Arial Narrow", sans-serif;
 }
 #searchResultsContainer {
     position: relative;
@@ -433,7 +462,7 @@ md-sidenav md-input-container.md-main-theme .md-input {
 /* ---- Section Detail ---- */
 .sectionDetail {
     /*margin-top:-10px;*/
-    font-family:"HelveticaNeueW01-45Light", "Arial", sans-serif;
+    font-family:"HelveticaNeueW02-45Ligh", "Arial", sans-serif;
     color: black;
 
     -webkit-column-count: 2; /* Chrome, Safari, Opera */
@@ -444,7 +473,7 @@ md-sidenav md-input-container.md-main-theme .md-input {
     margin: auto;
 }
 .sectionDetail strong, .gfooter strong {
-    font-family:"HelveticaNeueW01-75Bold", "Arial", sans-serif;
+    font-family:"HelveticaNeueW02-75Bold", "Arial", sans-serif;
     font-weight: normal !important;
 }
 .sectionDetail ul, .sectionDetail ol {
@@ -472,10 +501,10 @@ md-sidenav md-input-container.md-main-theme .md-input {
     border-right: 1px solid black;
 }
 .sectionDetail th	{
-   /* font-family:"HelveticaNeueW01-75Bold", "Arial", sans-serif; */
+   /* font-family:"HelveticaNeueW02-75Bold", "Arial", sans-serif; */
 }
 .sectionDetail td:first-child {
- /*   font-family:"HelveticaNeueW01-75Bold", "Arial", sans-serif; */
+ /*   font-family:"HelveticaNeueW02-75Bold", "Arial", sans-serif; */
 }
 .sectionDetail td:last-child {
     border-right: none;
@@ -525,7 +554,7 @@ ul.dashlist li:before, ol.dashlist li:before {
     margin: 1em 0 0;
     line-height: 1.35em;
     font-size: 1.1em;
-    font-family:"HelveticaNeueW01-75Bold", "Arial", sans-serif;
+    font-family:"HelveticaNeueW02-75Bold", "Arial", sans-serif;
     font-weight: normal !important;
 }
 .sectionDetail p {
@@ -601,7 +630,7 @@ ul.dashlist li:before, ol.dashlist li:before {
     margin-top: 0;
 }
 .timeline h3 {
-    font-family: "HelveticaNeueW01-75Bold","Arial",sans-serif;
+    font-family: "HelveticaNeueW02-75Bold","Arial",sans-serif;
     font-size: 2.5em;
     line-height: 2.5rem;
     color: #222222;
@@ -663,7 +692,7 @@ ul.dashlist li:before, ol.dashlist li:before {
     font-size: 0.5em;
     color: #333;
     margin-left: 2px;
-    font-family:"HelveticaNeueW01-75Bold", "Arial Narrow", sans-serif;
+    font-family:"HelveticaNeueW02-75Bold", "Arial Narrow", sans-serif;
 }
 .timeline-nav-item:focus {
     outline: none;
@@ -809,7 +838,7 @@ div.timeline-nav-item:hover div.timeline-nav-item-text .triangle-up {
 }
 .tt-text h3,
 .tt-text-quote h3{
-    font-family: "HelveticaNeueW01-75Bold","Arial",sans-serif;
+    font-family: "HelveticaNeueW02-75Bold","Arial",sans-serif;
     font-size: 2.5em;
     line-height: 2.5rem;
     margin-top: 0;
@@ -835,14 +864,14 @@ div.timeline-nav-item:hover div.timeline-nav-item-text .triangle-up {
 .greybox {
     background-color: #f5f5f5;
     padding: 15px;
-    font-family: "HelveticaNeueW01-55Roma", Arial, sans-serif;
+    font-family: "HelveticaNeueW02-55Roma", Arial, sans-serif;
 }
 .quotebox {
     background-color: #FFFFFF;
     padding: 0;
 }
 .quotebox-quote {
-    font-family:"HelveticaNeueW01-75Bold", "Arial", sans-serif;
+    font-family:"HelveticaNeueW02-75Bold", "Arial", sans-serif;
     font-size: 1.5em;
     max-width: 100%;
 }
@@ -900,7 +929,7 @@ div.timeline-nav-item:hover div.timeline-nav-item-text .triangle-up {
 }
 
 .chart div {
-    font-family: "HelveticaNeueW01-55Roma", Arial, sans-serif;
+    font-family: "HelveticaNeueW02-55Roma", Arial, sans-serif;
     font-size: 0.5em;
     background-color: rgb(63,81,181);
     text-align: right;
@@ -969,7 +998,7 @@ ol {
 .navCirclesContainer li span {
     display: none;
     color: #FFF;
-    font-family:"HelveticaNeueW01-UltLt", "Arial Narrow", sans-serif;
+    font-family:"HelveticaNeueW02-UltLt", "Arial Narrow", sans-serif;
     font-size: 14px;
     letter-spacing: 1px;
     text-transform: capitalize;
@@ -1003,7 +1032,7 @@ ol {
     font-family:"HelveticaNeueW01-Thin", "Arial", sans-serif;
 }
 .czechfontregular {
-    font-family: "HelveticaNeueW01-55Roma", "Arial", sans-serif !important;
+    font-family: "HelveticaNeueW02-55Roma", "Arial", sans-serif !important;
     font-weight: bold !important;
 }
 

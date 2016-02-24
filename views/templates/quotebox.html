@@ -1,7 +1,7 @@
 <br>
     <div class="quotebox" layout="column" layout-align="start start">
         <img ng-if="type === 'quote'" ng-src="views/icons/body/greybox/quotation.svg" ng-class="{'widget-icon-small': type === 'quote', 'widget-icon-very-small' : type === 'story'}">
-        <div class="quotebox-quote" ng-class="{czechfontregular: czech === 'true'}" ng-if="type === 'quote'"><ng-transclude></ng-transclude></div>
+        <div class="quotebox-quote" ng-if="type === 'quote'"><ng-transclude></ng-transclude></div>
         <div class="quotebox-story" ng-if="type === 'story'"><ng-transclude></ng-transclude></div>
     </div>
 <br>

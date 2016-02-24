@@ -652,8 +652,7 @@ GDirectives.directive("timelinebox", ['NavListing', function(NavListing) {
             titleColour: '@',
             bgImage: '@',
             tlText: '@',
-            tlX: '@',
-            czech: '@'
+            tlX: '@'
         }
     };
 }]);
@@ -778,8 +777,7 @@ GDirectives.directive("quotebox", [function() {
         restrict: 'A',
         transclude : true,
         scope: {
-            type: '@',
-            czech: '@'
+            type: '@'
         }
     };
 }]);
