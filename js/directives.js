@@ -565,11 +565,7 @@ GDirectives.directive("mosaic", ['$http', '$window', '$timeout', function($http,
  * @restrict A
  * @description
  * Add this attribute to make 'navCircles' element.
- *  * count:   Number of circles to display
- *  * title:   Title of the item
- *  * image-src:   Link to image
- *  * caption:   caption text
- * <pre><div timelinebox date-place="June 1970" title="test 1" image-src="views/content/img/timeline/..." caption="caption text">Detailed text about the item</div></pre>
+ * <pre><div navCircles></div></pre>
  */
 GDirectives.directive("navCircles", ['$document', '$window', 'NavListing', function($document, $window, NavListing) {
     var linker = function(scope, elem, attr) {
@@ -656,7 +652,8 @@ GDirectives.directive("timelinebox", ['NavListing', function(NavListing) {
             titleColour: '@',
             bgImage: '@',
             tlText: '@',
-            tlX: '@'
+            tlX: '@',
+            czech: '@'
         }
     };
 }]);
@@ -781,7 +778,8 @@ GDirectives.directive("quotebox", [function() {
         restrict: 'A',
         transclude : true,
         scope: {
-            type: '@'
+            type: '@',
+            czech: '@'
         }
     };
 }]);
